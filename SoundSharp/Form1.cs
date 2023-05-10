@@ -17,7 +17,7 @@ namespace SoundSharp
         int contPlay;
         int contShuffle;
         int contLoop;
-        int contFavorite;
+        bool menuExpand;
         private Form activeForm = null;
         PlaylistDisplay playlistDisplay = new PlaylistDisplay();
         public MainWindow()
@@ -26,7 +26,6 @@ namespace SoundSharp
             contPlay = 1;
             contShuffle = 1;
             contLoop = 1;
-            contFavorite = 1;
         }
 
         private void OpenChildForm(Form childForm)
@@ -44,17 +43,7 @@ namespace SoundSharp
         }
         private void pbMenu_Click(object sender, EventArgs e)
         {
-            if (MenuVertical.Width == 190)
-            {
-                MenuVertical.Width = 44;
-                pbLogo.Visible = false;
-            }
-
-            else
-            {
-                MenuVertical.Width = 190;
-                pbLogo.Visible = true;
-            }
+            timerMenu.Start();
         }
 
         private void pbPause_Click(object sender, EventArgs e)
@@ -102,21 +91,6 @@ namespace SoundSharp
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            switch (contFavorite)
-            {
-                case 1:
-                    btnFav.Image = SoundSharp.Properties.Resources.favoritoRelleno1;
-                    contFavorite++;
-                    break;
-                case 2:
-                    btnFav.Image = SoundSharp.Properties.Resources.favorito;
-                    contFavorite= 1;
-                    break;
-            }
-        }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             DialogResult confirmar = MessageBox.Show("¿Está seguro que desea salir?", "Salir", MessageBoxButtons.OKCancel);
@@ -130,19 +104,32 @@ namespace SoundSharp
             OpenChildForm(new Playlist());
         }
 
-        private void btnProfile_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new Profile());
-        }
-
-        private void btnFavorite_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new Favorites());
-        }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             playlistDisplay.Show();
+        }
+
+        private void timerMenu_Tick(object sender, EventArgs e)
+        {
+            if (menuExpand)
+            {
+                MenuVertical.Width -= 10;
+                if (MenuVertical.Width == MenuVertical.MinimumSize.Width)
+                {
+                    menuExpand = false;
+                    timerMenu.Stop();
+                }
+
+            }
+            else
+            {
+                MenuVertical.Width += 10;
+                if (MenuVertical.Width == MenuVertical.MaximumSize.Width)
+                {
+                    menuExpand = true;
+                    timerMenu.Stop();
+                }
+            }
         }
     }
 }
