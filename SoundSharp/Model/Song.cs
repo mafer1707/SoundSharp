@@ -11,7 +11,7 @@ namespace SoundSharp.Model
     {
         //Colocar source de las canciones.
         private string _interpreter;
-        private string _name;
+        private string _name;  
         private PlaySong _playSong = new PlaySong();
         private StopSong _stopSong = new StopSong();
         private PauseSong _pauseSong = new PauseSong();
