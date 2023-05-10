@@ -71,10 +71,11 @@ namespace SoundSharp
             this.MenuVertical.Controls.Add(this.btnPlaylist);
             this.MenuVertical.Dock = System.Windows.Forms.DockStyle.Left;
             this.MenuVertical.Location = new System.Drawing.Point(0, 0);
-            this.MenuVertical.MaximumSize = new System.Drawing.Size(190, 458);
-            this.MenuVertical.MinimumSize = new System.Drawing.Size(57, 458);
+            this.MenuVertical.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MenuVertical.MaximumSize = new System.Drawing.Size(253, 564);
+            this.MenuVertical.MinimumSize = new System.Drawing.Size(76, 564);
             this.MenuVertical.Name = "MenuVertical";
-            this.MenuVertical.Size = new System.Drawing.Size(190, 458);
+            this.MenuVertical.Size = new System.Drawing.Size(253, 564);
             this.MenuVertical.TabIndex = 0;
             // 
             // lblMenu
@@ -82,9 +83,10 @@ namespace SoundSharp
             this.lblMenu.AutoSize = true;
             this.lblMenu.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMenu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
-            this.lblMenu.Location = new System.Drawing.Point(72, 27);
+            this.lblMenu.Location = new System.Drawing.Point(96, 33);
+            this.lblMenu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMenu.Name = "lblMenu";
-            this.lblMenu.Size = new System.Drawing.Size(57, 23);
+            this.lblMenu.Size = new System.Drawing.Size(72, 29);
             this.lblMenu.TabIndex = 5;
             this.lblMenu.Text = "Menú";
             // 
@@ -92,9 +94,10 @@ namespace SoundSharp
             // 
             this.btnMenu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMenu.Image = global::SoundSharp.Properties.Resources.listaRosa;
-            this.btnMenu.Location = new System.Drawing.Point(12, 21);
+            this.btnMenu.Location = new System.Drawing.Point(16, 26);
+            this.btnMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(35, 35);
+            this.btnMenu.Size = new System.Drawing.Size(47, 43);
             this.btnMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMenu.TabIndex = 0;
             this.btnMenu.TabStop = false;
@@ -110,10 +113,11 @@ namespace SoundSharp
             this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
             this.btnExit.Image = global::SoundSharp.Properties.Resources.salir;
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExit.Location = new System.Drawing.Point(0, 415);
+            this.btnExit.Location = new System.Drawing.Point(0, 511);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnExit.Size = new System.Drawing.Size(190, 40);
+            this.btnExit.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.btnExit.Size = new System.Drawing.Size(253, 49);
             this.btnExit.TabIndex = 4;
             this.btnExit.Text = "Salir";
             this.toolTip1.SetToolTip(this.btnExit, "Salir");
@@ -129,10 +133,11 @@ namespace SoundSharp
             this.btnImport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
             this.btnImport.Image = global::SoundSharp.Properties.Resources.carpeta;
             this.btnImport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImport.Location = new System.Drawing.Point(0, 191);
+            this.btnImport.Location = new System.Drawing.Point(0, 235);
+            this.btnImport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnImport.Name = "btnImport";
-            this.btnImport.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnImport.Size = new System.Drawing.Size(190, 40);
+            this.btnImport.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.btnImport.Size = new System.Drawing.Size(253, 49);
             this.btnImport.TabIndex = 2;
             this.btnImport.Text = "    Importar";
             this.toolTip1.SetToolTip(this.btnImport, "Importar canción");
@@ -147,10 +152,11 @@ namespace SoundSharp
             this.btnPlaylist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
             this.btnPlaylist.Image = global::SoundSharp.Properties.Resources.playlist1;
             this.btnPlaylist.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPlaylist.Location = new System.Drawing.Point(0, 129);
+            this.btnPlaylist.Location = new System.Drawing.Point(0, 159);
+            this.btnPlaylist.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPlaylist.Name = "btnPlaylist";
-            this.btnPlaylist.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnPlaylist.Size = new System.Drawing.Size(190, 40);
+            this.btnPlaylist.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.btnPlaylist.Size = new System.Drawing.Size(253, 49);
             this.btnPlaylist.TabIndex = 1;
             this.btnPlaylist.Text = " Playlist";
             this.toolTip1.SetToolTip(this.btnPlaylist, "Playlist");
@@ -170,9 +176,10 @@ namespace SoundSharp
             this.PanelReproduccion.Controls.Add(this.lblTimerInicial);
             this.PanelReproduccion.Controls.Add(this.progressBar);
             this.PanelReproduccion.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PanelReproduccion.Location = new System.Drawing.Point(190, 358);
+            this.PanelReproduccion.Location = new System.Drawing.Point(253, 441);
+            this.PanelReproduccion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PanelReproduccion.Name = "PanelReproduccion";
-            this.PanelReproduccion.Size = new System.Drawing.Size(508, 100);
+            this.PanelReproduccion.Size = new System.Drawing.Size(678, 123);
             this.PanelReproduccion.TabIndex = 2;
             // 
             // btnAdd
@@ -180,9 +187,10 @@ namespace SoundSharp
             this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdd.Image = global::SoundSharp.Properties.Resources.anadir;
-            this.btnAdd.Location = new System.Drawing.Point(67, 17);
+            this.btnAdd.Location = new System.Drawing.Point(90, 21);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(29, 27);
+            this.btnAdd.Size = new System.Drawing.Size(39, 33);
             this.btnAdd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnAdd.TabIndex = 8;
             this.btnAdd.TabStop = false;
@@ -194,9 +202,10 @@ namespace SoundSharp
             this.btnShuffle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnShuffle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnShuffle.Image = global::SoundSharp.Properties.Resources.shuffle;
-            this.btnShuffle.Location = new System.Drawing.Point(113, 17);
+            this.btnShuffle.Location = new System.Drawing.Point(152, 21);
+            this.btnShuffle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnShuffle.Name = "btnShuffle";
-            this.btnShuffle.Size = new System.Drawing.Size(29, 27);
+            this.btnShuffle.Size = new System.Drawing.Size(39, 33);
             this.btnShuffle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnShuffle.TabIndex = 6;
             this.btnShuffle.TabStop = false;
@@ -208,9 +217,10 @@ namespace SoundSharp
             this.btnLoop.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnLoop.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLoop.Image = global::SoundSharp.Properties.Resources.repetir;
-            this.btnLoop.Location = new System.Drawing.Point(403, 17);
+            this.btnLoop.Location = new System.Drawing.Point(538, 21);
+            this.btnLoop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLoop.Name = "btnLoop";
-            this.btnLoop.Size = new System.Drawing.Size(29, 27);
+            this.btnLoop.Size = new System.Drawing.Size(39, 33);
             this.btnLoop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnLoop.TabIndex = 5;
             this.btnLoop.TabStop = false;
@@ -222,35 +232,40 @@ namespace SoundSharp
             this.btnBack.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBack.Image = global::SoundSharp.Properties.Resources.atras;
-            this.btnBack.Location = new System.Drawing.Point(200, 17);
+            this.btnBack.Location = new System.Drawing.Point(268, 21);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(24, 27);
+            this.btnBack.Size = new System.Drawing.Size(32, 33);
             this.btnBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnBack.TabIndex = 4;
             this.btnBack.TabStop = false;
             this.toolTip1.SetToolTip(this.btnBack, "Atrás");
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnNext
             // 
             this.btnNext.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnNext.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNext.Image = global::SoundSharp.Properties.Resources.siguiente;
-            this.btnNext.Location = new System.Drawing.Point(289, 17);
+            this.btnNext.Location = new System.Drawing.Point(386, 21);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(24, 27);
+            this.btnNext.Size = new System.Drawing.Size(32, 33);
             this.btnNext.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnNext.TabIndex = 3;
             this.btnNext.TabStop = false;
             this.toolTip1.SetToolTip(this.btnNext, "Siguiente");
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnPause
             // 
             this.btnPause.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnPause.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPause.Image = global::SoundSharp.Properties.Resources.pausa;
-            this.btnPause.Location = new System.Drawing.Point(245, 17);
+            this.btnPause.Location = new System.Drawing.Point(328, 21);
+            this.btnPause.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPause.Name = "btnPause";
-            this.btnPause.Size = new System.Drawing.Size(24, 27);
+            this.btnPause.Size = new System.Drawing.Size(32, 33);
             this.btnPause.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnPause.TabIndex = 2;
             this.btnPause.TabStop = false;
@@ -263,9 +278,10 @@ namespace SoundSharp
             this.lblTimerFinal.AutoSize = true;
             this.lblTimerFinal.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimerFinal.ForeColor = System.Drawing.Color.White;
-            this.lblTimerFinal.Location = new System.Drawing.Point(454, 65);
+            this.lblTimerFinal.Location = new System.Drawing.Point(606, 80);
+            this.lblTimerFinal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTimerFinal.Name = "lblTimerFinal";
-            this.lblTimerFinal.Size = new System.Drawing.Size(39, 15);
+            this.lblTimerFinal.Size = new System.Drawing.Size(51, 21);
             this.lblTimerFinal.TabIndex = 1;
             this.lblTimerFinal.Text = "00:00";
             // 
@@ -274,9 +290,10 @@ namespace SoundSharp
             this.lblTimerInicial.AutoSize = true;
             this.lblTimerInicial.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimerInicial.ForeColor = System.Drawing.Color.White;
-            this.lblTimerInicial.Location = new System.Drawing.Point(12, 65);
+            this.lblTimerInicial.Location = new System.Drawing.Point(16, 80);
+            this.lblTimerInicial.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTimerInicial.Name = "lblTimerInicial";
-            this.lblTimerInicial.Size = new System.Drawing.Size(39, 15);
+            this.lblTimerInicial.Size = new System.Drawing.Size(51, 21);
             this.lblTimerInicial.TabIndex = 0;
             this.lblTimerInicial.Text = "00:00";
             // 
@@ -285,18 +302,20 @@ namespace SoundSharp
             this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(65, 70);
+            this.progressBar.Location = new System.Drawing.Point(87, 86);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(375, 5);
+            this.progressBar.Size = new System.Drawing.Size(501, 6);
             this.progressBar.TabIndex = 0;
             // 
             // PanelContenedor
             // 
             this.PanelContenedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.PanelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelContenedor.Location = new System.Drawing.Point(190, 0);
+            this.PanelContenedor.Location = new System.Drawing.Point(253, 0);
+            this.PanelContenedor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PanelContenedor.Name = "PanelContenedor";
-            this.PanelContenedor.Size = new System.Drawing.Size(508, 358);
+            this.PanelContenedor.Size = new System.Drawing.Size(678, 441);
             this.PanelContenedor.TabIndex = 3;
             // 
             // timerMenu
@@ -306,13 +325,14 @@ namespace SoundSharp
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(698, 458);
+            this.ClientSize = new System.Drawing.Size(931, 564);
             this.Controls.Add(this.PanelContenedor);
             this.Controls.Add(this.PanelReproduccion);
             this.Controls.Add(this.MenuVertical);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SoundSharp";
