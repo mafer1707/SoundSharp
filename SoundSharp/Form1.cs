@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SoundSharp.Models;
 
 namespace SoundSharp
 {
@@ -25,6 +27,7 @@ namespace SoundSharp
             contShuffle = 1;
             contLoop = 1;
             contFavorite = 1;
+            // Song song = new Song(1, "yo", "Chainsaw Op", @"C:\Users\BrnMa\Downloads\chainsaw op.mp3");
         }
 
         private void OpenChildForm(Form childForm)
