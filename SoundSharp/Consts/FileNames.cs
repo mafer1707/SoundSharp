@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SoundSharp.Consts
+{
+    internal class FileNames
+    {
+        public static string Database = "../../Database";
+        public static string ProgramDatabase = Database + "/Program"; 
+        public static string LoadedSongs = Database + "/Songs";
+
+        public static string Songs = ProgramDatabase + "/songs.json";
+    }
+}
