@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using SoundSharp.Consts;
 
 namespace SoundSharp.Utils
@@ -13,11 +14,14 @@ namespace SoundSharp.Utils
     internal class DbHandler<T>
     {
         private string _fileName;
+        private string _idFile;
         public string FileName { get { return _fileName; } }
+        public string IdFile { get { return _idFile; } }
 
-        public DbHandler(string fileName)
+        public DbHandler(string fileName, string idFile)
         {
             _fileName = fileName;
+            _idFile = idFile;
         }
 
         public List<T> Get()
@@ -50,6 +54,32 @@ namespace SoundSharp.Utils
 
             }
             return result;
+        }
+
+        public int GetNewId()
+        {
+            if (!File.Exists(IdFile))
+            {
+                string value = "1";
+                File.WriteAllText(IdFile, value);
+                return 1;
+            }
+
+            int prevId = int.Parse(GetLastId());
+            int newId = prevId + 1;
+            string newIdString = newId.ToString();
+            MessageBox.Show(newIdString);
+            File.WriteAllText(IdFile, newIdString);
+            return newId;
+        }
+
+        public string GetLastId()
+        {
+            StreamReader sr = new StreamReader(IdFile);
+            //Read the first line of text
+            string line = sr.ReadLine();
+            sr.Close();
+            return line;
         }
     }
 }

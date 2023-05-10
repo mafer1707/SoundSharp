@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SoundSharp.Utils;
 using SoundSharp.Consts;
+using System.Text.Json.Serialization;
 
 namespace SoundSharp.Models
 {
@@ -16,10 +17,21 @@ namespace SoundSharp.Models
         private string _author;
         private string _name;
         private string _route;
-        private static DbHandler<Song> dbHandler = new DbHandler<Song>(FileNames.Songs);
+        private static DbHandler<Song> dbHandler = new DbHandler<Song>(FileNames.Songs, FileNames.SongsId);
 
+        [JsonConstructor]
         public Song(int id, string author, string name, string route)
         {
+            _id = id;
+            Author = author;
+            Name = name;
+            Route = route;
+        }
+
+        public Song(string author, string name, string route)
+        {
+            int id = dbHandler.GetNewId();
+
             _id = id;
             Author = author;
             Name = name;
@@ -30,6 +42,8 @@ namespace SoundSharp.Models
             File.Copy(route, destination);
 
             Route = destination;
+
+            dbHandler.Add(this);
         }
 
         public int Id { get { return _id; } }
@@ -41,11 +55,6 @@ namespace SoundSharp.Models
         {
             List<Song> songs = dbHandler.Get();
             return songs;
-        }
-
-        private static void AddSong(Song song)
-        {
-            dbHandler.Add(song);
         }
     }
 }

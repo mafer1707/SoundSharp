@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\SoundSharp",
+    "\\SoundSharp\\Consts",
+    "\\SoundSharp\\Models",
+    "\\SoundSharp\\Utils"
   ],
-  "SelectedNode": "\\SoundSharp.sln",
+  "SelectedNode": "\\SoundSharp\\Playlist.cs",
   "PreviewInSolutionExplorer": false
 }
