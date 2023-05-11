@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DgSongs = new System.Windows.Forms.DataGridView();
@@ -42,10 +41,6 @@
             this.SearchBox = new System.Windows.Forms.TextBox();
             this.AddBtn = new System.Windows.Forms.Button();
             this.CancelarBtn = new System.Windows.Forms.Button();
-            this.FormElipse = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.NameElipse = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.SearchElipse = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.DgSong = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.DgSongs)).BeginInit();
@@ -82,9 +77,9 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DgSongs.DefaultCellStyle = dataGridViewCellStyle2;
             this.DgSongs.EnableHeadersVisualStyles = false;
@@ -93,7 +88,7 @@
             this.DgSongs.Name = "DgSongs";
             this.DgSongs.RowHeadersVisible = false;
             this.DgSongs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgSongs.Size = new System.Drawing.Size(596, 410);
+            this.DgSongs.Size = new System.Drawing.Size(553, 410);
             this.DgSongs.TabIndex = 3;
             // 
             // Artist
@@ -193,33 +188,13 @@
             this.CancelarBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelarBtn.Font = new System.Drawing.Font("Calibri", 12.25F, System.Drawing.FontStyle.Bold);
             this.CancelarBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
-            this.CancelarBtn.Location = new System.Drawing.Point(524, 482);
+            this.CancelarBtn.Location = new System.Drawing.Point(481, 482);
             this.CancelarBtn.Name = "CancelarBtn";
             this.CancelarBtn.Size = new System.Drawing.Size(84, 31);
             this.CancelarBtn.TabIndex = 19;
             this.CancelarBtn.Text = "Cancelar";
             this.CancelarBtn.UseVisualStyleBackColor = false;
             this.CancelarBtn.Click += new System.EventHandler(this.CancelarBtn_Click);
-            // 
-            // FormElipse
-            // 
-            this.FormElipse.ElipseRadius = 5;
-            this.FormElipse.TargetControl = this;
-            // 
-            // NameElipse
-            // 
-            this.NameElipse.ElipseRadius = 7;
-            this.NameElipse.TargetControl = this.SearchBox;
-            // 
-            // SearchElipse
-            // 
-            this.SearchElipse.ElipseRadius = 7;
-            this.SearchElipse.TargetControl = this.textBox1;
-            // 
-            // DgSong
-            // 
-            this.DgSong.ElipseRadius = 9;
-            this.DgSong.TargetControl = this.DgSongs;
             // 
             // panel1
             // 
@@ -235,7 +210,7 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Location = new System.Drawing.Point(331, 12);
+            this.panel2.Location = new System.Drawing.Point(288, 12);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(277, 36);
             this.panel2.TabIndex = 16;
@@ -245,13 +220,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(620, 525);
+            this.ClientSize = new System.Drawing.Size(577, 525);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.CancelarBtn);
             this.Controls.Add(this.AddBtn);
             this.Controls.Add(this.DgSongs);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddList";
             this.Text = "Forn";
             ((System.ComponentModel.ISupportInitialize)(this.DgSongs)).EndInit();
@@ -272,10 +247,6 @@
         private System.Windows.Forms.TextBox SearchBox;
         private System.Windows.Forms.Button AddBtn;
         private System.Windows.Forms.Button CancelarBtn;
-        private Bunifu.Framework.UI.BunifuElipse FormElipse;
-        private Bunifu.Framework.UI.BunifuElipse NameElipse;
-        private Bunifu.Framework.UI.BunifuElipse SearchElipse;
-        private Bunifu.Framework.UI.BunifuElipse DgSong;
         private System.Windows.Forms.DataGridViewTextBoxColumn Artist;
         private System.Windows.Forms.DataGridViewTextBoxColumn Genero;
         private System.Windows.Forms.DataGridViewTextBoxColumn Song;

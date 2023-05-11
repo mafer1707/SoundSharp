@@ -4,8 +4,11 @@
     "\\SoundSharp",
     "\\SoundSharp\\Consts",
     "\\SoundSharp\\Models",
-    "\\SoundSharp\\Utils"
+    "\\SoundSharp\\Utils",
+    "\\SoundSharp\\Views",
+    "\\SoundSharp\\Views\\Playlist",
+    "\\SoundSharp\\Views\\Playlist\\SubMenu"
   ],
-  "SelectedNode": "\\SoundSharp\\Playlist.cs",
+  "SelectedNode": "\\SoundSharp\\Views\\Playlist\\SubMenu\\AddList.cs",
   "PreviewInSolutionExplorer": false
 }

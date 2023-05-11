@@ -12,6 +12,7 @@ namespace SoundSharp.Views.Playlist.SubMenu
 {
     public partial class AddList : Form
     {
+        List<Playlist> List = new List<Playlist>(Playlist.getPlaylist());
         public AddList()
         {
             InitializeComponent();

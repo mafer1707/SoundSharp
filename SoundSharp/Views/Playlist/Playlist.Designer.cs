@@ -1,17 +1,16 @@
-﻿
-namespace SoundSharp
+﻿namespace SoundSharp
 {
-    partial class Playlist
+    partial class PlaylistView
     {
         /// <summary>
-        /// Required designer variable.
+        /// Variable del diseñador necesaria.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Limpiar los recursos que se estén usando.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -21,25 +20,22 @@ namespace SoundSharp
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Código generado por el Diseñador de Windows Forms
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        /// Método necesario para admitir el Diseñador. No se puede modificar
+        /// el contenido de este método con el editor de código.
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgPlaylist = new System.Windows.Forms.DataGridView();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.AddBtn = new System.Windows.Forms.Button();
-            this.Searchlbl = new System.Windows.Forms.Label();
             this.SearchBox = new System.Windows.Forms.TextBox();
-            this.SearchBoxElipse = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.Searchlbl = new System.Windows.Forms.Label();
+            this.AddBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgPlaylist)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +53,7 @@ namespace SoundSharp
             this.dgPlaylist.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
@@ -70,19 +66,19 @@ namespace SoundSharp
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgPlaylist.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgPlaylist.EnableHeadersVisualStyles = false;
-            this.dgPlaylist.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.dgPlaylist.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.dgPlaylist.Location = new System.Drawing.Point(12, 12);
             this.dgPlaylist.Name = "dgPlaylist";
             this.dgPlaylist.RowHeadersVisible = false;
             this.dgPlaylist.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgPlaylist.Size = new System.Drawing.Size(491, 350);
-            this.dgPlaylist.TabIndex = 2;
+            this.dgPlaylist.Size = new System.Drawing.Size(766, 398);
+            this.dgPlaylist.TabIndex = 1;
             // 
             // Nombre
             // 
@@ -95,10 +91,30 @@ namespace SoundSharp
             this.Date.HeaderText = "Fecha de Creación:";
             this.Date.Name = "Date";
             // 
-            // bunifuElipse1
+            // SearchBox
             // 
-            this.bunifuElipse1.ElipseRadius = 10;
-            this.bunifuElipse1.TargetControl = this.dgPlaylist;
+            this.SearchBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.SearchBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SearchBox.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.SearchBox.ForeColor = System.Drawing.Color.White;
+            this.SearchBox.Location = new System.Drawing.Point(111, 19);
+            this.SearchBox.Multiline = true;
+            this.SearchBox.Name = "SearchBox";
+            this.SearchBox.Size = new System.Drawing.Size(118, 20);
+            this.SearchBox.TabIndex = 14;
+            this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
+            // 
+            // Searchlbl
+            // 
+            this.Searchlbl.AutoSize = true;
+            this.Searchlbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
+            this.Searchlbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold);
+            this.Searchlbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Searchlbl.Location = new System.Drawing.Point(32, 16);
+            this.Searchlbl.Name = "Searchlbl";
+            this.Searchlbl.Size = new System.Drawing.Size(73, 23);
+            this.Searchlbl.TabIndex = 15;
+            this.Searchlbl.Text = "Playlist:";
             // 
             // AddBtn
             // 
@@ -107,60 +123,26 @@ namespace SoundSharp
             this.AddBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddBtn.Font = new System.Drawing.Font("Calibri", 12.25F, System.Drawing.FontStyle.Bold);
             this.AddBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
-            this.AddBtn.Location = new System.Drawing.Point(12, 368);
+            this.AddBtn.Location = new System.Drawing.Point(12, 416);
             this.AddBtn.Name = "AddBtn";
-            this.AddBtn.Size = new System.Drawing.Size(75, 31);
-            this.AddBtn.TabIndex = 11;
-            this.AddBtn.Text = "add";
+            this.AddBtn.Size = new System.Drawing.Size(100, 31);
+            this.AddBtn.TabIndex = 19;
+            this.AddBtn.Text = "Crear Lista";
             this.AddBtn.UseVisualStyleBackColor = false;
-            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
-            // 
-            // Searchlbl
-            // 
-            this.Searchlbl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Searchlbl.AutoSize = true;
-            this.Searchlbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
-            this.Searchlbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold);
-            this.Searchlbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Searchlbl.Location = new System.Drawing.Point(29, 18);
-            this.Searchlbl.Name = "Searchlbl";
-            this.Searchlbl.Size = new System.Drawing.Size(68, 23);
-            this.Searchlbl.TabIndex = 4;
-            this.Searchlbl.Text = "Buscar:";
-            // 
-            // SearchBox
-            // 
-            this.SearchBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.SearchBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.SearchBox.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.SearchBox.ForeColor = System.Drawing.SystemColors.MenuBar;
-            this.SearchBox.Location = new System.Drawing.Point(103, 21);
-            this.SearchBox.Multiline = true;
-            this.SearchBox.Name = "SearchBox";
-            this.SearchBox.Size = new System.Drawing.Size(118, 20);
-            this.SearchBox.TabIndex = 3;
-            // 
-            // SearchBoxElipse
-            // 
-            this.SearchBoxElipse.ElipseRadius = 8;
-            this.SearchBoxElipse.TargetControl = this.SearchBox;
             // 
             // Playlist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(515, 411);
+            this.ClientSize = new System.Drawing.Size(790, 459);
             this.Controls.Add(this.AddBtn);
-            this.Controls.Add(this.Searchlbl);
             this.Controls.Add(this.SearchBox);
+            this.Controls.Add(this.Searchlbl);
             this.Controls.Add(this.dgPlaylist);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximizeBox = false;
             this.Name = "Playlist";
-            this.Text = "Playlist";
+            this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dgPlaylist)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -168,14 +150,12 @@ namespace SoundSharp
         }
 
         #endregion
-
         private System.Windows.Forms.DataGridView dgPlaylist;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
-        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
-        private System.Windows.Forms.Button AddBtn;
         private System.Windows.Forms.TextBox SearchBox;
         private System.Windows.Forms.Label Searchlbl;
-        private Bunifu.Framework.UI.BunifuElipse SearchBoxElipse;
+        private System.Windows.Forms.Button AddBtn;
     }
 }
+

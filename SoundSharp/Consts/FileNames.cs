@@ -14,5 +14,8 @@ namespace SoundSharp.Consts
 
         public static string Songs = ProgramDatabase + "/songs.json";
         public static string SongsId = ProgramDatabase + "/songsId.txt";
+
+        public static string Playlist = ProgramDatabase + "/playlist.json";
+        public static string PlaylistId = ProgramDatabase + "/playlistId.txt";
     }
 }
