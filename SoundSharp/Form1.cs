@@ -10,25 +10,35 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SoundSharp.Models;
 
-
 namespace SoundSharp
 {
     public partial class MainWindow : Form
     {
-        int contPlay;
-        int contShuffle;
-        int contLoop;
+        private int contPlay;
+        private int contShuffle;
+        private int contLoop;
         int contFavorite;
+        private double position = 0;
+        private WMPLib.WindowsMediaPlayer player;
+        bool menuExpand;
         private Form activeForm = null;
         PlaylistDisplay playlistDisplay = new PlaylistDisplay();
+        //private Song randomSong = new Song(@"C:\Users\58412\Downloads\Joni Mitchell - Full Discography\1970 - Ladies Of The Canyon\10 - Big Yellow Taxi.mp3");
+        //private Album[] randomAlbum = { new Album(@"C:\Users\58412\Desktop\SSHRP3\SoundSharp\SoundSharp\Database\Albums\1970 - Ladies Of The Canyon"),
+        //    new Album(@"C:\Users\58412\Downloads\Jeff Buckley - Grace (2022) [FLAC 24-192]"),
+        //    new Album(@"C:\Users\58412\Downloads\Mistki - Puberty 2 (2016)(FLAC)(CD)"),
+        //    new Album(@"C:\Users\58412\Downloads\IC3PEAK-До_Свидания-WEB-2020")};
+
         public MainWindow()
         {
+            player = new WMPLib.WindowsMediaPlayer();
+            //player.currentMedia = randomSong.CurrentSong;
+            //player.currentPlaylist = randomAlbum[3].CurrentAlbum;
             InitializeComponent();
+            player.controls.stop();
             contPlay = 1;
             contShuffle = 1;
             contLoop = 1;
-            contFavorite = 1;
-            // Song song = new Song(1, "yo", "Chainsaw Op", @"C:\Users\BrnMa\Downloads\chainsaw op.mp3");
         }
 
         private void OpenChildForm(Form childForm)
@@ -46,17 +56,7 @@ namespace SoundSharp
         }
         private void pbMenu_Click(object sender, EventArgs e)
         {
-            if (MenuVertical.Width == 190)
-            {
-                MenuVertical.Width = 44;
-                pbLogo.Visible = false;
-            }
-
-            else
-            {
-                MenuVertical.Width = 190;
-                pbLogo.Visible = true;
-            }
+            timerMenu.Start();
         }
 
         private void pbPause_Click(object sender, EventArgs e)
@@ -64,10 +64,14 @@ namespace SoundSharp
             switch (contPlay)
             {
                 case 1:
+                    player.controls.currentPosition = position;
+                    player.controls.play();
                     btnPause.Image = SoundSharp.Properties.Resources.play;
                     contPlay++;
                     break;
                 case 2:
+                    player.controls.pause();
+                    position = player.controls.currentPosition;
                     btnPause.Image = SoundSharp.Properties.Resources.pausa;
                     contPlay = 1;
                     break;
@@ -80,10 +84,14 @@ namespace SoundSharp
             {
                 case 1:
                     btnShuffle.Image = SoundSharp.Properties.Resources.shuffleRosado;
+                    player.settings.setMode("autoRewind", false);
+                    player.settings.setMode("shuffle", true);
                     contShuffle++;
                     break;
                 case 2:
                     btnShuffle.Image = SoundSharp.Properties.Resources.shuffle;
+                    player.settings.setMode("autoRewind", true);
+                    player.settings.setMode("shuffle", false);
                     contShuffle = 1;
                     break;
             }
@@ -95,26 +103,15 @@ namespace SoundSharp
             {
                 case 1:
                     btnLoop.Image = SoundSharp.Properties.Resources.repetirRosado;
+                    player.settings.setMode("autoRewind", false);
+                    player.settings.setMode("loop", true);
                     contLoop++;
                     break;
                 case 2:
                     btnLoop.Image = SoundSharp.Properties.Resources.repetir;
+                    player.settings.setMode("autoRewind", true);
+                    player.settings.setMode("loop", false);
                     contLoop = 1;
-                    break;
-            }
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            switch (contFavorite)
-            {
-                case 1:
-                    btnFav.Image = SoundSharp.Properties.Resources.favoritoRelleno1;
-                    contFavorite++;
-                    break;
-                case 2:
-                    btnFav.Image = SoundSharp.Properties.Resources.favorito;
-                    contFavorite= 1;
                     break;
             }
         }
@@ -129,22 +126,47 @@ namespace SoundSharp
 
         private void btnPlaylist_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Playlist());
-        }
-
-        private void btnProfile_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new Profile());
-        }
-
-        private void btnFavorite_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new Favorites());
+            OpenChildForm(new PlaylistView());
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             playlistDisplay.Show();
+        }
+
+        private void timerMenu_Tick(object sender, EventArgs e)
+        {
+            if (menuExpand)
+            {
+                MenuVertical.Width -= 10;
+                if (MenuVertical.Width == MenuVertical.MinimumSize.Width)
+                {
+                    menuExpand = false;
+                    timerMenu.Stop();
+                }
+
+            }
+            else
+            {
+                MenuVertical.Width += 10;
+                if (MenuVertical.Width == MenuVertical.MaximumSize.Width)
+                {
+                    menuExpand = true;
+                    timerMenu.Stop();
+                }
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            player.controls.next();
+            position = 0;
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            player.controls.previous();
+            position = 0;
         }
     }
 }

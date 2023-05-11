@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SoundSharp.Models;
 
-namespace SoundSharp.Views.Playlist.SubMenu
+namespace SoundSharp
 {
     public partial class AddList : Form
     {
+        List<Playlist> List = new List<Playlist>(Playlist.getPlaylist());
         public AddList()
         {
             InitializeComponent();

@@ -1,6 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using SoundSharp.Consts;
+using SoundSharp.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,13 +12,32 @@ namespace SoundSharp.Models
 {
     public class Playlist
     {
+        private int _id;
         private string _name;
+        private string _date;
         private List<Song> _songs;
+        private static DbHandler<Playlist> dbHandler = new DbHandler<Playlist>(FileNames.Playlist, FileNames.PlaylistId);
 
         //Creo mi nueva playlist.
-        public Playlist(string name)
+        [JsonConstructor]
+        public Playlist(string name, string date, List<Song> songs, int id)
         {
             _name = name;
+            _date = date;
+            _songs = songs;
+            _id = id;
+        }
+
+        public Playlist(string name, List<Song> songs)
+        {
+            int id = dbHandler.GetNewId();
+
+            _id = id;
+            _name = name;
+            _date = DateTime.Now.ToString("dd/MM/yyyy. HH:mm:ss");
+            _songs = songs;
+
+            dbHandler.Add(this);
         }
 
         public void AddSong(Song cancion)
@@ -28,7 +51,16 @@ namespace SoundSharp.Models
         }
 
         public string Name { get { return _name; } set { _name = value; } }
+        public int Id { get { return _id; } set { _id = value; } }
+        public string Date { get { return _date; } set { _date = value; } }
         public List<Song> Songs { get { return _songs; } }
+
+        public static List<Playlist> getPlaylist()
+        {
+            List<Playlist> Playlists = dbHandler.Get();
+            return Playlists;
+        }
+
         ~Playlist() { } //Elimino mi playlist
     }
 }

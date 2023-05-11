@@ -1,4 +1,6 @@
-﻿using SoundSharp.Views.Playlist.SubMenu;
+﻿using SoundSharp.Consts;
+using SoundSharp.Models;
+using SoundSharp.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,9 +13,14 @@ using System.Windows.Forms;
 
 namespace SoundSharp
 {
-    public partial class Playlist : Form
+    
+
+    public partial class PlaylistView : Form
     {
-        public Playlist()
+        
+       List<Playlist> List = new List<Playlist>(Playlist.getPlaylist());
+
+        public PlaylistView()
         {
             InitializeComponent();
         }
@@ -29,6 +36,15 @@ namespace SoundSharp
             
         }
 
-        List<Playlist> Playlists = new List<Playlist>();
+        
+
+        private void SearchBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+       
+
+        
     }
 }
