@@ -23,7 +23,7 @@ namespace SoundSharp
         private Button currentButton;
         private double position = 0;
         private WMPLib.WindowsMediaPlayer player;
-        bool menuExpand;
+        bool menuExpand = true;
         private Form activeForm = null;
         PlaylistDisplay playlistDisplay = new PlaylistDisplay();
         private Song randomSong = new Song(@"C:\Users\Yasmin\Documents\FERNANDA\Bad Bunny - Efecto (360Â° Visualizer) _ Un Verano Sin Ti(MP3_128K).mp3");
@@ -43,6 +43,7 @@ namespace SoundSharp
             contShuffle = 1;
             contLoop = 1;
             contVolume = 1;
+            slider.Height = 23;
             trackBar1.Value = 30;
             lblVolume.Text = trackBar1.Value.ToString() + "%";
         }
@@ -62,11 +63,8 @@ namespace SoundSharp
         }
         private void pbMenu_Click(object sender, EventArgs e)
         {
-            if (MenuVertical.Width == 190)
-                MenuVertical.Width = 59;
-
-            else
-                MenuVertical.Width = 190;
+            timerMenu.Start();
+            slider.Refresh();
         }
 
         private void pbPause_Click(object sender, EventArgs e)
@@ -150,7 +148,8 @@ namespace SoundSharp
             if (menuExpand)
             {
                 MenuVertical.Width -= 10;
-                if (MenuVertical.Width == MenuVertical.MinimumSize.Width)
+                slider.Refresh();
+                if (MenuVertical.Width <= 62)
                 {
                     menuExpand = false;
                     timerMenu.Stop();
@@ -160,7 +159,8 @@ namespace SoundSharp
             else
             {
                 MenuVertical.Width += 10;
-                if (MenuVertical.Width == MenuVertical.MaximumSize.Width)
+                slider.Refresh();
+                if (MenuVertical.Width >= 190)
                 {
                     menuExpand = true;
                     timerMenu.Stop();
@@ -323,6 +323,12 @@ namespace SoundSharp
                 currentButton.ImageAlign = ContentAlignment.MiddleLeft;
                 currentButton.TextAlign = ContentAlignment.MiddleCenter;
             }
+        }
+
+        private void MainWindow_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+                slider.Refresh();
         }
 
 

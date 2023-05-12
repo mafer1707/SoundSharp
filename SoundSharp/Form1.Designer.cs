@@ -195,7 +195,7 @@ namespace SoundSharp
             this.lblVolume.AutoSize = true;
             this.lblVolume.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVolume.ForeColor = System.Drawing.Color.White;
-            this.lblVolume.Location = new System.Drawing.Point(758, 28);
+            this.lblVolume.Location = new System.Drawing.Point(754, 28);
             this.lblVolume.Name = "lblVolume";
             this.lblVolume.Size = new System.Drawing.Size(29, 16);
             this.lblVolume.TabIndex = 15;
@@ -398,6 +398,7 @@ namespace SoundSharp
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SoundSharp";
+            this.Resize += new System.EventHandler(this.MainWindow_Resize);
             this.MenuVertical.ResumeLayout(false);
             this.MenuVertical.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).EndInit();
