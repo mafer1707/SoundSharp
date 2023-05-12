@@ -262,7 +262,6 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\SoundSharp.MainWindow.resources" />
-    <EmbeddedResource Include="obj\Debug\SoundSharp.Playlist.resources" />
     <EmbeddedResource Include="obj\Debug\SoundSharp.PlaylistDisplay.resources" />
     <EmbeddedResource Include="obj\Debug\SoundSharp.Properties.Resources.resources" />
     <EmbeddedResource Include="PlaylistDisplay.resx">
@@ -376,6 +375,10 @@
     <Content Include="obj\Debug\SoundSharp.exe" />
     <Content Include="obj\Debug\SoundSharp.pdb" />
     <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
+    <None Include="Resources\mute_img.png" />
+    <None Include="Resources\mid_img.png" />
+    <None Include="Resources\high_img.png" />
+    <None Include="Resources\down_img.png" />
     <None Include="Resources\listaRosa.png" />
     <None Include="Resources\carpeta.png" />
   </ItemGroup>
