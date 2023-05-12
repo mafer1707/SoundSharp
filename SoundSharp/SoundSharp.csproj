@@ -375,6 +375,9 @@
     <Content Include="obj\Debug\SoundSharp.exe" />
     <Content Include="obj\Debug\SoundSharp.pdb" />
     <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
+    <None Include="Resources\lupaNegra.png" />
+    <None Include="Resources\playlistNegra.png" />
+    <None Include="Resources\lupa.png" />
     <None Include="Resources\mute_img.png" />
     <None Include="Resources\mid_img.png" />
     <None Include="Resources\high_img.png" />

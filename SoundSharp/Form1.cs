@@ -20,6 +20,7 @@ namespace SoundSharp
         private int contLoop;
         private int contVolume;
         private int volumenActual;
+        private Button currentButton;
         private double position = 0;
         private WMPLib.WindowsMediaPlayer player;
         bool menuExpand;
@@ -135,6 +136,7 @@ namespace SoundSharp
 
         private void btnPlaylist_Click(object sender, EventArgs e)
         {
+            ActiveButton(sender, SoundSharp.Properties.Resources.playlistNegra);
             OpenChildForm(new PlaylistView());
         }
 
@@ -204,7 +206,7 @@ namespace SoundSharp
             int y = (int)(slider.Height * bar_size);
 
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-            e.Graphics.FillRectangle(Brushes.DimGray, 0, y, slider.Width, y / 2);
+            e.Graphics.FillRectangle(Brushes.DimGray, 0, y, slider.Width-4, y / 2);
             e.Graphics.FillRectangle(Brushes.White, 0, y, x, slider.Height - 2 * y);
 
             using (Pen pen = new Pen(Color.White, 8))
@@ -287,6 +289,40 @@ namespace SoundSharp
                 btnVolume.Image = SoundSharp.Properties.Resources.high_img;
 
             contVolume = 1;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            ActiveButton(sender, SoundSharp.Properties.Resources.lupaNegra);
+        }
+
+        private void ActiveButton (object senderBtn, Image imagen)
+        {
+            if(senderBtn != null)
+            {
+                DisableButton();
+                currentButton = (Button)senderBtn;
+                currentButton.BackColor = Color.FromArgb(239, 7, 90);
+                currentButton.ForeColor = Color.Black;
+                currentButton.Image = imagen;
+                currentButton.ImageAlign = ContentAlignment.MiddleLeft;
+                currentButton.TextAlign = ContentAlignment.MiddleCenter;
+            }
+        }
+
+        private void DisableButton()
+        {
+            if(currentButton != null)
+            {
+                if (currentButton.Text == "Buscar")
+                    currentButton.Image = SoundSharp.Properties.Resources.lupa;
+                else
+                    currentButton.Image = SoundSharp.Properties.Resources.playlist1;
+                currentButton.BackColor = Color.FromArgb(11, 7, 17);
+                currentButton.ForeColor = Color.FromArgb(239, 7, 90);
+                currentButton.ImageAlign = ContentAlignment.MiddleLeft;
+                currentButton.TextAlign = ContentAlignment.MiddleCenter;
+            }
         }
 
 

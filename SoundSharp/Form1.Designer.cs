@@ -33,31 +33,34 @@ namespace SoundSharp
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.MenuVertical = new System.Windows.Forms.Panel();
             this.lblMenu = new System.Windows.Forms.Label();
+            this.btnMenu = new System.Windows.Forms.PictureBox();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnPlaylist = new System.Windows.Forms.Button();
             this.PanelReproduccion = new System.Windows.Forms.Panel();
+            this.lblVolume = new System.Windows.Forms.Label();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.btnVolume = new System.Windows.Forms.PictureBox();
+            this.slider = new System.Windows.Forms.PictureBox();
             this.lblArtist = new System.Windows.Forms.Label();
             this.lblSong = new System.Windows.Forms.Label();
-            this.lblTimerFinal = new System.Windows.Forms.Label();
-            this.lblTimerInicial = new System.Windows.Forms.Label();
-            this.PanelContenedor = new System.Windows.Forms.Panel();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.timerMenu = new System.Windows.Forms.Timer(this.components);
-            this.timerSlider = new System.Windows.Forms.Timer(this.components);
-            this.slider = new System.Windows.Forms.PictureBox();
             this.btnAdd = new System.Windows.Forms.PictureBox();
             this.btnShuffle = new System.Windows.Forms.PictureBox();
             this.btnLoop = new System.Windows.Forms.PictureBox();
             this.btnBack = new System.Windows.Forms.PictureBox();
             this.btnNext = new System.Windows.Forms.PictureBox();
             this.btnPause = new System.Windows.Forms.PictureBox();
-            this.btnMenu = new System.Windows.Forms.PictureBox();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.btnImport = new System.Windows.Forms.Button();
-            this.btnPlaylist = new System.Windows.Forms.Button();
-            this.btnVolume = new System.Windows.Forms.PictureBox();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.lblVolume = new System.Windows.Forms.Label();
+            this.lblTimerFinal = new System.Windows.Forms.Label();
+            this.lblTimerInicial = new System.Windows.Forms.Label();
+            this.PanelContenedor = new System.Windows.Forms.Panel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.timerMenu = new System.Windows.Forms.Timer(this.components);
+            this.timerSlider = new System.Windows.Forms.Timer(this.components);
             this.MenuVertical.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).BeginInit();
             this.PanelReproduccion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnVolume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.slider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnShuffle)).BeginInit();
@@ -65,9 +68,6 @@ namespace SoundSharp
             ((System.ComponentModel.ISupportInitialize)(this.btnBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNext)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPause)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnVolume)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // MenuVertical
@@ -76,7 +76,7 @@ namespace SoundSharp
             this.MenuVertical.Controls.Add(this.lblMenu);
             this.MenuVertical.Controls.Add(this.btnMenu);
             this.MenuVertical.Controls.Add(this.btnExit);
-            this.MenuVertical.Controls.Add(this.btnImport);
+            this.MenuVertical.Controls.Add(this.btnSearch);
             this.MenuVertical.Controls.Add(this.btnPlaylist);
             this.MenuVertical.Dock = System.Windows.Forms.DockStyle.Left;
             this.MenuVertical.Location = new System.Drawing.Point(0, 0);
@@ -94,6 +94,77 @@ namespace SoundSharp
             this.lblMenu.Size = new System.Drawing.Size(57, 23);
             this.lblMenu.TabIndex = 5;
             this.lblMenu.Text = "Menú";
+            // 
+            // btnMenu
+            // 
+            this.btnMenu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMenu.Image = global::SoundSharp.Properties.Resources.listaRosa;
+            this.btnMenu.Location = new System.Drawing.Point(12, 21);
+            this.btnMenu.Name = "btnMenu";
+            this.btnMenu.Size = new System.Drawing.Size(35, 35);
+            this.btnMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMenu.TabIndex = 0;
+            this.btnMenu.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnMenu, "Menú");
+            this.btnMenu.Click += new System.EventHandler(this.pbMenu_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
+            this.btnExit.Image = global::SoundSharp.Properties.Resources.salir;
+            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExit.Location = new System.Drawing.Point(0, 421);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.btnExit.Size = new System.Drawing.Size(190, 40);
+            this.btnExit.TabIndex = 4;
+            this.btnExit.Text = "Salir";
+            this.toolTip1.SetToolTip(this.btnExit, "Salir");
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
+            this.btnSearch.Image = global::SoundSharp.Properties.Resources.lupa;
+            this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSearch.Location = new System.Drawing.Point(0, 129);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.btnSearch.Size = new System.Drawing.Size(190, 40);
+            this.btnSearch.TabIndex = 2;
+            this.btnSearch.Text = "Buscar";
+            this.toolTip1.SetToolTip(this.btnSearch, "Buscar");
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // btnPlaylist
+            // 
+            this.btnPlaylist.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPlaylist.FlatAppearance.BorderSize = 0;
+            this.btnPlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPlaylist.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlaylist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
+            this.btnPlaylist.Image = global::SoundSharp.Properties.Resources.playlist1;
+            this.btnPlaylist.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPlaylist.Location = new System.Drawing.Point(0, 191);
+            this.btnPlaylist.Name = "btnPlaylist";
+            this.btnPlaylist.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.btnPlaylist.Size = new System.Drawing.Size(190, 40);
+            this.btnPlaylist.TabIndex = 1;
+            this.btnPlaylist.Text = " Playlist";
+            this.toolTip1.SetToolTip(this.btnPlaylist, "Playlist");
+            this.btnPlaylist.UseVisualStyleBackColor = true;
+            this.btnPlaylist.Click += new System.EventHandler(this.btnPlaylist_Click);
             // 
             // PanelReproduccion
             // 
@@ -118,6 +189,55 @@ namespace SoundSharp
             this.PanelReproduccion.Size = new System.Drawing.Size(802, 117);
             this.PanelReproduccion.TabIndex = 2;
             // 
+            // lblVolume
+            // 
+            this.lblVolume.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblVolume.AutoSize = true;
+            this.lblVolume.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVolume.ForeColor = System.Drawing.Color.White;
+            this.lblVolume.Location = new System.Drawing.Point(758, 28);
+            this.lblVolume.Name = "lblVolume";
+            this.lblVolume.Size = new System.Drawing.Size(29, 16);
+            this.lblVolume.TabIndex = 15;
+            this.lblVolume.Text = "0%";
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.trackBar1.Location = new System.Drawing.Point(651, 25);
+            this.trackBar1.Maximum = 100;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(104, 45);
+            this.trackBar1.TabIndex = 13;
+            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // btnVolume
+            // 
+            this.btnVolume.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnVolume.Image = global::SoundSharp.Properties.Resources.mid_img;
+            this.btnVolume.Location = new System.Drawing.Point(616, 23);
+            this.btnVolume.Name = "btnVolume";
+            this.btnVolume.Size = new System.Drawing.Size(29, 27);
+            this.btnVolume.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnVolume.TabIndex = 12;
+            this.btnVolume.TabStop = false;
+            this.toolTip1.SetToolTip(this.btnVolume, "Mute");
+            this.btnVolume.Click += new System.EventHandler(this.btnVolume_Click);
+            // 
+            // slider
+            // 
+            this.slider.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.slider.Location = new System.Drawing.Point(251, 76);
+            this.slider.Name = "slider";
+            this.slider.Size = new System.Drawing.Size(467, 23);
+            this.slider.TabIndex = 11;
+            this.slider.TabStop = false;
+            this.slider.Paint += new System.Windows.Forms.PaintEventHandler(this.slider_Paint);
+            this.slider.MouseDown += new System.Windows.Forms.MouseEventHandler(this.slider_MouseDown);
+            this.slider.MouseMove += new System.Windows.Forms.MouseEventHandler(this.slider_MouseMove);
+            this.slider.MouseUp += new System.Windows.Forms.MouseEventHandler(this.slider_MouseUp);
+            // 
             // lblArtist
             // 
             this.lblArtist.AutoSize = true;
@@ -139,61 +259,6 @@ namespace SoundSharp
             this.lblSong.Size = new System.Drawing.Size(64, 16);
             this.lblSong.TabIndex = 9;
             this.lblSong.Text = "Canción";
-            // 
-            // lblTimerFinal
-            // 
-            this.lblTimerFinal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTimerFinal.AutoSize = true;
-            this.lblTimerFinal.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimerFinal.ForeColor = System.Drawing.Color.White;
-            this.lblTimerFinal.Location = new System.Drawing.Point(740, 81);
-            this.lblTimerFinal.Name = "lblTimerFinal";
-            this.lblTimerFinal.Size = new System.Drawing.Size(39, 15);
-            this.lblTimerFinal.TabIndex = 1;
-            this.lblTimerFinal.Text = "00:00";
-            // 
-            // lblTimerInicial
-            // 
-            this.lblTimerInicial.AutoSize = true;
-            this.lblTimerInicial.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimerInicial.ForeColor = System.Drawing.Color.White;
-            this.lblTimerInicial.Location = new System.Drawing.Point(194, 80);
-            this.lblTimerInicial.Name = "lblTimerInicial";
-            this.lblTimerInicial.Size = new System.Drawing.Size(39, 15);
-            this.lblTimerInicial.TabIndex = 0;
-            this.lblTimerInicial.Text = "00:00";
-            // 
-            // PanelContenedor
-            // 
-            this.PanelContenedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.PanelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelContenedor.Location = new System.Drawing.Point(190, 0);
-            this.PanelContenedor.Name = "PanelContenedor";
-            this.PanelContenedor.Size = new System.Drawing.Size(802, 356);
-            this.PanelContenedor.TabIndex = 3;
-            // 
-            // timerMenu
-            // 
-            this.timerMenu.Interval = 15;
-            this.timerMenu.Tick += new System.EventHandler(this.timerMenu_Tick);
-            // 
-            // timerSlider
-            // 
-            this.timerSlider.Enabled = true;
-            this.timerSlider.Tick += new System.EventHandler(this.timerSlider_Tick);
-            // 
-            // slider
-            // 
-            this.slider.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.slider.Location = new System.Drawing.Point(251, 76);
-            this.slider.Name = "slider";
-            this.slider.Size = new System.Drawing.Size(467, 23);
-            this.slider.TabIndex = 11;
-            this.slider.TabStop = false;
-            this.slider.Paint += new System.Windows.Forms.PaintEventHandler(this.slider_Paint);
-            this.slider.MouseDown += new System.Windows.Forms.MouseEventHandler(this.slider_MouseDown);
-            this.slider.MouseMove += new System.Windows.Forms.MouseEventHandler(this.slider_MouseMove);
-            this.slider.MouseUp += new System.Windows.Forms.MouseEventHandler(this.slider_MouseUp);
             // 
             // btnAdd
             // 
@@ -279,110 +344,47 @@ namespace SoundSharp
             this.toolTip1.SetToolTip(this.btnPause, "Play/Pause");
             this.btnPause.Click += new System.EventHandler(this.pbPause_Click);
             // 
-            // btnMenu
+            // lblTimerFinal
             // 
-            this.btnMenu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMenu.Image = global::SoundSharp.Properties.Resources.listaRosa;
-            this.btnMenu.Location = new System.Drawing.Point(12, 21);
-            this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(35, 35);
-            this.btnMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMenu.TabIndex = 0;
-            this.btnMenu.TabStop = false;
-            this.toolTip1.SetToolTip(this.btnMenu, "Menú");
-            this.btnMenu.Click += new System.EventHandler(this.pbMenu_Click);
+            this.lblTimerFinal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTimerFinal.AutoSize = true;
+            this.lblTimerFinal.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimerFinal.ForeColor = System.Drawing.Color.White;
+            this.lblTimerFinal.Location = new System.Drawing.Point(740, 81);
+            this.lblTimerFinal.Name = "lblTimerFinal";
+            this.lblTimerFinal.Size = new System.Drawing.Size(39, 15);
+            this.lblTimerFinal.TabIndex = 1;
+            this.lblTimerFinal.Text = "00:00";
             // 
-            // btnExit
+            // lblTimerInicial
             // 
-            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
-            this.btnExit.Image = global::SoundSharp.Properties.Resources.salir;
-            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExit.Location = new System.Drawing.Point(0, 421);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnExit.Size = new System.Drawing.Size(190, 40);
-            this.btnExit.TabIndex = 4;
-            this.btnExit.Text = "Salir";
-            this.toolTip1.SetToolTip(this.btnExit, "Salir");
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.lblTimerInicial.AutoSize = true;
+            this.lblTimerInicial.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimerInicial.ForeColor = System.Drawing.Color.White;
+            this.lblTimerInicial.Location = new System.Drawing.Point(194, 80);
+            this.lblTimerInicial.Name = "lblTimerInicial";
+            this.lblTimerInicial.Size = new System.Drawing.Size(39, 15);
+            this.lblTimerInicial.TabIndex = 0;
+            this.lblTimerInicial.Text = "00:00";
             // 
-            // btnImport
+            // PanelContenedor
             // 
-            this.btnImport.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnImport.FlatAppearance.BorderSize = 0;
-            this.btnImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImport.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
-            this.btnImport.Image = global::SoundSharp.Properties.Resources.carpeta;
-            this.btnImport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImport.Location = new System.Drawing.Point(0, 191);
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnImport.Size = new System.Drawing.Size(190, 40);
-            this.btnImport.TabIndex = 2;
-            this.btnImport.Text = "    Importar";
-            this.toolTip1.SetToolTip(this.btnImport, "Importar canción");
-            this.btnImport.UseVisualStyleBackColor = true;
+            this.PanelContenedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.PanelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelContenedor.Location = new System.Drawing.Point(190, 0);
+            this.PanelContenedor.Name = "PanelContenedor";
+            this.PanelContenedor.Size = new System.Drawing.Size(802, 356);
+            this.PanelContenedor.TabIndex = 3;
             // 
-            // btnPlaylist
+            // timerMenu
             // 
-            this.btnPlaylist.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPlaylist.FlatAppearance.BorderSize = 0;
-            this.btnPlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPlaylist.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlaylist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
-            this.btnPlaylist.Image = global::SoundSharp.Properties.Resources.playlist1;
-            this.btnPlaylist.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPlaylist.Location = new System.Drawing.Point(0, 129);
-            this.btnPlaylist.Name = "btnPlaylist";
-            this.btnPlaylist.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnPlaylist.Size = new System.Drawing.Size(190, 40);
-            this.btnPlaylist.TabIndex = 1;
-            this.btnPlaylist.Text = " Playlist";
-            this.toolTip1.SetToolTip(this.btnPlaylist, "Playlist");
-            this.btnPlaylist.UseVisualStyleBackColor = true;
-            this.btnPlaylist.Click += new System.EventHandler(this.btnPlaylist_Click);
+            this.timerMenu.Interval = 15;
+            this.timerMenu.Tick += new System.EventHandler(this.timerMenu_Tick);
             // 
-            // btnVolume
+            // timerSlider
             // 
-            this.btnVolume.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnVolume.Image = global::SoundSharp.Properties.Resources.mid_img;
-            this.btnVolume.Location = new System.Drawing.Point(616, 23);
-            this.btnVolume.Name = "btnVolume";
-            this.btnVolume.Size = new System.Drawing.Size(29, 27);
-            this.btnVolume.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnVolume.TabIndex = 12;
-            this.btnVolume.TabStop = false;
-            this.btnVolume.Click += new System.EventHandler(this.btnVolume_Click);
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.trackBar1.Location = new System.Drawing.Point(651, 25);
-            this.trackBar1.Maximum = 100;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(104, 45);
-            this.trackBar1.TabIndex = 13;
-            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
-            // 
-            // lblVolume
-            // 
-            this.lblVolume.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblVolume.AutoSize = true;
-            this.lblVolume.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVolume.ForeColor = System.Drawing.Color.White;
-            this.lblVolume.Location = new System.Drawing.Point(758, 28);
-            this.lblVolume.Name = "lblVolume";
-            this.lblVolume.Size = new System.Drawing.Size(29, 16);
-            this.lblVolume.TabIndex = 15;
-            this.lblVolume.Text = "0%";
+            this.timerSlider.Enabled = true;
+            this.timerSlider.Tick += new System.EventHandler(this.timerSlider_Tick);
             // 
             // MainWindow
             // 
@@ -398,8 +400,11 @@ namespace SoundSharp
             this.Text = "SoundSharp";
             this.MenuVertical.ResumeLayout(false);
             this.MenuVertical.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).EndInit();
             this.PanelReproduccion.ResumeLayout(false);
             this.PanelReproduccion.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnVolume)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.slider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAdd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnShuffle)).EndInit();
@@ -407,9 +412,6 @@ namespace SoundSharp
             ((System.ComponentModel.ISupportInitialize)(this.btnBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNext)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPause)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnVolume)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -421,7 +423,7 @@ namespace SoundSharp
         private System.Windows.Forms.Panel PanelReproduccion;
         private System.Windows.Forms.Panel PanelContenedor;
         private System.Windows.Forms.Button btnPlaylist;
-        private System.Windows.Forms.Button btnImport;
+        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.PictureBox btnPause;

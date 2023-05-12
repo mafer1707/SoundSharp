@@ -193,6 +193,26 @@ namespace SoundSharp.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap lupa {
+            get {
+                object obj = ResourceManager.GetObject("lupa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lupaNegra {
+            get {
+                object obj = ResourceManager.GetObject("lupaNegra", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mid_img {
             get {
                 object obj = ResourceManager.GetObject("mid_img", resourceCulture);
@@ -256,6 +276,16 @@ namespace SoundSharp.Properties {
         internal static System.Drawing.Bitmap playlist1 {
             get {
                 object obj = ResourceManager.GetObject("playlist1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap playlistNegra {
+            get {
+                object obj = ResourceManager.GetObject("playlistNegra", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
