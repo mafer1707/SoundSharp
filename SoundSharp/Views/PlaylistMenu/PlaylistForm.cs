@@ -32,7 +32,14 @@ namespace SoundSharp
             ReloadDg();
         }
         
-        public void ReloadDg(){ 
+        public void ReloadDg()
+        {
+            foreach (Playlist p in List) 
+            {
+                int rowindex = dgPlaylist.Rows.Add();
+                DataGridViewRow row = dgPlaylist.Rows[rowindex];
+                row.Cells[0].Value = p.Name;
+            }
             
         }
 
@@ -43,8 +50,11 @@ namespace SoundSharp
 
         }
 
-       
 
-        
+
+        private void PlaylistView_Load(object sender, EventArgs e)
+        {
+            ReloadDg();
+        }
     }
 }

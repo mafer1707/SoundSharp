@@ -237,6 +237,7 @@
     <Compile Include="Models\Playlist.cs" />
     <Compile Include="Models\Song.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
+    <Compile Include="obj\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="PlaylistDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,8 +262,10 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\SoundSharp.AddList.resources" />
     <EmbeddedResource Include="obj\Debug\SoundSharp.MainWindow.resources" />
     <EmbeddedResource Include="obj\Debug\SoundSharp.PlaylistDisplay.resources" />
+    <EmbeddedResource Include="obj\Debug\SoundSharp.PlaylistView.resources" />
     <EmbeddedResource Include="obj\Debug\SoundSharp.Properties.Resources.resources" />
     <EmbeddedResource Include="PlaylistDisplay.resx">
       <DependentUpon>PlaylistDisplay.cs</DependentUpon>
@@ -284,13 +287,72 @@
       <DependentUpon>AddList.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="bin\Debug\SoundSharp.exe.config" />
+    <None Include="Database\Program\playlist.json" />
+    <None Include="Database\Program\songs.json" />
+    <None Include="FodyWeavers.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="obj\Debug\Costura\038539203A1EAB74E1AFC9097A6F49D74DEAAECD.costura.system.servicemodel.duplex.dll.compressed" />
+    <None Include="obj\Debug\Costura\0EA487E0F4A0FA9F7721D25A320E0ED014D86919.costura.system.io.pipes.accesscontrol.dll.compressed" />
+    <None Include="obj\Debug\Costura\13C03454586F5ED2AD3340185A5276102967CA1C.costura.system.data.oledb.dll.compressed" />
+    <None Include="obj\Debug\Costura\180A7BAAFBC820A838BBACA434032D9D33CCEEBE.costura.system.runtime.compilerservices.unsafe.dll.compressed" />
+    <None Include="obj\Debug\Costura\18EA7BD41D31247148ABF184527C9368A26F39E7.costura.system.io.filesystem.accesscontrol.dll.compressed" />
+    <None Include="obj\Debug\Costura\191D79AD78FB961CE162AD342299EDDACACD94CF.costura.microsoft.win32.registry.accesscontrol.dll.compressed" />
+    <None Include="obj\Debug\Costura\1BB14967938D99E768AF208FB54668109E81ABBB.costura.costura.dll.compressed" />
+    <None Include="obj\Debug\Costura\1E76E6099570EDE620B76ED47CF8D03A936D49F8.costura.newtonsoft.json.dll.compressed" />
+    <None Include="obj\Debug\Costura\2242627282F9E07E37B274EA36FAC2D3CD9C9110.costura.system.threading.tasks.extensions.dll.compressed" />
+    <None Include="obj\Debug\Costura\2F2C9D016FFC2BD7078104234E27AB2B010BD765.costura.system.drawing.common.dll.compressed" />
+    <None Include="obj\Debug\Costura\2F410A0396BC148ED533AD49B6415FB58DD4D641.costura.system.buffers.dll.compressed" />
+    <None Include="obj\Debug\Costura\31ACE4B26D8A069C84AAD6001E06C2A5483806F3.costura.microsoft.win32.registry.dll.compressed" />
+    <None Include="obj\Debug\Costura\3AAC13F00F8A7F55CC06C1F0FB7691B03537B55B.costura.system.servicemodel.nettcp.dll.compressed" />
+    <None Include="obj\Debug\Costura\3B35461D86A774535AC226CA9706FB50332DE20A.costura.system.text.encodings.web.dll.compressed" />
+    <None Include="obj\Debug\Costura\3C5C5DF5F8F8DB3F0A35C5ED8D357313A54E3CDE.costura.system.memory.dll.compressed" />
+    <None Include="obj\Debug\Costura\3CD7CED8805ED67536E6B7DB5144DB20B822CC38.costura.system.servicemodel.http.pdb.compressed" />
+    <None Include="obj\Debug\Costura\3D216458740AD5CB05BC5F7C3491CDE44A1E5DF0.costura.system.numerics.vectors.dll.compressed" />
+    <None Include="obj\Debug\Costura\4D131D1AF5DE8A09FC857772D5791E18939E7CAD.costura.system.servicemodel.http.dll.compressed" />
+    <None Include="obj\Debug\Costura\5475CB28998D419B4714343FFA9511FF46322AC2.costura.microsoft.bcl.asyncinterfaces.dll.compressed" />
+    <None Include="obj\Debug\Costura\54EC870FFB8CE10B3C8B05BBC7FB7EA45142A430.costura.restsharp.dll.compressed" />
+    <None Include="obj\Debug\Costura\5B721C140591E0ADC68963C49A0EE72B0C27EFEF.costura.system.threading.accesscontrol.dll.compressed" />
+    <None Include="obj\Debug\Costura\68AE50EC9E5E6D50EF06593E2B70CCCFCAFB2017.costura.system.security.cryptography.pkcs.dll.compressed" />
+    <None Include="obj\Debug\Costura\6A511A5688B188C4D1615CEDE33B1E5278376001.costura.system.configuration.configurationmanager.dll.compressed" />
+    <None Include="obj\Debug\Costura\73D1557D00F91CC239F13B27EB385D314CA40511.costura.system.io.ports.dll.compressed" />
+    <None Include="obj\Debug\Costura\7490C66757ACE1971272087DD6737A7D272A06BA.costura.system.servicemodel.syndication.dll.compressed" />
+    <None Include="obj\Debug\Costura\7889B3830E815C1EC2CA9B3BC40FBE115B6B9CFE.costura.system.web.services.description.dll.compressed" />
+    <None Include="obj\Debug\Costura\7ADB84B667BBC630CD077280BD9D5C03E04C856C.costura.system.servicemodel.nettcp.pdb.compressed" />
+    <None Include="obj\Debug\Costura\83014E2A98F7597B9A26E424A0759E5A3D2ECFF1.costura.system.security.accesscontrol.dll.compressed" />
+    <None Include="obj\Debug\Costura\88C8065034EE0E4B9F6A3935FD32E541EFF39EBC.costura.system.codedom.dll.compressed" />
+    <None Include="obj\Debug\Costura\8E83C5A162EEC525281C870B3D7FC2F197A70FAF.costura.system.servicemodel.primitives.pdb.compressed" />
+    <None Include="obj\Debug\Costura\9A5BE1FCF410FE5934D720329D36A2377E83747E.costura.system.security.principal.windows.dll.compressed" />
+    <None Include="obj\Debug\Costura\9BDDAAB55A1FF8564DD64FC32A746CA6AD234450.costura.system.servicemodel.security.dll.compressed" />
+    <None Include="obj\Debug\Costura\A027BE116049B789BF6451C03FA6A53B7C8C3BAD.costura.system.serviceprocess.servicecontroller.dll.compressed" />
+    <None Include="obj\Debug\Costura\B382B80CA629393DA72379C2EC0149E7639D498D.costura.system.security.permissions.dll.compressed" />
+    <None Include="obj\Debug\Costura\B57D63DD1442A9C350FED5EB0B509835809523FB.costura.system.text.json.dll.compressed" />
+    <None Include="obj\Debug\Costura\B5F3B8153DEB32F540C785C030F190DAF7C0F3F3.costura.system.diagnostics.eventlog.dll.compressed" />
+    <None Include="obj\Debug\Costura\B6A5EBF42211FDABCF377EC2018B6B9A14A99761.costura.system.text.encoding.codepages.dll.compressed" />
+    <None Include="obj\Debug\Costura\C57659CDC8B66AF4B6D3B7F0E44028F265207FD2.costura.system.data.odbc.dll.compressed" />
+    <None Include="obj\Debug\Costura\C96D0313C788BD447C3EC1145A49E5BEAE200E33.costura.system.security.cryptography.xml.dll.compressed" />
+    <None Include="obj\Debug\Costura\D00C8BE9945B6FBD22929DD0E666799CF0670673.costura.system.data.sqlclient.dll.compressed" />
+    <None Include="obj\Debug\Costura\D1664731719E85AAD7A2273685D77FEB0204EC98.costura.system.valuetuple.dll.compressed" />
+    <None Include="obj\Debug\Costura\DB3618ED05B40478E26949650E4439616A8C5161.costura.system.web.services.description.pdb.compressed" />
+    <None Include="obj\Debug\Costura\DC97569E1CE6E799307290C1A70061CB1AA3BBDD.costura.microsoft.win32.systemevents.dll.compressed" />
+    <None Include="obj\Debug\Costura\E47E323D44743A5104620A9E0B0264693A64ED92.costura.system.security.cryptography.cng.dll.compressed" />
+    <None Include="obj\Debug\Costura\ECFE9CA1AD79826D2272A531CB185D980ED0E700.costura.system.diagnostics.performancecounter.dll.compressed" />
+    <None Include="obj\Debug\Costura\EF600AC2BC485766D0577FEEF1A3AB281A0E5E74.costura.system.servicemodel.primitives.dll.compressed" />
+    <None Include="obj\Debug\Costura\EF795925B5FF7A408FDA1913F9B4D0B065DA9291.costura.system.servicemodel.duplex.pdb.compressed" />
+    <None Include="obj\Debug\Costura\F788F0B87276B5EF87721813990E905E3344A8B1.costura.system.io.packaging.dll.compressed" />
+    <None Include="obj\Debug\Costura\FE75C14F17C7B308D6AE149CA2AA602204AA1726.costura.system.servicemodel.security.pdb.compressed" />
+    <None Include="obj\Debug\Costura\FF6F8C28A314B0E878DC3EA10A605A1B06562FC7.costura.system.security.cryptography.protecteddata.dll.compressed" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="obj\Debug\SoundSharp.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\SoundSharp.csproj.CopyComplete" />
     <None Include="obj\Debug\SoundSharp.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\SoundSharp.csproj.Fody.CopyLocal.cache" />
     <None Include="obj\Debug\SoundSharp.csproj.GenerateResource.cache" />
+    <None Include="obj\Debug\SoundSharp.csproj.ResolveComReference.cache" />
     <None Include="obj\Debug\SoundSharp.csproj.SuggestedBindingRedirects.cache" />
     <None Include="obj\Debug\_IsIncrementalBuild" />
+    <None Include="obj\Release\SoundSharp.csproj.ResolveComReference.cache" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -369,12 +431,60 @@
     <None Include="Resources\candado.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml" />
+    <Content Include="bin\Debug\Microsoft.Win32.Registry.AccessControl.xml" />
+    <Content Include="bin\Debug\Microsoft.Win32.Registry.xml" />
+    <Content Include="bin\Debug\Microsoft.Win32.SystemEvents.xml" />
+    <Content Include="bin\Debug\Newtonsoft.Json.xml" />
+    <Content Include="bin\Debug\RestSharp.xml" />
     <Content Include="bin\Debug\SoundSharp.exe" />
     <Content Include="bin\Debug\SoundSharp.pdb" />
+    <Content Include="bin\Debug\System.Buffers.xml" />
+    <Content Include="bin\Debug\System.CodeDom.xml" />
+    <Content Include="bin\Debug\System.Configuration.ConfigurationManager.xml" />
+    <Content Include="bin\Debug\System.Data.Odbc.xml" />
+    <Content Include="bin\Debug\System.Data.OleDb.xml" />
+    <Content Include="bin\Debug\System.Data.SqlClient.xml" />
+    <Content Include="bin\Debug\System.Diagnostics.EventLog.xml" />
+    <Content Include="bin\Debug\System.Diagnostics.PerformanceCounter.xml" />
+    <Content Include="bin\Debug\System.Drawing.Common.xml" />
+    <Content Include="bin\Debug\System.IO.FileSystem.AccessControl.xml" />
+    <Content Include="bin\Debug\System.IO.Packaging.xml" />
+    <Content Include="bin\Debug\System.IO.Ports.xml" />
+    <Content Include="bin\Debug\System.Memory.xml" />
+    <Content Include="bin\Debug\System.Numerics.Vectors.xml" />
+    <Content Include="bin\Debug\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="bin\Debug\System.Security.AccessControl.xml" />
+    <Content Include="bin\Debug\System.Security.Cryptography.Cng.xml" />
+    <Content Include="bin\Debug\System.Security.Cryptography.Pkcs.xml" />
+    <Content Include="bin\Debug\System.Security.Cryptography.ProtectedData.xml" />
+    <Content Include="bin\Debug\System.Security.Cryptography.Xml.xml" />
+    <Content Include="bin\Debug\System.Security.Permissions.xml" />
+    <Content Include="bin\Debug\System.Security.Principal.Windows.xml" />
+    <Content Include="bin\Debug\System.ServiceModel.Syndication.xml" />
+    <Content Include="bin\Debug\System.ServiceProcess.ServiceController.xml" />
+    <Content Include="bin\Debug\System.Text.Encoding.CodePages.xml" />
+    <Content Include="bin\Debug\System.Text.Encodings.Web.xml" />
+    <Content Include="bin\Debug\System.Text.Json.xml" />
+    <Content Include="bin\Debug\System.Threading.AccessControl.xml" />
+    <Content Include="bin\Debug\System.Threading.Tasks.Extensions.xml" />
+    <Content Include="bin\Debug\System.ValueTuple.xml" />
+    <Content Include="Database\Program\songsId.txt" />
+    <Content Include="Database\Songs\1-Chainsaw Op.mp3" />
+    <Content Include="FodyWeavers.xml" />
+    <Content Include="obj\Debug\AxInterop.WMPLib.dll" />
+    <Content Include="obj\Debug\Interop.MediaPlayer.dll" />
+    <Content Include="obj\Debug\Interop.WMPDXMLib.dll" />
+    <Content Include="obj\Debug\Interop.WMPLauncher.dll" />
+    <Content Include="obj\Debug\Interop.WMPLib.dll" />
     <Content Include="obj\Debug\SoundSharp.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\SoundSharp.exe" />
     <Content Include="obj\Debug\SoundSharp.pdb" />
     <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
+    <Content Include="obj\Release\Interop.MediaPlayer.dll" />
+    <Content Include="obj\Release\Interop.WMPDXMLib.dll" />
+    <Content Include="obj\Release\Interop.WMPLauncher.dll" />
+    <Content Include="obj\Release\Interop.WMPLib.dll" />
     <None Include="Resources\lupaNegra.png" />
     <None Include="Resources\playlistNegra.png" />
     <None Include="Resources\lupa.png" />
@@ -386,8 +496,7 @@
     <None Include="Resources\carpeta.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Database\Program\" />
-    <Folder Include="Database\Songs\" />
+    <Folder Include="bin\Release\" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="MediaPlayer">
