@@ -20,12 +20,13 @@ namespace SoundSharp.Models
 
         //Creo mi nueva playlist.
         [JsonConstructor]
-        public Playlist(string name, string date, List<Song> songs, int id)
+        public Playlist(int id, string name, string date, List<Song> songs)
         {
+            _id = id;
             _name = name;
             _date = date;
             _songs = songs;
-            _id = id;
+
         }
 
         public Playlist(string name, List<Song> songs)
@@ -34,7 +35,7 @@ namespace SoundSharp.Models
 
             _id = id;
             _name = name;
-            _date = DateTime.Now.ToString("dd/MM/yyyy. HH:mm:ss");
+            _date = DateTime.Now.ToString("dd/MM/yyyy.");
             _songs = songs;
 
             dbHandler.Add(this);
@@ -53,9 +54,10 @@ namespace SoundSharp.Models
         public string Name { get { return _name; } set { _name = value; } }
         public int Id { get { return _id; } set { _id = value; } }
         public string Date { get { return _date; } set { _date = value; } }
-        public List<Song> Songs { get { return _songs; } }
+        public List<Song> Songs { get { return _songs; } set { _songs = value; } }
 
-        public static List<Playlist> getPlaylist()
+
+        public static List<Playlist> GetPlaylist()
         {
             List<Playlist> Playlists = dbHandler.Get();
             return Playlists;

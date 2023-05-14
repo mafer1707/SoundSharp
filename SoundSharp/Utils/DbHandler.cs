@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SoundSharp.Consts;
@@ -37,7 +37,7 @@ namespace SoundSharp.Utils
         {
             List<T> elements = Get();
             elements.Add(element);
-            string json = JsonSerializer.Serialize(elements);
+            string json = JsonConvert.SerializeObject(elements);
             File.WriteAllText(FileName, json);
         }
 
@@ -47,11 +47,11 @@ namespace SoundSharp.Utils
             string json = File.ReadAllText(FileName);
             try
             {
-                result = JsonSerializer.Deserialize<List<T>>(json);
+                result = JsonConvert.DeserializeObject<List<T>>(json);
             }
             catch (JsonException)
             {
-
+               
             }
             return result;
         }
@@ -83,3 +83,4 @@ namespace SoundSharp.Utils
         }
     }
 }
+
