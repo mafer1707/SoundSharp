@@ -24,22 +24,26 @@ namespace SoundSharp
         public AddList()
         {
             InitializeComponent();
-           
         }
 
         private void CancelarBtn_Click(object sender, EventArgs e)
         {
-            
+            this.Close();
         }
-
-
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
 
-            if (NameBox.Text == string.Empty)
+            if (NameBox.Text == string.Empty || DgSongs.Rows.Count == 0)
             {
-                MessageBox.Show("Por favor ingrese un nombre para la playlist");
+                if (NameBox.Text == string.Empty)
+                {
+                    MessageBox.Show("Por favor ingrese un nombre para la playlist");
+                }
+                else
+                {
+                    MessageBox.Show("La lista de canciones esta vacia.");
+                }
             }
             else
             {
@@ -77,8 +81,27 @@ namespace SoundSharp
             }
             catch (Exception)
             {
-
                 MessageBox.Show("La cancion que introdujo no existe");
+            }
+        }
+
+        private void DgSongs_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i;
+            try
+            {
+                i = DgSongs.CurrentCell.RowIndex;
+            }
+            catch (NullReferenceException)
+            {
+                i = -1;
+
+            }
+            if (e.ColumnIndex == DgSongs.Columns["DeleteCell"].Index && i != -1 && e.RowIndex == -1)
+            {
+                DgSongs.Rows.Remove(DgSongs.CurrentRow);
+                MySong.RemoveAt(i);
+                contador--;
             }
         }
 
@@ -116,7 +139,7 @@ namespace SoundSharp
             }
             catch (Exception)
             {
-
+                
                 throw;
             }
         }
@@ -133,7 +156,6 @@ namespace SoundSharp
                 {
                     ValidacionNombre = true;
                 }
-
             }
             catch (Exception)
             {
