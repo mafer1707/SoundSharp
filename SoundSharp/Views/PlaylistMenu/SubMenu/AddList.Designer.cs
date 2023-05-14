@@ -32,24 +32,25 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DgSongs = new System.Windows.Forms.DataGridView();
             this.Artist = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Song = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Cancion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Select = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.NameBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.Searchlbl = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SearchBox = new System.Windows.Forms.TextBox();
+            this.AddSong = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.AddBtn = new System.Windows.Forms.Button();
             this.CancelarBtn = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.DgSongs)).BeginInit();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // DgSongs
             // 
+            this.DgSongs.AllowUserToAddRows = false;
             this.DgSongs.AllowUserToResizeColumns = false;
             this.DgSongs.AllowUserToResizeRows = false;
             this.DgSongs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -71,8 +72,7 @@
             this.DgSongs.ColumnHeadersHeight = 40;
             this.DgSongs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Artist,
-            this.Genero,
-            this.Song,
+            this.Cancion,
             this.Select});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
@@ -84,88 +84,120 @@
             this.DgSongs.DefaultCellStyle = dataGridViewCellStyle2;
             this.DgSongs.EnableHeadersVisualStyles = false;
             this.DgSongs.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.DgSongs.Location = new System.Drawing.Point(12, 66);
+            this.DgSongs.Location = new System.Drawing.Point(12, 95);
             this.DgSongs.Name = "DgSongs";
             this.DgSongs.RowHeadersVisible = false;
             this.DgSongs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgSongs.Size = new System.Drawing.Size(553, 410);
-            this.DgSongs.TabIndex = 3;
+            this.DgSongs.Size = new System.Drawing.Size(553, 335);
+            this.DgSongs.TabIndex = 20;
             // 
             // Artist
             // 
             this.Artist.HeaderText = "Artista:";
             this.Artist.Name = "Artist";
+            this.Artist.ReadOnly = true;
             // 
-            // Genero
+            // Cancion
             // 
-            this.Genero.HeaderText = "Genero:";
-            this.Genero.Name = "Genero";
-            // 
-            // Song
-            // 
-            this.Song.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Song.HeaderText = "Canción:";
-            this.Song.Name = "Song";
+            this.Cancion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Cancion.HeaderText = "Canción:";
+            this.Cancion.Name = "Cancion";
+            this.Cancion.ReadOnly = true;
             // 
             // Select
             // 
-            this.Select.HeaderText = "Seleccionar:";
+            this.Select.HeaderText = "Eliminar de la Playlist";
             this.Select.Name = "Select";
             this.Select.ReadOnly = true;
             this.Select.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Select.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Select.UseColumnTextForButtonValue = true;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.NameBox);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Location = new System.Drawing.Point(366, 12);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(199, 71);
+            this.panel2.TabIndex = 21;
+            // 
+            // NameBox
+            // 
+            this.NameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
+            this.NameBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.NameBox.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.NameBox.ForeColor = System.Drawing.Color.White;
+            this.NameBox.Location = new System.Drawing.Point(7, 36);
+            this.NameBox.Name = "NameBox";
+            this.NameBox.Size = new System.Drawing.Size(169, 20);
+            this.NameBox.TabIndex = 14;
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.Cursor = System.Windows.Forms.Cursors.Default;
             this.label1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(3, 8);
+            this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 23);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "Buscar Canción:";
+            this.label1.Size = new System.Drawing.Size(192, 23);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Nombre De La PlayList:";
             // 
-            // textBox1
+            // panel1
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(143, 8);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(131, 20);
-            this.textBox1.TabIndex = 16;
-            // 
-            // Searchlbl
-            // 
-            this.Searchlbl.AutoSize = true;
-            this.Searchlbl.BackColor = System.Drawing.Color.Transparent;
-            this.Searchlbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold);
-            this.Searchlbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Searchlbl.Location = new System.Drawing.Point(3, 8);
-            this.Searchlbl.Name = "Searchlbl";
-            this.Searchlbl.Size = new System.Drawing.Size(73, 23);
-            this.Searchlbl.TabIndex = 15;
-            this.Searchlbl.Text = "Playlist:";
-            this.Searchlbl.Click += new System.EventHandler(this.Searchlbl_Click);
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.SearchBox);
+            this.panel1.Controls.Add(this.AddSong);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(275, 71);
+            this.panel1.TabIndex = 22;
             // 
             // SearchBox
             // 
+            this.SearchBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.SearchBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.SearchBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
             this.SearchBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.SearchBox.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.SearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.SearchBox.ForeColor = System.Drawing.Color.White;
-            this.SearchBox.Location = new System.Drawing.Point(79, 11);
-            this.SearchBox.Multiline = true;
+            this.SearchBox.Location = new System.Drawing.Point(143, 12);
             this.SearchBox.Name = "SearchBox";
-            this.SearchBox.Size = new System.Drawing.Size(118, 20);
-            this.SearchBox.TabIndex = 14;
+            this.SearchBox.Size = new System.Drawing.Size(116, 19);
+            this.SearchBox.TabIndex = 21;
+            // 
+            // AddSong
+            // 
+            this.AddSong.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddSong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.AddSong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddSong.Font = new System.Drawing.Font("Calibri", 12.25F, System.Drawing.FontStyle.Bold);
+            this.AddSong.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
+            this.AddSong.Location = new System.Drawing.Point(3, 37);
+            this.AddSong.Name = "AddSong";
+            this.AddSong.Size = new System.Drawing.Size(82, 31);
+            this.AddSong.TabIndex = 20;
+            this.AddSong.Text = "Agregar";
+            this.AddSong.UseVisualStyleBackColor = false;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(3, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(134, 23);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Buscar Canción:";
             // 
             // AddBtn
             // 
@@ -177,7 +209,7 @@
             this.AddBtn.Location = new System.Drawing.Point(12, 482);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(100, 31);
-            this.AddBtn.TabIndex = 18;
+            this.AddBtn.TabIndex = 23;
             this.AddBtn.Text = "Crear Lista";
             this.AddBtn.UseVisualStyleBackColor = false;
             // 
@@ -188,32 +220,12 @@
             this.CancelarBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelarBtn.Font = new System.Drawing.Font("Calibri", 12.25F, System.Drawing.FontStyle.Bold);
             this.CancelarBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
-            this.CancelarBtn.Location = new System.Drawing.Point(481, 482);
+            this.CancelarBtn.Location = new System.Drawing.Point(477, 482);
             this.CancelarBtn.Name = "CancelarBtn";
             this.CancelarBtn.Size = new System.Drawing.Size(84, 31);
-            this.CancelarBtn.TabIndex = 19;
+            this.CancelarBtn.TabIndex = 24;
             this.CancelarBtn.Text = "Cancelar";
             this.CancelarBtn.UseVisualStyleBackColor = false;
-            this.CancelarBtn.Click += new System.EventHandler(this.CancelarBtn_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.SearchBox);
-            this.panel1.Controls.Add(this.Searchlbl);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(205, 39);
-            this.panel1.TabIndex = 16;
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Location = new System.Drawing.Point(288, 12);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(277, 36);
-            this.panel2.TabIndex = 16;
             // 
             // AddList
             // 
@@ -221,19 +233,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(577, 525);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.CancelarBtn);
             this.Controls.Add(this.AddBtn);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.DgSongs);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AddList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Forn";
             ((System.ComponentModel.ISupportInitialize)(this.DgSongs)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -241,17 +254,17 @@
         #endregion
 
         private System.Windows.Forms.DataGridView DgSongs;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Artist;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cancion;
+        private System.Windows.Forms.DataGridViewButtonColumn Select;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox NameBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label Searchlbl;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox SearchBox;
+        private System.Windows.Forms.Button AddSong;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button AddBtn;
         private System.Windows.Forms.Button CancelarBtn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Artist;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Genero;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Song;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Select;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel1;
     }
 }

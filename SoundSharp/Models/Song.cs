@@ -68,5 +68,7 @@ namespace SoundSharp.Models
             List<Song> songs = dbHandler.Get();
             return songs;
         }
+
     }
 }
+

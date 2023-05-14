@@ -13,37 +13,36 @@ using System.Windows.Forms;
 
 namespace SoundSharp
 {
-    
+
 
     public partial class PlaylistView : Form
     {
-        
-       List<Playlist> List = new List<Playlist>(Playlist.getPlaylist());
+
+        List<Playlist> MyPlayList = new List<Playlist>();
+
 
         public PlaylistView()
         {
             InitializeComponent();
         }
 
-        private void AddBtn_Click(object sender, EventArgs e)
+        private void AddBtn_Click_1(object sender, EventArgs e)
         {
             AddList add = new AddList();
             add.ShowDialog();
             ReloadDg();
         }
-        
+
+
         public void ReloadDg()
         {
-            foreach (Playlist p in List) 
+            foreach (Playlist p in MyPlayList)
             {
-                int rowindex = dgPlaylist.Rows.Add();
-                DataGridViewRow row = dgPlaylist.Rows[rowindex];
-                row.Cells[0].Value = p.Name;
+                dgPlaylist.Rows.Add(p.Name, p.Date);
             }
-            
         }
 
-        
+
 
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
@@ -56,5 +55,7 @@ namespace SoundSharp
         {
             ReloadDg();
         }
+
+        
     }
 }
