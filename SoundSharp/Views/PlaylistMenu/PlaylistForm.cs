@@ -30,11 +30,11 @@ namespace SoundSharp
         {
             AddList add = new AddList();
             add.ShowDialog();
-            ReloadDg();
+            ReloadDg(MyPlayList);
         }
 
 
-        public void ReloadDg()
+        public void ReloadDg(List<Playlist> MyPlayList)
         {
             foreach (Playlist p in MyPlayList)
             {
@@ -43,17 +43,18 @@ namespace SoundSharp
         }
 
 
-
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
+            string pattern = SearchBox.Text.ToLower();
+            List<Playlist> filtrado = MyPlayList.Where(i => i.Name.ToLower().Contains(pattern)).ToList();
+            ReloadDg(filtrado);
 
         }
 
 
-
         private void PlaylistView_Load(object sender, EventArgs e)
         {
-            ReloadDg();
+            ReloadDg(MyPlayList);
         }
 
         
