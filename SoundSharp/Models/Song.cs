@@ -30,7 +30,16 @@ namespace SoundSharp.Models
             _name = name;
             _route = route;
             _aux = new WMPLib.WindowsMediaPlayer();
-            //_currentSong = _aux.newMedia(_route);
+            try
+            {
+                _currentSong = _aux.newMedia(_route);
+            }
+            catch (Exception)
+            {
+
+                
+            }
+            
         }
         public Song(string author, string name, string route)
         {
@@ -50,11 +59,16 @@ namespace SoundSharp.Models
             dbHandler.Add(this);
         }
 
+        public Song()
+        {
+            
+        }
+
         public Song(string route)
         {
             _route = route;
             _aux = new WMPLib.WindowsMediaPlayer();
-            //_currentSong = _aux.newMedia(_route);
+            _currentSong = _aux.newMedia(_route);
         }
 
         public int Id { get { return _id; } }

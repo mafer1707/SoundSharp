@@ -1,8 +1,10 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using SoundSharp.Consts;
 using SoundSharp.Models;
 using SoundSharp.Utils;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,8 +33,11 @@ namespace SoundSharp
 
         private void AddBtn_Click_1(object sender, EventArgs e)
         {
-            AddList add = new AddList(-1);
+            AddList add = new AddList();
             add.ShowDialog();
+
+            dgPlaylist.Rows.Clear();
+            GetPlaylist();
             ReloadDg(MyPlayList);
         }
 
@@ -58,10 +63,20 @@ namespace SoundSharp
         public void ReloadDg(List<Playlist> MyPlayList)
         {
             dgPlaylist.Rows.Clear();
-            foreach (Playlist p in MyPlayList)
+            try
             {
-                dgPlaylist.Rows.Add(p.Name, p.Date);
+                foreach (Playlist p in MyPlayList)
+                {
+                    dgPlaylist.Rows.Add(p.Name, p.Date);
+                }
             }
+            catch (Exception)
+            {
+
+                
+            }
+           
+           
         }
 
 
@@ -76,20 +91,7 @@ namespace SoundSharp
 
         private void PlaylistView_Load(object sender, EventArgs e)
         {
-            List<Song> musica = new List<Song>();
-            
-            musica.Add(new Song(1, "yo", "chainsaw", "../../Database/Songs/1-Chainsaw Op.mp3"));
-            musica.Add(new Song(1, "yo", "chainsaw", "../../Database/Songs/1-Chainsaw Op.mp3"));
-            musica.Add(new Song(1, "yo", "chainsaw", "../../Database/Songs/1-Chainsaw Op.mp3"));
-            musica.Add(new Song(1, "yo", "chainsaw", "../../Database/Songs/1-Chainsaw Op.mp3"));
-
-            MyPlayList.Add(new Playlist(1, "wenas", "01/01/01", musica));
-            MyPlayList.Add(new Playlist(1, "wenas1", "01/01/01", musica));
-            MyPlayList.Add(new Playlist(1, "wenas2", "01/01/01", musica));
-            MyPlayList.Add(new Playlist(1, "wenas3", "01/01/01", musica));
-
-
-
+            GetPlaylist();
             ReloadDg(MyPlayList);
         }
         private void munuClick(object sender, ToolStripItemClickedEventArgs e)
@@ -116,6 +118,9 @@ namespace SoundSharp
             {
                 id = id.Replace("Modificar", "");
             }
+            dgPlaylist.Rows.Clear();
+            GetPlaylist();
+            ReloadDg(MyPlayList);
 
         }
         
@@ -136,5 +141,46 @@ namespace SoundSharp
             
         }
 
+        private void GetPlaylist()
+        {
+            string fileName = FileNames.Playlist;
+            string jsonString = File.ReadAllText(fileName);
+
+            
+            try //adquirirfactura
+            {
+                MyPlayList = JsonConvert.DeserializeObject<List<Playlist>>(jsonString);
+                
+            }
+            catch (Exception) //Capturar json vacio.
+            {
+
+                MessageBox.Show("No hay Playlist guardadas.");
+            }
+        }
+
+        private void SetPlaylist()
+        {
+            string fileName = FileNames.Playlist;
+            string jsonString = File.ReadAllText(fileName);
+
+
+            try //adquirirfactura
+            {
+                MyPlayList = JsonConvert.DeserializeObject<List<Playlist>>(jsonString);
+                
+            }
+            catch (Exception) //Capturar json vacio.
+            {
+                //Crear y agregar primera dactura a la lista 
+                
+                jsonString = JsonConvert.SerializeObject(MyPlayList);
+                MyPlayList = JsonConvert.DeserializeObject<List<Playlist>>(jsonString);
+                File.WriteAllText(fileName, jsonString);
+            }
+
+            jsonString = JsonConvert.SerializeObject(MyPlayList);
+            File.WriteAllText(fileName, jsonString);
+        }
     }
 }

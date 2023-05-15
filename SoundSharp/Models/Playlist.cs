@@ -29,6 +29,11 @@ namespace SoundSharp.Models
 
         }
 
+        public Playlist()
+        {
+            
+        }
+
         public Playlist(string name, List<Song> songs)
         {
             int id = dbHandler.GetNewId();
@@ -38,7 +43,7 @@ namespace SoundSharp.Models
             _date = DateTime.Now.ToString("dd/MM/yyyy.");
             _songs = songs;
 
-            dbHandler.Add(this);
+           // dbHandler.Add(this);
         }
 
         public void AddSong(Song cancion)

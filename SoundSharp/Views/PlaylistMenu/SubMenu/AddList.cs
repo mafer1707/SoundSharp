@@ -8,15 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Newtonsoft.Json;
+using SoundSharp.Consts;
 using SoundSharp.Models;
+using System.IO;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace SoundSharp
 {
     public partial class AddList : Form
     {
-        List<Playlist> ListOfPlaylist = new List<Playlist>();
-        List<Song> SongList = new List<Song>();
+        List<Playlist> PlaylistRegister = new List<Playlist>();
+        List<Song> SongsRegister = new List<Song>();
         List<Song> MySong = new List<Song>();
         bool ValidacionNombre = false;
         int contador = 0;
@@ -59,21 +62,25 @@ namespace SoundSharp
             }
             else
             {
-                
-                ValidarNombre(NameBox.Text);
-                if (ValidacionNombre == false)
+                if (_isEdit == true)
                 {
-                    if (_isEdit == true)
+                    PlaylistRegister[_posicion].Name = NameBox.Text;
+                    PlaylistRegister[_posicion].Songs = MySong;
+                    EditPlaylistToRegister();
+
+                }
+                else
+                {
+                    ValidarNombre(NameBox.Text);
+
+                    if (ValidacionNombre == false)
                     {
-                        ListOfPlaylist[_posicion].Name = NameBox.Text;
-                        ListOfPlaylist[_posicion].Songs = MySong;
-                    }
-                    else
-                    {
-                        Playlist MyPlaylist = new Playlist(NameBox.Text, MySong);
-                        this.Close();
+                            Playlist NewPlaylist = new Playlist(NameBox.Text, MySong);
+                            AddPlaylistToRegister(NewPlaylist);
                     }
                 }
+                this.Close();
+
             }
 
         }
@@ -82,23 +89,17 @@ namespace SoundSharp
         {
 
             List<Song> musica = new List<Song>();
-            musica.Add(new Song(1,"yo","chainsaw", "../../Database/Songs/1-Chainsaw Op.mp3"));
-            SongList.Add(new Song(1, "yo", "chainsaw", "../../Database/Songs/1-Chainsaw Op.mp3"));
-            SongList.Add(new Song(1, "yo", "chainsaw", "../../Database/Songs/1-Chainsaw Op.mp3"));
-            SongList.Add(new Song(1, "yo", "chainsaw", "../../Database/Songs/1-Chainsaw Op.mp3"));
-            SongList.Add(new Song(1, "yo", "chainsaw", "../../Database/Songs/1-Chainsaw Op.mp3"));
+            GetPlaylist();
+            GetSongsRegister();
 
-            ListOfPlaylist.Add(new Playlist(1, "wenas", "01/01/01", musica));
-            ListOfPlaylist.Add(new Playlist(1, "wenas1", "01/01/01", musica));
-            ListOfPlaylist.Add(new Playlist(1, "wenas2", "01/01/01", musica));
-            ListOfPlaylist.Add(new Playlist(1, "wenas3", "01/01/01", musica));
+    
             ReFillItems();
 
             if (_isEdit == true)
             {
-                MySong = ListOfPlaylist[_posicion].Songs;
+                MySong = PlaylistRegister[_posicion].Songs;
                 AddBtn.Text = "Modificar";
-                NameBox.Text = ListOfPlaylist[_posicion].Name;
+                NameBox.Text = PlaylistRegister[_posicion].Name;
                 foreach (var item in MySong)
                 {
                     DgSongs.Rows.Add(item.Author, item.Name);
@@ -128,6 +129,7 @@ namespace SoundSharp
             catch (Exception)
             {
                 MessageBox.Show("La cancion que introdujo no existe");
+                throw;
             }
         }
 
@@ -156,7 +158,7 @@ namespace SoundSharp
             AutoCompleteStringCollection Canciones = new AutoCompleteStringCollection();
 
             //Añadir items de busqueda(canciones).
-            foreach (var item in SongList)
+            foreach (var item in SongsRegister)
             {
                 Canciones.Add(item.Author + " " + item.Name);
                 Canciones.Add(item.Name);
@@ -171,8 +173,8 @@ namespace SoundSharp
 
         private void SetSong(string text)
         {
-            var search = from s in SongList
-                         where s.Name.ToLower().Trim() == text.ToLower().Trim() || (s.Author + s.Name).ToLower().Trim() == text.ToLower().Trim()
+            var search = from s in SongsRegister
+                         where s.Name.ToLower().Trim() == text.ToLower().Trim() || (s.Author + " " + s.Name).ToLower().Trim() == text.ToLower().Trim()
                          select new { s.Id, s.Author, s.Name, s.Route };
 
             try
@@ -192,7 +194,7 @@ namespace SoundSharp
 
         private void ValidarNombre(string text)
         {
-            var search = from s in ListOfPlaylist
+            var search = from s in PlaylistRegister
                          where s.Name.ToLower().Trim() == text.ToLower().Trim()
                          select new { s.Name };
 
@@ -209,6 +211,77 @@ namespace SoundSharp
                 throw;
             }
     
+        }
+
+        private void AddPlaylistToRegister(Playlist PlaylistAdd)
+        {
+            string fileName = FileNames.Playlist;
+            string jsonString = File.ReadAllText(fileName);
+
+            try //adquirirfactura
+            {
+                PlaylistRegister = JsonConvert.DeserializeObject<List<Playlist>>(jsonString);
+                PlaylistRegister.Add(PlaylistAdd);
+            }
+            catch (Exception) //Capturar json vacio.
+            {
+                //Crear y agregar primera dactura a la lista 
+                PlaylistRegister = new List<Playlist>();
+                PlaylistRegister.Add(PlaylistAdd);
+                jsonString = JsonConvert.SerializeObject(PlaylistRegister);
+                PlaylistRegister = JsonConvert.DeserializeObject<List<Playlist>>(jsonString);
+                File.WriteAllText(fileName, jsonString);
+            }
+
+            //guardar Json actualizado.
+            jsonString = JsonConvert.SerializeObject(PlaylistRegister);
+            File.WriteAllText(fileName, jsonString);
+        }
+
+        private void GetSongsRegister() 
+        {
+            string fileName = FileNames.Songs;
+            string jsonString = File.ReadAllText(fileName);
+
+            try //adquirirfactura
+            {
+                SongsRegister = JsonConvert.DeserializeObject<List<Song>>(jsonString);
+                
+            }
+            catch (Exception) //Capturar json vacio.
+            {
+                throw;
+            }
+
+            //guardar Json actualizado.
+            
+        }
+
+        private void GetPlaylist()
+        {
+            string fileName = FileNames.Playlist;
+            string jsonString = File.ReadAllText(fileName);
+
+
+            try //adquirirfactura
+            {
+                PlaylistRegister = JsonConvert.DeserializeObject<List<Playlist>>(jsonString);
+
+            }
+            catch (Exception) //Capturar json vacio.
+            {
+
+                MessageBox.Show("No hay Playlist guardadas.");
+            }
+        }
+
+        private void EditPlaylistToRegister()
+        {
+            string fileName = FileNames.Playlist;
+
+            //guardar Json actualizado.
+            string jsonString = JsonConvert.SerializeObject(PlaylistRegister);
+            File.WriteAllText(fileName, jsonString);
         }
     }
 }
