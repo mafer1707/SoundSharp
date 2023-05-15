@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using SoundSharp.Models;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -14,13 +15,24 @@ namespace SoundSharp
 {
     public partial class AddList : Form
     {
-      
-        List<Playlist> List = new List<Playlist>();
-        List<Song> SongList = new List<Song>(Song.GetSongs());
+        List<Playlist> ListOfPlaylist = new List<Playlist>();
+        List<Song> SongList = new List<Song>();
         List<Song> MySong = new List<Song>();
         bool ValidacionNombre = false;
         int contador = 0;
+        private readonly int prueba;
+        private readonly bool _isEdit = false;
+        private readonly int _posicion;
 
+
+        public AddList(int id)
+        {
+            InitializeComponent();
+            
+            _posicion = id;
+            _isEdit = true ;
+           
+        }
         public AddList()
         {
             InitializeComponent();
@@ -47,11 +59,20 @@ namespace SoundSharp
             }
             else
             {
+                
                 ValidarNombre(NameBox.Text);
                 if (ValidacionNombre == false)
                 {
-                    Playlist MyPlaylist = new Playlist(NameBox.Text, MySong);
-                    this.Close();
+                    if (_isEdit == true)
+                    {
+                        ListOfPlaylist[_posicion].Name = NameBox.Text;
+                        ListOfPlaylist[_posicion].Songs = MySong;
+                    }
+                    else
+                    {
+                        Playlist MyPlaylist = new Playlist(NameBox.Text, MySong);
+                        this.Close();
+                    }
                 }
             }
 
@@ -59,7 +80,33 @@ namespace SoundSharp
 
         private void AddList_Load(object sender, EventArgs e)
         {
+
+            List<Song> musica = new List<Song>();
+            musica.Add(new Song(1,"yo","chainsaw", "../../Database/Songs/1-Chainsaw Op.mp3"));
+            SongList.Add(new Song(1, "yo", "chainsaw", "../../Database/Songs/1-Chainsaw Op.mp3"));
+            SongList.Add(new Song(1, "yo", "chainsaw", "../../Database/Songs/1-Chainsaw Op.mp3"));
+            SongList.Add(new Song(1, "yo", "chainsaw", "../../Database/Songs/1-Chainsaw Op.mp3"));
+            SongList.Add(new Song(1, "yo", "chainsaw", "../../Database/Songs/1-Chainsaw Op.mp3"));
+
+            ListOfPlaylist.Add(new Playlist(1, "wenas", "01/01/01", musica));
+            ListOfPlaylist.Add(new Playlist(1, "wenas", "01/01/01", musica));
+            ListOfPlaylist.Add(new Playlist(1, "wenas1", "01/01/01", musica));
+            ListOfPlaylist.Add(new Playlist(1, "wenas2", "01/01/01", musica));
+            ListOfPlaylist.Add(new Playlist(1, "wenas3", "01/01/01", musica));
             ReFillItems();
+
+            if (_isEdit == true)
+            {
+                MySong = ListOfPlaylist[_posicion].Songs;
+                AddBtn.Text = "Modificar";
+                NameBox.Text = ListOfPlaylist[_posicion].Name;
+                foreach (var item in MySong)
+                {
+                    DgSongs.Rows.Add(item.Author, item.Name);
+                }
+                
+            }
+
 
         }
 
@@ -97,7 +144,7 @@ namespace SoundSharp
                 i = -1;
 
             }
-            if (e.ColumnIndex == DgSongs.Columns["DeleteCell"].Index && i != -1 && e.RowIndex == -1)
+            if (e.ColumnIndex == DgSongs.Columns["DeleteCell"].Index && i != -1 && e.RowIndex != -1)
             {
                 DgSongs.Rows.Remove(DgSongs.CurrentRow);
                 MySong.RemoveAt(i);
@@ -107,16 +154,16 @@ namespace SoundSharp
 
         private void ReFillItems()
         {
-            AutoCompleteStringCollection datosClientes = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection Canciones = new AutoCompleteStringCollection();
 
             //Añadir items de busqueda(canciones).
             foreach (var item in SongList)
             {
-                datosClientes.Add(item.Author + " " + item.Name);
-                datosClientes.Add(item.Name);
+                Canciones.Add(item.Author + " " + item.Name);
+                Canciones.Add(item.Name);
             }
 
-            SearchBox.AutoCompleteCustomSource = datosClientes;
+            SearchBox.AutoCompleteCustomSource = Canciones;
             SearchBox.AutoCompleteMode = AutoCompleteMode.Suggest;
             SearchBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
@@ -146,7 +193,7 @@ namespace SoundSharp
 
         private void ValidarNombre(string text)
         {
-            var search = from s in List
+            var search = from s in ListOfPlaylist
                          where s.Name.ToLower().Trim() == text.ToLower().Trim()
                          select new { s.Name };
 
@@ -162,6 +209,7 @@ namespace SoundSharp
 
                 throw;
             }
+    
         }
     }
 }

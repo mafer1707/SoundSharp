@@ -79,6 +79,7 @@
             this.dgPlaylist.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgPlaylist.Size = new System.Drawing.Size(766, 398);
             this.dgPlaylist.TabIndex = 1;
+            this.dgPlaylist.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgPlaylist_MouseClick);
             // 
             // Nombre
             // 

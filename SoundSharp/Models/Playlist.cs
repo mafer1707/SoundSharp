@@ -63,6 +63,8 @@ namespace SoundSharp.Models
             return Playlists;
         }
 
+        
+
         ~Playlist() { } //Elimino mi playlist
     }
 }

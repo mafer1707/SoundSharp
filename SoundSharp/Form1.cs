@@ -35,7 +35,7 @@ namespace SoundSharp
         public MainWindow()
         {
             player = new WMPLib.WindowsMediaPlayer();
-            player.currentMedia = randomSong.CurrentSong;
+            //player.currentMedia = randomSong.CurrentSong;
             //player.currentPlaylist = randomAlbum[3].CurrentAlbum;
             InitializeComponent();
             player.controls.stop();
