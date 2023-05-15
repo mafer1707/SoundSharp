@@ -83,7 +83,7 @@ namespace SoundSharp
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
             string pattern = SearchBox.Text.ToLower().Trim();
-            List<Playlist> filtrado = MyPlayList.Where(i => i.Name.ToLower().Contains(pattern)).ToList();
+            List<Playlist> filtrado = MyPlayList.Where(i => i.Name.ToLower().StartsWith(pattern)).ToList();
             ReloadDg(filtrado);
 
         }
@@ -117,6 +117,11 @@ namespace SoundSharp
             else if (id.Contains("Eliminar"))
             {
                 id = id.Replace("Eliminar", "");
+                string name = dgPlaylist.Rows[int.Parse(id)].Cells[0].Value.ToString();
+                int PosicionEnLista = GetPlayListByName(name);
+                MyPlayList.RemoveAt(PosicionEnLista);
+                //SetPlaylist();
+
             }
             dgPlaylist.Rows.Clear();
             GetPlaylist();
@@ -165,7 +170,7 @@ namespace SoundSharp
             string jsonString = File.ReadAllText(fileName);
 
 
-            try //adquirirfactura
+            try 
             {
                 MyPlayList = JsonConvert.DeserializeObject<List<Playlist>>(jsonString);
                 
