@@ -31,6 +31,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DgSongs = new System.Windows.Forms.DataGridView();
+            this.Artist = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cancion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeleteCell = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.NameBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,9 +43,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.AddBtn = new System.Windows.Forms.Button();
             this.CancelarBtn = new System.Windows.Forms.Button();
-            this.Artist = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cancion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeleteCell = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgSongs)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -70,6 +70,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DgSongs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DgSongs.ColumnHeadersHeight = 40;
+            this.DgSongs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DgSongs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Artist,
             this.Cancion,
@@ -91,6 +92,28 @@
             this.DgSongs.Size = new System.Drawing.Size(553, 335);
             this.DgSongs.TabIndex = 20;
             this.DgSongs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgSongs_CellContentClick);
+            // 
+            // Artist
+            // 
+            this.Artist.HeaderText = "Artista:";
+            this.Artist.Name = "Artist";
+            this.Artist.ReadOnly = true;
+            // 
+            // Cancion
+            // 
+            this.Cancion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Cancion.HeaderText = "Canción:";
+            this.Cancion.Name = "Cancion";
+            this.Cancion.ReadOnly = true;
+            // 
+            // DeleteCell
+            // 
+            this.DeleteCell.HeaderText = "Eliminar de la Playlist";
+            this.DeleteCell.Name = "DeleteCell";
+            this.DeleteCell.ReadOnly = true;
+            this.DeleteCell.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DeleteCell.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.DeleteCell.UseColumnTextForButtonValue = true;
             // 
             // panel2
             // 
@@ -208,28 +231,6 @@
             this.CancelarBtn.Text = "Cancelar";
             this.CancelarBtn.UseVisualStyleBackColor = false;
             this.CancelarBtn.Click += new System.EventHandler(this.CancelarBtn_Click);
-            // 
-            // Artist
-            // 
-            this.Artist.HeaderText = "Artista:";
-            this.Artist.Name = "Artist";
-            this.Artist.ReadOnly = true;
-            // 
-            // Cancion
-            // 
-            this.Cancion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Cancion.HeaderText = "Canción:";
-            this.Cancion.Name = "Cancion";
-            this.Cancion.ReadOnly = true;
-            // 
-            // DeleteCell
-            // 
-            this.DeleteCell.HeaderText = "Eliminar de la Playlist";
-            this.DeleteCell.Name = "DeleteCell";
-            this.DeleteCell.ReadOnly = true;
-            this.DeleteCell.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DeleteCell.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.DeleteCell.UseColumnTextForButtonValue = true;
             // 
             // AddList
             // 
