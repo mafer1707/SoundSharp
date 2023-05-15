@@ -21,7 +21,7 @@ namespace SoundSharp
         List<Playlist> PlaylistRegister = new List<Playlist>();
         List<Song> SongsRegister = new List<Song>();
         List<Song> MySong = new List<Song>();
-        bool ValidacionNombre = false;
+        bool ValidacionNombre = true;
         int contador = 0;
         private readonly int prueba;
         private readonly bool _isEdit = false;
@@ -67,19 +67,25 @@ namespace SoundSharp
                     PlaylistRegister[_posicion].Name = NameBox.Text;
                     PlaylistRegister[_posicion].Songs = MySong;
                     EditPlaylistToRegister();
-
+                    this.Close();
                 }
                 else
                 {
                     ValidarNombre(NameBox.Text);
 
-                    if (ValidacionNombre == false)
+                    if (ValidacionNombre == true)
                     {
-                            Playlist NewPlaylist = new Playlist(NameBox.Text, MySong);
-                            AddPlaylistToRegister(NewPlaylist);
+                        Playlist NewPlaylist = new Playlist(NameBox.Text, MySong);
+                        AddPlaylistToRegister(NewPlaylist);
+                        this.Close();
                     }
+                    else 
+                    {
+                        MessageBox.Show("El nombre que ingreso ya esta en uso.");
+                    }
+                    
                 }
-                this.Close();
+                
 
             }
 
@@ -194,21 +200,25 @@ namespace SoundSharp
 
         private void ValidarNombre(string text)
         {
-            var search = from s in PlaylistRegister
-                         where s.Name.ToLower().Trim() == text.ToLower().Trim()
-                         select new { s.Name };
+
+            
 
             try
             {
-                if (search == null)
+                var search = from s in PlaylistRegister
+                             where s.Name.ToLower().Trim() == text.ToLower().Trim()
+                             select new { s.Name };
+                if (search.Count() >= 1)
+                {
+                    ValidacionNombre = false;
+                } else
                 {
                     ValidacionNombre = true;
                 }
             }
             catch (Exception)
             {
-
-                throw;
+             
             }
     
         }
@@ -278,6 +288,7 @@ namespace SoundSharp
         private void EditPlaylistToRegister()
         {
             string fileName = FileNames.Playlist;
+   
 
             //guardar Json actualizado.
             string jsonString = JsonConvert.SerializeObject(PlaylistRegister);
