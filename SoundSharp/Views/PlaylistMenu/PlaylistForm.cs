@@ -117,15 +117,21 @@ namespace SoundSharp
             else if (id.Contains("Eliminar"))
             {
                 id = id.Replace("Eliminar", "");
-                string name = dgPlaylist.Rows[int.Parse(id)].Cells[0].Value.ToString();
-                int PosicionEnLista = GetPlayListByName(name);
-                MyPlayList.RemoveAt(PosicionEnLista);
-                //SetPlaylist();
+                DialogResult confirmar = MessageBox.Show("¿Está seguro que desea Eliminar?", "Eliminar", MessageBoxButtons.OKCancel);
+                if (confirmar == DialogResult.OK)
+                {
+                    string name = dgPlaylist.Rows[int.Parse(id)].Cells[0].Value.ToString();
+                    int PosicionEnLista = GetPlayListByName(name);
+                    MyPlayList.RemoveAt(PosicionEnLista);
+                    SetPlaylist();
+                }
+                
 
             }
-            dgPlaylist.Rows.Clear();
-            GetPlaylist();
+            GetPlaylist();            
+            dgPlaylist.Rows.Clear();           
             ReloadDg(MyPlayList);
+            
 
         }
         
@@ -168,21 +174,13 @@ namespace SoundSharp
         {
             string fileName = FileNames.Playlist;
             string jsonString = File.ReadAllText(fileName);
-
-
-            try 
-            {
-                MyPlayList = JsonConvert.DeserializeObject<List<Playlist>>(jsonString);
-                
-            }
-            catch (Exception) //Capturar json vacio.
-            {
+           
                 //Crear y agregar primera dactura a la lista 
                 
                 jsonString = JsonConvert.SerializeObject(MyPlayList);
                 MyPlayList = JsonConvert.DeserializeObject<List<Playlist>>(jsonString);
                 File.WriteAllText(fileName, jsonString);
-            }
+            
 
             jsonString = JsonConvert.SerializeObject(MyPlayList);
             File.WriteAllText(fileName, jsonString);
