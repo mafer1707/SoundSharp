@@ -31,16 +31,18 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgPlaylist = new System.Windows.Forms.DataGridView();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SearchBox = new System.Windows.Forms.TextBox();
             this.Searchlbl = new System.Windows.Forms.Label();
             this.AddBtn = new System.Windows.Forms.Button();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgPlaylist)).BeginInit();
             this.SuspendLayout();
             // 
             // dgPlaylist
             // 
+            this.dgPlaylist.AllowUserToAddRows = false;
+            this.dgPlaylist.AllowUserToDeleteRows = false;
             this.dgPlaylist.AllowUserToResizeColumns = false;
             this.dgPlaylist.AllowUserToResizeRows = false;
             this.dgPlaylist.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -60,6 +62,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgPlaylist.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgPlaylist.ColumnHeadersHeight = 40;
+            this.dgPlaylist.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgPlaylist.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nombre,
             this.Date});
@@ -75,22 +78,12 @@
             this.dgPlaylist.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.dgPlaylist.Location = new System.Drawing.Point(12, 12);
             this.dgPlaylist.Name = "dgPlaylist";
+            this.dgPlaylist.ReadOnly = true;
             this.dgPlaylist.RowHeadersVisible = false;
             this.dgPlaylist.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgPlaylist.Size = new System.Drawing.Size(766, 398);
             this.dgPlaylist.TabIndex = 1;
             this.dgPlaylist.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgPlaylist_MouseClick);
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "";
-            this.Nombre.Name = "Nombre";
-            // 
-            // Date
-            // 
-            this.Date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Date.HeaderText = "Fecha de Creación:";
-            this.Date.Name = "Date";
             // 
             // SearchBox
             // 
@@ -132,6 +125,21 @@
             this.AddBtn.UseVisualStyleBackColor = false;
             this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click_1);
             // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            this.Nombre.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Date
+            // 
+            this.Date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Date.HeaderText = "Fecha de Creación:";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            this.Date.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
             // PlaylistView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -154,11 +162,11 @@
 
         #endregion
         private System.Windows.Forms.DataGridView dgPlaylist;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.TextBox SearchBox;
         private System.Windows.Forms.Label Searchlbl;
         private System.Windows.Forms.Button AddBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
     }
 }
 
