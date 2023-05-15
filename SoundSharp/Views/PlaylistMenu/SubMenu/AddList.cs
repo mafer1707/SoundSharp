@@ -89,7 +89,6 @@ namespace SoundSharp
             SongList.Add(new Song(1, "yo", "chainsaw", "../../Database/Songs/1-Chainsaw Op.mp3"));
 
             ListOfPlaylist.Add(new Playlist(1, "wenas", "01/01/01", musica));
-            ListOfPlaylist.Add(new Playlist(1, "wenas", "01/01/01", musica));
             ListOfPlaylist.Add(new Playlist(1, "wenas1", "01/01/01", musica));
             ListOfPlaylist.Add(new Playlist(1, "wenas2", "01/01/01", musica));
             ListOfPlaylist.Add(new Playlist(1, "wenas3", "01/01/01", musica));

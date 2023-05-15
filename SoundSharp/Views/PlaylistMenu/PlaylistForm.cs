@@ -33,7 +33,7 @@ namespace SoundSharp
         {
             AddList add = new AddList(-1);
             add.ShowDialog();
-            ReloadDg();
+            ReloadDg(MyPlayList);
         }
 
         private void dgPlaylist_MouseClick(object sender, MouseEventArgs e)
@@ -55,8 +55,9 @@ namespace SoundSharp
             }
         }
 
-        public void ReloadDg()
+        public void ReloadDg(List<Playlist> MyPlayList)
         {
+            dgPlaylist.Rows.Clear();
             foreach (Playlist p in MyPlayList)
             {
                 dgPlaylist.Rows.Add(p.Name, p.Date);
@@ -64,12 +65,13 @@ namespace SoundSharp
         }
 
 
-
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
+            string pattern = SearchBox.Text.ToLower();
+            List<Playlist> filtrado = MyPlayList.Where(i => i.Name.ToLower().Contains(pattern)).ToList();
+            ReloadDg(filtrado);
 
         }
-
 
 
         private void PlaylistView_Load(object sender, EventArgs e)
@@ -88,7 +90,7 @@ namespace SoundSharp
 
 
 
-            ReloadDg();
+            ReloadDg(MyPlayList);
         }
         private void munuClick(object sender, ToolStripItemClickedEventArgs e)
         {
