@@ -67,7 +67,7 @@ namespace SoundSharp
 
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
-            string pattern = SearchBox.Text.ToLower();
+            string pattern = SearchBox.Text.ToLower().Trim();
             List<Playlist> filtrado = MyPlayList.Where(i => i.Name.ToLower().Contains(pattern)).ToList();
             ReloadDg(filtrado);
 
