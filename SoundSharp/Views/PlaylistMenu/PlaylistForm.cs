@@ -116,7 +116,7 @@ namespace SoundSharp
 
             else if (id.Contains("Eliminar"))
             {
-                id = id.Replace("Modificar", "");
+                id = id.Replace("Eliminar", "");
             }
             dgPlaylist.Rows.Clear();
             GetPlaylist();
