@@ -112,6 +112,7 @@ namespace SoundSharp
                 int PosicionEnLista = GetPlayListByName(nombre);
                 AddList add = new AddList(PosicionEnLista);
                 add.ShowDialog();
+
             }
 
             else if (id.Contains("Eliminar"))
@@ -124,10 +125,12 @@ namespace SoundSharp
                     int PosicionEnLista = GetPlayListByName(name);
                     MyPlayList.RemoveAt(PosicionEnLista);
                     SetPlaylist();
+
                 }
                 
 
             }
+            SearchBox.Clear();
             GetPlaylist();            
             dgPlaylist.Rows.Clear();           
             ReloadDg(MyPlayList);
