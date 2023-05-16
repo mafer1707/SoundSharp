@@ -48,7 +48,7 @@ namespace SoundSharp
             lblVolume.Text = trackBar1.Value.ToString() + "%";
         }
 
-        private void OpenChildForm(Form childForm)
+        public void OpenChildForm(Form childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -330,7 +330,5 @@ namespace SoundSharp
             if (this.WindowState == FormWindowState.Maximized)
                 slider.Refresh();
         }
-
-
     }
 }

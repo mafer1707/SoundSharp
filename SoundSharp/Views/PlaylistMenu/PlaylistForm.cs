@@ -1,53 +1,39 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using SoundSharp.Consts;
 using SoundSharp.Models;
-using SoundSharp.Utils;
+using SoundSharp.Views;
 using System;
-using System.IO;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
+using System.Windows.Forms;     
 
 namespace SoundSharp
 {
-
-
     public partial class PlaylistView : Form
     {
-
+        //private Form activeForm = null;
+        
         List<Playlist> MyPlayList = new List<Playlist>();
-
-
         public PlaylistView()
         {
             InitializeComponent();
         }
-
         private void AddBtn_Click_1(object sender, EventArgs e)
         {
             AddList add = new AddList();
             add.ShowDialog();
-
             dgPlaylist.Rows.Clear();
             GetPlaylist();
             ReloadDg(MyPlayList);
         }
-
         private void dgPlaylist_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right) // e.RowIndex != -1
             {
                 ContextMenuStrip menu = new System.Windows.Forms.ContextMenuStrip();
                 int position = dgPlaylist.HitTest(e.X, e.Y).RowIndex;
-
                 if (position > -1)
                 {
                     menu.Items.Add("Reproducir").Name = "Borrar" + position;
@@ -56,7 +42,6 @@ namespace SoundSharp
                 }
                 menu.Show(dgPlaylist, e.X, e.Y);
                 menu.ItemClicked += new ToolStripItemClickedEventHandler(munuClick);
-                
             }
         }
 
@@ -73,13 +58,9 @@ namespace SoundSharp
             catch (Exception)
             {
 
-                
+
             }
-           
-           
         }
-
-
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
             string pattern = SearchBox.Text.ToLower().Trim();
@@ -94,25 +75,21 @@ namespace SoundSharp
             GetPlaylist();
             ReloadDg(MyPlayList);
         }
+        //revisar esto
         private void munuClick(object sender, ToolStripItemClickedEventArgs e)
         {
             string id = e.ClickedItem.Name.ToString();
             if (id.Contains("Reproducir"))
             {
                 id = id.Replace("Reproducir", "");
-
-
-
             }
             else if (id.Contains("Editar"))
             {
                 id = id.Replace("Editar", "");
-
                 string nombre = dgPlaylist.Rows[int.Parse(id)].Cells[0].Value.ToString();
                 int PosicionEnLista = GetPlayListByName(nombre);
                 AddList add = new AddList(PosicionEnLista);
                 add.ShowDialog();
-
             }
 
             else if (id.Contains("Eliminar"))
@@ -127,17 +104,13 @@ namespace SoundSharp
                     SetPlaylist();
 
                 }
-                
-
             }
             SearchBox.Clear();
-            GetPlaylist();            
-            dgPlaylist.Rows.Clear();           
+            GetPlaylist();
+            dgPlaylist.Rows.Clear();
             ReloadDg(MyPlayList);
-            
-
         }
-        
+
         private int GetPlayListByName(string nombre)
         {
             int id = -1;
@@ -152,23 +125,19 @@ namespace SoundSharp
                 i++;
             }
             return id;
-            
         }
 
         private void GetPlaylist()
         {
             string fileName = FileNames.Playlist;
             string jsonString = File.ReadAllText(fileName);
-
-            
             try //adquirirfactura
             {
                 MyPlayList = JsonConvert.DeserializeObject<List<Playlist>>(jsonString);
-                
+
             }
             catch (Exception) //Capturar json vacio.
             {
-
                 MessageBox.Show("No hay Playlist guardadas.");
             }
         }
@@ -177,16 +146,22 @@ namespace SoundSharp
         {
             string fileName = FileNames.Playlist;
             string jsonString = File.ReadAllText(fileName);
-           
-                //Crear y agregar primera dactura a la lista 
-                
-                jsonString = JsonConvert.SerializeObject(MyPlayList);
-                MyPlayList = JsonConvert.DeserializeObject<List<Playlist>>(jsonString);
-                File.WriteAllText(fileName, jsonString);
-            
+
+            //Crear y agregar primera dactura a la lista 
+
+            jsonString = JsonConvert.SerializeObject(MyPlayList);
+            MyPlayList = JsonConvert.DeserializeObject<List<Playlist>>(jsonString);
+            File.WriteAllText(fileName, jsonString);
+
 
             jsonString = JsonConvert.SerializeObject(MyPlayList);
             File.WriteAllText(fileName, jsonString);
+        }
+        private void dgPlaylist_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var formpru = new Formpru();
+            formpru.Show();
+            this.Hide();
         }
     }
 }
