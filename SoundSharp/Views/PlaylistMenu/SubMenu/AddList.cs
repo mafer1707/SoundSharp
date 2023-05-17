@@ -37,6 +37,7 @@ namespace SoundSharp
             {
                 PlaylistSongs = Playlists[_posicion].Songs;
                 AddBtn.Text = "Modificar";
+                contador = PlaylistSongs.Count();
                 NameBox.Text = Playlists[_posicion].Name;
                 foreach (var item in PlaylistSongs)
                 {
@@ -174,12 +175,12 @@ namespace SoundSharp
                          where s.Name.ToLower().Trim() == text.ToLower().Trim() || (s.Author + " " + s.Name).ToLower().Trim() == text.ToLower().Trim()
                          select new { s.Id, s.Author, s.Name, s.Route };*/
 
-           Song song = SongsRegister.Find(element => element.Name.ToLower().Trim() == text.ToLower().Trim() || (element.Author + " " + element.Name).ToLower().Trim() == text.ToLower().Trim());
+           Song song = Songs.Find(element => element.Name.ToLower().Trim() == text.ToLower().Trim() || (element.Author + " " + element.Name).ToLower().Trim() == text.ToLower().Trim());
 
             try
             {
                 
-                    MySong.Add(song);
+                    PlaylistSongs.Add(song);
                 
             }
             catch (Exception)
