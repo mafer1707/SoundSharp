@@ -25,7 +25,7 @@ namespace SoundSharp
             AddList add = new AddList();
             add.ShowDialog();
             dgPlaylist.Rows.Clear();
-            GetPlaylist();
+            MyPlayList = Playlist.GetPlaylists();
             ReloadDg(MyPlayList);
         }
         private void dgPlaylist_MouseClick(object sender, MouseEventArgs e)
