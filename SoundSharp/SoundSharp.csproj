@@ -252,6 +252,12 @@
     <Compile Include="Utils\InputValidators.cs" />
     <Compile Include="Utils\InputSuggestions.cs" />
     <Compile Include="Utils\Misc.cs" />
+    <Compile Include="Views\AllSongs\AllSongsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AllSongs\AllSongsForm.Designer.cs">
+      <DependentUpon>AllSongsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Formpru.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,6 +296,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\AllSongs\AllSongsForm.resx">
+      <DependentUpon>AllSongsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Formpru.resx">
       <DependentUpon>Formpru.cs</DependentUpon>
     </EmbeddedResource>
@@ -495,6 +504,12 @@
     <Content Include="obj\Release\Interop.WMPDXMLib.dll" />
     <Content Include="obj\Release\Interop.WMPLauncher.dll" />
     <Content Include="obj\Release\Interop.WMPLib.dll" />
+    <None Include="Resources\volver.png" />
+    <None Include="Resources\eliminar11.png" />
+    <None Include="Resources\eliminar2.png" />
+    <None Include="Resources\eliminar1.png" />
+    <None Include="Resources\pausaDataGrid1.png" />
+    <None Include="Resources\pausaDataGrid.png" />
     <None Include="Resources\eliminar.png" />
     <None Include="Resources\lupaNegra.png" />
     <None Include="Resources\playlistNegra.png" />

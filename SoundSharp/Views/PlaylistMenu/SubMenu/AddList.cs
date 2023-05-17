@@ -52,7 +52,6 @@ namespace SoundSharp
             
             _posicion = id;
             _isEdit = true ;
-           
         }
         public AddList()
         {

@@ -29,6 +29,7 @@ namespace SoundSharp.Views.AllSongs
             _play = true;
             _position = 0;
             InitializeComponent();
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)

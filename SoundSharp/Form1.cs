@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using SoundSharp.Models;
 using System.Drawing.Drawing2D;
 using SoundSharp.Views;
+using SoundSharp.Views.AllSongs;
 
 namespace SoundSharp
 {
@@ -21,6 +22,7 @@ namespace SoundSharp
         private WMPLib.WindowsMediaPlayer player;
         bool menuExpand = true;
         private Form activeForm = null;
+        
         //private Song randomSong = new Song(@"C:\Users\Yasmin\Documents\FERNANDA\Bad Bunny - Efecto (360Â° Visualizer) _ Un Verano Sin Ti(MP3_128K).mp3");
         //private Album[] randomAlbum = { new Album(@"C:\Users\58412\Desktop\SSHRP3\SoundSharp\SoundSharp\Database\Albums\1970 - Ladies Of The Canyon"),
         //    new Album(@"C:\Users\58412\Downloads\Jeff Buckley - Grace (2022) [FLAC 24-192]"),
@@ -301,6 +303,7 @@ namespace SoundSharp
         private void btnSearch_Click(object sender, EventArgs e)
         {
             ActiveButton(sender, SoundSharp.Properties.Resources.lupaNegra);
+            OpenChildForm(new AllSongsForm());
         }
 
         private void ActiveButton (object senderBtn, Image imagen)
