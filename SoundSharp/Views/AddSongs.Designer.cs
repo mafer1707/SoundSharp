@@ -96,46 +96,46 @@ namespace SoundSharp.Views
             // RouteLabel
             // 
             this.RouteLabel.AutoSize = true;
-            this.RouteLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RouteLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RouteLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
             this.RouteLabel.Location = new System.Drawing.Point(8, 9);
             this.RouteLabel.Name = "RouteLabel";
-            this.RouteLabel.Size = new System.Drawing.Size(39, 19);
+            this.RouteLabel.Size = new System.Drawing.Size(41, 19);
             this.RouteLabel.TabIndex = 13;
             this.RouteLabel.Text = "Ruta";
             // 
             // NameLabel
             // 
             this.NameLabel.AutoSize = true;
-            this.NameLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NameLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
             this.NameLabel.Location = new System.Drawing.Point(8, 82);
             this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(150, 19);
+            this.NameLabel.Size = new System.Drawing.Size(159, 19);
             this.NameLabel.TabIndex = 14;
             this.NameLabel.Text = "Nombre de la canción";
             // 
             // PlaylistLabel
             // 
             this.PlaylistLabel.AutoSize = true;
-            this.PlaylistLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlaylistLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlaylistLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
             this.PlaylistLabel.Location = new System.Drawing.Point(8, 221);
             this.PlaylistLabel.Name = "PlaylistLabel";
-            this.PlaylistLabel.Size = new System.Drawing.Size(56, 19);
+            this.PlaylistLabel.Size = new System.Drawing.Size(58, 19);
             this.PlaylistLabel.TabIndex = 15;
             this.PlaylistLabel.Text = "Playlist";
             // 
             // AlbumLabel
             // 
             this.AlbumLabel.AutoSize = true;
-            this.AlbumLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AlbumLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AlbumLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
             this.AlbumLabel.Location = new System.Drawing.Point(8, 292);
             this.AlbumLabel.Name = "AlbumLabel";
-            this.AlbumLabel.Size = new System.Drawing.Size(50, 19);
+            this.AlbumLabel.Size = new System.Drawing.Size(54, 19);
             this.AlbumLabel.TabIndex = 16;
-            this.AlbumLabel.Text = "Album";
+            this.AlbumLabel.Text = "Álbum";
             // 
             // AddSong
             // 
@@ -192,11 +192,11 @@ namespace SoundSharp.Views
             // Autor
             // 
             this.Autor.AutoSize = true;
-            this.Autor.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Autor.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Autor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
             this.Autor.Location = new System.Drawing.Point(8, 152);
             this.Autor.Name = "Autor";
-            this.Autor.Size = new System.Drawing.Size(44, 19);
+            this.Autor.Size = new System.Drawing.Size(49, 19);
             this.Autor.TabIndex = 22;
             this.Autor.Text = "Autor";
             // 
@@ -212,7 +212,7 @@ namespace SoundSharp.Views
             this.AuthorInput.TabIndex = 1;
             this.AuthorInput.TextChanged += new System.EventHandler(this.AuthorInput_TextChanged);
             // 
-            // PlaylistDisplay
+            // AddSongs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -235,7 +235,7 @@ namespace SoundSharp.Views
             this.Controls.Add(this.RouteInput);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "PlaylistDisplay";
+            this.Name = "AddSongs";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Playlist";
             this.ResumeLayout(false);

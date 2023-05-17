@@ -495,6 +495,7 @@
     <Content Include="obj\Release\Interop.WMPDXMLib.dll" />
     <Content Include="obj\Release\Interop.WMPLauncher.dll" />
     <Content Include="obj\Release\Interop.WMPLib.dll" />
+    <None Include="Resources\eliminar.png" />
     <None Include="Resources\lupaNegra.png" />
     <None Include="Resources\playlistNegra.png" />
     <None Include="Resources\lupa.png" />

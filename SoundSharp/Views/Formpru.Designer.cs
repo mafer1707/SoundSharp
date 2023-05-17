@@ -32,13 +32,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
-            this.btnExit = new System.Windows.Forms.Button();
             this.dgvPlaylist = new System.Windows.Forms.DataGridView();
+            this.btnExit = new System.Windows.Forms.Button();
             this.dgvID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvArtist = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dgvDelete = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylist)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,25 +64,7 @@
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(142, 17);
             this.lblTime.TabIndex = 1;
-            this.lblTime.Text = "Duracion de la cancion";
-            // 
-            // btnExit
-            // 
-            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
-            this.btnExit.Image = global::SoundSharp.Properties.Resources.salir;
-            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExit.Location = new System.Drawing.Point(12, 12);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnExit.Size = new System.Drawing.Size(125, 38);
-            this.btnExit.TabIndex = 5;
-            this.btnExit.Text = "Salir";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.lblTime.Text = "Duración de la cancion";
             // 
             // dgvPlaylist
             // 
@@ -133,6 +115,24 @@
             this.dgvPlaylist.TabIndex = 6;
             this.dgvPlaylist.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlaylist_CellContentClick);
             // 
+            // btnExit
+            // 
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
+            this.btnExit.Image = global::SoundSharp.Properties.Resources.salir;
+            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExit.Location = new System.Drawing.Point(12, 12);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.btnExit.Size = new System.Drawing.Size(125, 38);
+            this.btnExit.TabIndex = 5;
+            this.btnExit.Text = "Salir";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // dgvID
             // 
             this.dgvID.HeaderText = "ID";
@@ -141,7 +141,7 @@
             // 
             // dgvName
             // 
-            this.dgvName.HeaderText = "Cancion";
+            this.dgvName.HeaderText = "Canción";
             this.dgvName.Name = "dgvName";
             this.dgvName.ReadOnly = true;
             // 
@@ -153,15 +153,17 @@
             // 
             // dgvTime
             // 
-            this.dgvTime.HeaderText = "Duracion";
+            this.dgvTime.HeaderText = "Duración";
             this.dgvTime.Name = "dgvTime";
             this.dgvTime.ReadOnly = true;
             // 
             // dgvDelete
             // 
             this.dgvDelete.HeaderText = "Eliminar";
+            this.dgvDelete.Image = global::SoundSharp.Properties.Resources.eliminar;
             this.dgvDelete.Name = "dgvDelete";
             this.dgvDelete.ReadOnly = true;
+            this.dgvDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // Formpru
             // 
@@ -192,6 +194,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvArtist;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvTime;
-        private System.Windows.Forms.DataGridViewButtonColumn dgvDelete;
+        private System.Windows.Forms.DataGridViewImageColumn dgvDelete;
     }
 }

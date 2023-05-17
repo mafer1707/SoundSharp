@@ -28,12 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DgSongs = new System.Windows.Forms.DataGridView();
-            this.Artist = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cancion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeleteCell = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.NameBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,6 +40,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.AddBtn = new System.Windows.Forms.Button();
             this.CancelarBtn = new System.Windows.Forms.Button();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Artist = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cancion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeleteCell = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgSongs)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -61,28 +62,28 @@
             this.DgSongs.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DgSongs.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.DgSongs.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgSongs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgSongs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.DgSongs.ColumnHeadersHeight = 40;
             this.DgSongs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DgSongs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Artist,
             this.Cancion,
             this.DeleteCell});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgSongs.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgSongs.DefaultCellStyle = dataGridViewCellStyle10;
             this.DgSongs.EnableHeadersVisualStyles = false;
             this.DgSongs.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.DgSongs.Location = new System.Drawing.Point(12, 95);
@@ -92,28 +93,6 @@
             this.DgSongs.Size = new System.Drawing.Size(553, 335);
             this.DgSongs.TabIndex = 20;
             this.DgSongs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgSongs_CellContentClick);
-            // 
-            // Artist
-            // 
-            this.Artist.HeaderText = "Artista:";
-            this.Artist.Name = "Artist";
-            this.Artist.ReadOnly = true;
-            // 
-            // Cancion
-            // 
-            this.Cancion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Cancion.HeaderText = "Canción:";
-            this.Cancion.Name = "Cancion";
-            this.Cancion.ReadOnly = true;
-            // 
-            // DeleteCell
-            // 
-            this.DeleteCell.HeaderText = "Eliminar de la Playlist";
-            this.DeleteCell.Name = "DeleteCell";
-            this.DeleteCell.ReadOnly = true;
-            this.DeleteCell.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DeleteCell.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.DeleteCell.UseColumnTextForButtonValue = true;
             // 
             // panel2
             // 
@@ -128,9 +107,9 @@
             // 
             this.NameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
             this.NameBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.NameBox.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.NameBox.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NameBox.ForeColor = System.Drawing.Color.White;
-            this.NameBox.Location = new System.Drawing.Point(7, 36);
+            this.NameBox.Location = new System.Drawing.Point(13, 36);
             this.NameBox.Name = "NameBox";
             this.NameBox.Size = new System.Drawing.Size(169, 20);
             this.NameBox.TabIndex = 14;
@@ -165,11 +144,11 @@
             this.SearchBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.SearchBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
             this.SearchBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.SearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.SearchBox.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchBox.ForeColor = System.Drawing.Color.White;
             this.SearchBox.Location = new System.Drawing.Point(143, 12);
             this.SearchBox.Name = "SearchBox";
-            this.SearchBox.Size = new System.Drawing.Size(116, 19);
+            this.SearchBox.Size = new System.Drawing.Size(116, 20);
             this.SearchBox.TabIndex = 21;
             // 
             // AddSong
@@ -180,7 +159,7 @@
             this.AddSong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddSong.Font = new System.Drawing.Font("Calibri", 12.25F, System.Drawing.FontStyle.Bold);
             this.AddSong.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
-            this.AddSong.Location = new System.Drawing.Point(3, 37);
+            this.AddSong.Location = new System.Drawing.Point(8, 37);
             this.AddSong.Name = "AddSong";
             this.AddSong.Size = new System.Drawing.Size(82, 31);
             this.AddSong.TabIndex = 20;
@@ -232,6 +211,38 @@
             this.CancelarBtn.UseVisualStyleBackColor = false;
             this.CancelarBtn.Click += new System.EventHandler(this.CancelarBtn_Click);
             // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.HeaderText = "Eliminar de la Playlist";
+            this.dataGridViewImageColumn1.Image = global::SoundSharp.Properties.Resources.eliminar;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.ReadOnly = true;
+            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewImageColumn1.Width = 184;
+            // 
+            // Artist
+            // 
+            this.Artist.HeaderText = "Artista";
+            this.Artist.Name = "Artist";
+            this.Artist.ReadOnly = true;
+            // 
+            // Cancion
+            // 
+            this.Cancion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Cancion.HeaderText = "Canción";
+            this.Cancion.Name = "Cancion";
+            this.Cancion.ReadOnly = true;
+            // 
+            // DeleteCell
+            // 
+            this.DeleteCell.HeaderText = "Eliminar de la Playlist";
+            this.DeleteCell.Image = global::SoundSharp.Properties.Resources.eliminar;
+            this.DeleteCell.Name = "DeleteCell";
+            this.DeleteCell.ReadOnly = true;
+            this.DeleteCell.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DeleteCell.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // AddList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -246,7 +257,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AddList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Forn";
+            this.Text = "AddList";
             this.Load += new System.EventHandler(this.AddList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgSongs)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -271,6 +282,7 @@
         private System.Windows.Forms.Button CancelarBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Artist;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cancion;
-        private System.Windows.Forms.DataGridViewButtonColumn DeleteCell;
+        private System.Windows.Forms.DataGridViewImageColumn DeleteCell;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
     }
 }
