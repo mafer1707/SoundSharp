@@ -26,8 +26,8 @@ namespace SoundSharp
         bool menuExpand = true;
         private Form activeForm = null;
         PlaylistDisplay playlistDisplay = new PlaylistDisplay();
-        private Song randomSong = new Song(@"C:\Users\Yasmin\Documents\FERNANDA\Bad Bunny - Efecto (360Â° Visualizer) _ Un Verano Sin Ti(MP3_128K).mp3");
-        //private Album[] randomAlbum = { new Album(@"C:\Users\58412\Desktop\SSHRP3\SoundSharp\SoundSharp\Database\Albums\1970 - Ladies Of The Canyon"),
+        //private Song randomSong = new Song(@"C:\Users\Usuario\Downloads\music prueba\y2mate.com - Chainsaw Man OP Full  Kick Back by Kenshi Yonezu  Sub Español AMV.mp3");
+        private Album[] randomAlbum = { new Album(@"C:\Users\Usuario\Downloads\music prueba")};
         //    new Album(@"C:\Users\58412\Downloads\Jeff Buckley - Grace (2022) [FLAC 24-192]"),
         //    new Album(@"C:\Users\58412\Downloads\Mistki - Puberty 2 (2016)(FLAC)(CD)"),
         //    new Album(@"C:\Users\58412\Downloads\IC3PEAK-До_Свидания-WEB-2020")};
@@ -36,7 +36,7 @@ namespace SoundSharp
         {
             player = new WMPLib.WindowsMediaPlayer();
             //player.currentMedia = randomSong.CurrentSong;
-            //player.currentPlaylist = randomAlbum[3].CurrentAlbum;
+            player.currentPlaylist = randomAlbum[0].CurrentAlbum;
             InitializeComponent();
             player.controls.stop();
             contPlay = 1;
@@ -84,8 +84,9 @@ namespace SoundSharp
                     contPlay = 1;
                     break;
             }
+            lblTiempo.Text = player.controls.currentItem.durationString;
         }
-
+        
         private void pbShuffle_Click(object sender, EventArgs e)
         {
             switch (contShuffle)
@@ -308,6 +309,11 @@ namespace SoundSharp
                 currentButton.ImageAlign = ContentAlignment.MiddleLeft;
                 currentButton.TextAlign = ContentAlignment.MiddleCenter;
             }
+        }
+
+        private void slider_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void DisableButton()

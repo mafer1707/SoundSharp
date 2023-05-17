@@ -23,10 +23,8 @@ namespace SoundSharp
         List<Song> MySong = new List<Song>();
         bool ValidacionNombre = true;
         int contador = 0;
-        private readonly int prueba;
         private readonly bool _isEdit = false;
         private readonly int _posicion;
-
 
         public AddList(int id)
         {
@@ -83,24 +81,15 @@ namespace SoundSharp
                     {
                         MessageBox.Show("El nombre que ingreso ya esta en uso.");
                     }
-                    
                 }
-                
-
             }
-
         }
-
         private void AddList_Load(object sender, EventArgs e)
         {
-
             List<Song> musica = new List<Song>();
             GetPlaylist();
             GetSongsRegister();
-
-    
             ReFillItems();
-
             if (_isEdit == true)
             {
                 MySong = PlaylistRegister[_posicion].Songs;
@@ -110,10 +99,7 @@ namespace SoundSharp
                 {
                     DgSongs.Rows.Add(item.Author, item.Name);
                 }
-                
             }
-
-
         }
 
         private void AddSong_Click(object sender, EventArgs e)
@@ -169,25 +155,22 @@ namespace SoundSharp
                 Canciones.Add(item.Author + " " + item.Name);
                 Canciones.Add(item.Name);
             }
-
             SearchBox.AutoCompleteCustomSource = Canciones;
             SearchBox.AutoCompleteMode = AutoCompleteMode.Suggest;
             SearchBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
-
-
         }
 
         private void SetSong(string text)
         {
             var search = from s in SongsRegister
                          where s.Name.ToLower().Trim() == text.ToLower().Trim() || (s.Author + " " + s.Name).ToLower().Trim() == text.ToLower().Trim()
-                         select new { s.Id, s.Author, s.Name, s.Route };
+                         select new { s.Id, s.Author, s.Name, s.Route, s.Time};
 
             try
             {
                 foreach (var item in search)
                 {
-                    MySong.Add(new Song(item.Id, item.Author, item.Name, item.Route));
+                    MySong.Add(new Song(item.Id, item.Author, item.Name, item.Route, item.Time));
                 }
 
             }

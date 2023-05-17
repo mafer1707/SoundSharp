@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.dgvPlaylist = new System.Windows.Forms.DataGridView();
-            this.dgvLogo = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dgvId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtvName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvArtist = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtgTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylist)).BeginInit();
             this.SuspendLayout();
@@ -86,70 +86,76 @@
             // 
             // dgvPlaylist
             // 
-            this.dgvPlaylist.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvPlaylist.AllowUserToAddRows = false;
+            this.dgvPlaylist.AllowUserToDeleteRows = false;
+            this.dgvPlaylist.AllowUserToResizeColumns = false;
+            this.dgvPlaylist.AllowUserToResizeRows = false;
+            this.dgvPlaylist.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvPlaylist.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPlaylist.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.dgvPlaylist.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvPlaylist.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal;
-            this.dgvPlaylist.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.NullValue = null;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPlaylist.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvPlaylist.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPlaylist.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvPlaylist.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPlaylist.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvPlaylist.ColumnHeadersHeight = 40;
+            this.dgvPlaylist.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvPlaylist.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgvLogo,
-            this.dgvId,
-            this.dtvName,
+            this.dgvID,
+            this.dgvName,
             this.dgvArtist,
-            this.dtgTime,
+            this.dgvTime,
             this.dgvDelete});
-            this.dgvPlaylist.Location = new System.Drawing.Point(12, 111);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPlaylist.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvPlaylist.EnableHeadersVisualStyles = false;
+            this.dgvPlaylist.GridColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvPlaylist.Location = new System.Drawing.Point(12, 81);
             this.dgvPlaylist.Name = "dgvPlaylist";
             this.dgvPlaylist.ReadOnly = true;
-            this.dgvPlaylist.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvPlaylist.RowHeadersVisible = false;
-            this.dgvPlaylist.Size = new System.Drawing.Size(762, 195);
-            this.dgvPlaylist.TabIndex = 7;
+            this.dgvPlaylist.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPlaylist.Size = new System.Drawing.Size(762, 224);
+            this.dgvPlaylist.TabIndex = 6;
+            this.dgvPlaylist.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlaylist_CellContentClick);
             // 
-            // dgvLogo
+            // dgvID
             // 
-            this.dgvLogo.HeaderText = "Logo";
-            this.dgvLogo.Name = "dgvLogo";
-            this.dgvLogo.ReadOnly = true;
-            this.dgvLogo.Width = 55;
+            this.dgvID.HeaderText = "ID";
+            this.dgvID.Name = "dgvID";
+            this.dgvID.ReadOnly = true;
             // 
-            // dgvId
+            // dgvName
             // 
-            this.dgvId.HeaderText = "Id";
-            this.dgvId.Name = "dgvId";
-            this.dgvId.ReadOnly = true;
-            this.dgvId.Width = 55;
-            // 
-            // dtvName
-            // 
-            this.dtvName.HeaderText = "Cancion";
-            this.dtvName.Name = "dtvName";
-            this.dtvName.ReadOnly = true;
-            this.dtvName.Width = 250;
+            this.dgvName.HeaderText = "Cancion";
+            this.dgvName.Name = "dgvName";
+            this.dgvName.ReadOnly = true;
             // 
             // dgvArtist
             // 
             this.dgvArtist.HeaderText = "Cantante";
             this.dgvArtist.Name = "dgvArtist";
             this.dgvArtist.ReadOnly = true;
-            this.dgvArtist.Width = 250;
             // 
-            // dtgTime
+            // dgvTime
             // 
-            this.dtgTime.HeaderText = "Duracion";
-            this.dtgTime.Name = "dtgTime";
-            this.dtgTime.ReadOnly = true;
-            this.dtgTime.Width = 50;
+            this.dgvTime.HeaderText = "Duracion";
+            this.dgvTime.Name = "dgvTime";
+            this.dgvTime.ReadOnly = true;
             // 
             // dgvDelete
             // 
@@ -169,6 +175,7 @@
             this.Controls.Add(this.lblTitle);
             this.Name = "Formpru";
             this.Text = "Formpru";
+            this.Load += new System.EventHandler(this.Formpru_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylist)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -181,11 +188,10 @@
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.DataGridView dgvPlaylist;
-        private System.Windows.Forms.DataGridViewImageColumn dgvLogo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtvName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvArtist;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dtgTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvTime;
         private System.Windows.Forms.DataGridViewButtonColumn dgvDelete;
     }
 }

@@ -14,7 +14,6 @@ namespace SoundSharp
     public partial class PlaylistView : Form
     {
         //private Form activeForm = null;
-        
         List<Playlist> MyPlayList = new List<Playlist>();
         public PlaylistView()
         {
@@ -102,7 +101,6 @@ namespace SoundSharp
                     int PosicionEnLista = GetPlayListByName(name);
                     MyPlayList.RemoveAt(PosicionEnLista);
                     SetPlaylist();
-
                 }
             }
             SearchBox.Clear();
@@ -146,20 +144,19 @@ namespace SoundSharp
         {
             string fileName = FileNames.Playlist;
             string jsonString = File.ReadAllText(fileName);
-
             //Crear y agregar primera dactura a la lista 
-
             jsonString = JsonConvert.SerializeObject(MyPlayList);
             MyPlayList = JsonConvert.DeserializeObject<List<Playlist>>(jsonString);
             File.WriteAllText(fileName, jsonString);
-
-
             jsonString = JsonConvert.SerializeObject(MyPlayList);
             File.WriteAllText(fileName, jsonString);
         }
+
         private void dgPlaylist_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var formpru = new Formpru();
+            string name = dgPlaylist.Rows[e.RowIndex].Cells[0].Value.ToString();
+            int PosicionEnLista = GetPlayListByName(name);
+            var formpru = new Formpru(PosicionEnLista);
             formpru.Show();
             this.Hide();
         }

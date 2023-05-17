@@ -18,17 +18,19 @@ namespace SoundSharp.Models
         private string _author;
         private string _name;
         private string _route;
+        private string _time;
         private WMPLib.IWMPMedia _currentSong;
         private WMPLib.WindowsMediaPlayer _aux;
         private static DbHandler<Song> dbHandler = new DbHandler<Song>(FileNames.Songs, FileNames.SongsId);
 
         [JsonConstructor]
-        public Song(int id, string author, string name, string route)
+        public Song(int id, string author, string name, string route, string time)
         {
             _id = id;
             _author = author;
             _name = name;
             _route = route;
+            _time = time;
             _aux = new WMPLib.WindowsMediaPlayer();
             try
             {
@@ -36,10 +38,8 @@ namespace SoundSharp.Models
             }
             catch (Exception)
             {
-
-                
             }
-            
+            _time = time;
         }
         public Song(string author, string name, string route)
         {
@@ -75,6 +75,7 @@ namespace SoundSharp.Models
         public string Author { get { return _author; } set { _author = value; } }
         public string Name { get { return _name; } set { _name = value; } }
         public string Route { get { return _route; } set { _route = value; } }
+        public string Time { get { return _time; } set { _time = value; } }
 
         public WMPLib.IWMPMedia CurrentSong { get { return _currentSong; } }
         public static List<Song> GetSongs()
