@@ -504,6 +504,9 @@
     <Content Include="obj\Release\Interop.WMPDXMLib.dll" />
     <Content Include="obj\Release\Interop.WMPLauncher.dll" />
     <Content Include="obj\Release\Interop.WMPLib.dll" />
+    <None Include="Resources\playDataGrid2.png" />
+    <None Include="Resources\playDataGrid1.png" />
+    <None Include="Resources\playDataGrid.png" />
     <None Include="Resources\volver.png" />
     <None Include="Resources\eliminar11.png" />
     <None Include="Resources\eliminar2.png" />

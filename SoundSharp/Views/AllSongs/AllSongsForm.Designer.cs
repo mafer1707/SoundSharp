@@ -35,15 +35,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AllSongsForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ColumnPlayPause = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColumnSong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDuration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openFileDialogSongs = new System.Windows.Forms.OpenFileDialog();
             this.contextMenuStripSongs = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarVerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColumnPlayPause = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColumnSong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDuration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStripSongs.SuspendLayout();
             this.SuspendLayout();
@@ -104,39 +104,6 @@
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
             // 
-            // ColumnPlayPause
-            // 
-            this.ColumnPlayPause.FillWeight = 150F;
-            this.ColumnPlayPause.HeaderText = "Play/Pause";
-            this.ColumnPlayPause.Image = ((System.Drawing.Image)(resources.GetObject("ColumnPlayPause.Image")));
-            this.ColumnPlayPause.MinimumWidth = 6;
-            this.ColumnPlayPause.Name = "ColumnPlayPause";
-            this.ColumnPlayPause.ReadOnly = true;
-            this.ColumnPlayPause.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnPlayPause.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // ColumnSong
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.ColumnSong.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnSong.HeaderText = "Song";
-            this.ColumnSong.MinimumWidth = 6;
-            this.ColumnSong.Name = "ColumnSong";
-            this.ColumnSong.ReadOnly = true;
-            this.ColumnSong.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnDuration
-            // 
-            this.ColumnDuration.HeaderText = "Duration";
-            this.ColumnDuration.MinimumWidth = 6;
-            this.ColumnDuration.Name = "ColumnDuration";
-            this.ColumnDuration.ReadOnly = true;
-            // 
             // openFileDialogSongs
             // 
             this.openFileDialogSongs.FileName = "openSongs";
@@ -180,9 +147,43 @@
             this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.dataGridViewImageColumn2.MinimumWidth = 6;
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.ReadOnly = true;
             this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewImageColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewImageColumn2.Width = 335;
+            // 
+            // ColumnPlayPause
+            // 
+            this.ColumnPlayPause.FillWeight = 150F;
+            this.ColumnPlayPause.HeaderText = "Play/Pause";
+            this.ColumnPlayPause.Image = global::SoundSharp.Properties.Resources.pausaDataGrid;
+            this.ColumnPlayPause.MinimumWidth = 6;
+            this.ColumnPlayPause.Name = "ColumnPlayPause";
+            this.ColumnPlayPause.ReadOnly = true;
+            this.ColumnPlayPause.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnPlayPause.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // ColumnSong
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.ColumnSong.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnSong.HeaderText = "Canción";
+            this.ColumnSong.MinimumWidth = 6;
+            this.ColumnSong.Name = "ColumnSong";
+            this.ColumnSong.ReadOnly = true;
+            this.ColumnSong.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnDuration
+            // 
+            this.ColumnDuration.HeaderText = "Duración";
+            this.ColumnDuration.MinimumWidth = 6;
+            this.ColumnDuration.Name = "ColumnDuration";
+            this.ColumnDuration.ReadOnly = true;
             // 
             // AllSongsForm
             // 
@@ -209,9 +210,9 @@
         private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editarVerToolStripMenuItem;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.DataGridViewImageColumn ColumnPlayPause;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSong;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDuration;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
     }
 }
