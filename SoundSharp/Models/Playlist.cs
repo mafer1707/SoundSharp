@@ -26,12 +26,6 @@ namespace SoundSharp.Models
             _name = name;
             _date = date;
             _songs = songs;
-
-        }
-
-        public Playlist()
-        {
-            
         }
 
         public Playlist(string name, List<Song> songs)
@@ -43,17 +37,20 @@ namespace SoundSharp.Models
             _date = DateTime.Now.ToString("dd/MM/yyyy.");
             _songs = songs;
 
-           // dbHandler.Add(this);
+           dbHandler.Add(this);
         }
 
         public void AddSong(Song cancion)
         {
             Songs.Add(cancion);
+            EditPlaylist();
         }
+
 
         public void RemoveSong(int index)
         {
             Songs.RemoveAt(index);
+            EditPlaylist();
         }
 
         public string Name { get { return _name; } set { _name = value; } }
@@ -61,15 +58,20 @@ namespace SoundSharp.Models
         public string Date { get { return _date; } set { _date = value; } }
         public List<Song> Songs { get { return _songs; } set { _songs = value; } }
 
-
-        public static List<Playlist> GetPlaylist()
+        public static List<Playlist> GetPlaylists()
         {
             List<Playlist> Playlists = dbHandler.Get();
             return Playlists;
         }
 
-        
+        public void EditPlaylist()
+        {
+            dbHandler.Edit(this);
+        }
 
-        ~Playlist() { } //Elimino mi playlist
+        public void DeletePlaylist()
+        {
+            dbHandler.Delete(this);
+        }
     }
 }
