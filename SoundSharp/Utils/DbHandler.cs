@@ -30,6 +30,8 @@ namespace SoundSharp.Utils
             if (!usersFileExist) File.Create(FileName).Close();
 
             List<T> result = Serialize();
+            if (result == null) return new List<T>();
+
             return result;
         }
 
@@ -37,6 +39,27 @@ namespace SoundSharp.Utils
         {
             List<T> elements = Get();
             elements.Add(element);
+            string json = JsonConvert.SerializeObject(elements);
+            File.WriteAllText(FileName, json);
+        }
+
+        public void Edit(T element)
+        {
+            List<T> elements = Get();
+            string id = GetId(element);
+            List<T> modifiedElements = elements.ConvertAll<T>(elm => {
+                if (GetId(elm) == id) return element;
+                return elm;
+            });
+            string json = JsonConvert.SerializeObject(modifiedElements);
+            File.WriteAllText(FileName, json);
+        }
+
+        public void Delete(T element)
+        {
+            List<T> elements = Get();
+            string id = GetId(element);
+            elements.RemoveAll(elm => GetId(elm) == id);
             string json = JsonConvert.SerializeObject(elements);
             File.WriteAllText(FileName, json);
         }
@@ -68,7 +91,6 @@ namespace SoundSharp.Utils
             int prevId = int.Parse(GetLastId());
             int newId = prevId + 1;
             string newIdString = newId.ToString();
-            MessageBox.Show(newIdString);
             File.WriteAllText(IdFile, newIdString);
             return newId;
         }
@@ -80,6 +102,12 @@ namespace SoundSharp.Utils
             string line = sr.ReadLine();
             sr.Close();
             return line;
+        }
+
+        private string GetId(T element)
+        {
+            string id = element.GetType().GetProperty("Id").GetValue(element, null).ToString();
+            return id;
         }
     }
 }

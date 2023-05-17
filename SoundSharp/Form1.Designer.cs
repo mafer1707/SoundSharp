@@ -197,7 +197,7 @@ namespace SoundSharp
             this.lblVolume.ForeColor = System.Drawing.Color.White;
             this.lblVolume.Location = new System.Drawing.Point(754, 28);
             this.lblVolume.Name = "lblVolume";
-            this.lblVolume.Size = new System.Drawing.Size(29, 16);
+            this.lblVolume.Size = new System.Drawing.Size(28, 16);
             this.lblVolume.TabIndex = 15;
             this.lblVolume.Text = "0%";
             // 
@@ -245,7 +245,7 @@ namespace SoundSharp
             this.lblArtist.ForeColor = System.Drawing.Color.White;
             this.lblArtist.Location = new System.Drawing.Point(28, 41);
             this.lblArtist.Name = "lblArtist";
-            this.lblArtist.Size = new System.Drawing.Size(52, 16);
+            this.lblArtist.Size = new System.Drawing.Size(51, 16);
             this.lblArtist.TabIndex = 10;
             this.lblArtist.Text = "Artista";
             // 
@@ -256,7 +256,7 @@ namespace SoundSharp
             this.lblSong.ForeColor = System.Drawing.Color.White;
             this.lblSong.Location = new System.Drawing.Point(26, 18);
             this.lblSong.Name = "lblSong";
-            this.lblSong.Size = new System.Drawing.Size(64, 16);
+            this.lblSong.Size = new System.Drawing.Size(63, 16);
             this.lblSong.TabIndex = 9;
             this.lblSong.Text = "Canción";
             // 

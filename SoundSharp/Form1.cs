@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SoundSharp.Models;
 using System.Drawing.Drawing2D;
+using SoundSharp.Views;
 
 namespace SoundSharp
 {
@@ -25,8 +21,7 @@ namespace SoundSharp
         private WMPLib.WindowsMediaPlayer player;
         bool menuExpand = true;
         private Form activeForm = null;
-        PlaylistDisplay playlistDisplay = new PlaylistDisplay();
-        private Song randomSong = new Song(@"C:\Users\Yasmin\Documents\FERNANDA\Bad Bunny - Efecto (360Â° Visualizer) _ Un Verano Sin Ti(MP3_128K).mp3");
+        //private Song randomSong = new Song(@"C:\Users\Yasmin\Documents\FERNANDA\Bad Bunny - Efecto (360Â° Visualizer) _ Un Verano Sin Ti(MP3_128K).mp3");
         //private Album[] randomAlbum = { new Album(@"C:\Users\58412\Desktop\SSHRP3\SoundSharp\SoundSharp\Database\Albums\1970 - Ladies Of The Canyon"),
         //    new Album(@"C:\Users\58412\Downloads\Jeff Buckley - Grace (2022) [FLAC 24-192]"),
         //    new Album(@"C:\Users\58412\Downloads\Mistki - Puberty 2 (2016)(FLAC)(CD)"),
@@ -46,9 +41,10 @@ namespace SoundSharp
             slider.Height = 23;
             trackBar1.Value = 30;
             lblVolume.Text = trackBar1.Value.ToString() + "%";
+            List<Playlist> playlists = Playlist.GetPlaylists();
         }
 
-        private void OpenChildForm(Form childForm)
+        public void OpenChildForm(Form childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -140,7 +136,17 @@ namespace SoundSharp
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            playlistDisplay.Show();
+            OpenFileDialog Explorer = new OpenFileDialog();
+            Explorer.Multiselect = true;
+            Explorer.Filter = "MP3 files(*.mp3)|*.mp3";
+            if (Explorer.ShowDialog() == DialogResult.OK)
+            {
+                List<string> paths = Explorer.FileNames.ToList();
+                foreach (string path in paths)
+                {
+                    new AddSongs(path).ShowDialog();
+                }
+            }
         }
 
         private void timerMenu_Tick(object sender, EventArgs e)
@@ -330,7 +336,5 @@ namespace SoundSharp
             if (this.WindowState == FormWindowState.Maximized)
                 slider.Refresh();
         }
-
-
     }
 }
