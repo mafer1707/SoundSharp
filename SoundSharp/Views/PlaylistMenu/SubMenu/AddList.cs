@@ -23,7 +23,6 @@ namespace SoundSharp
         List<Song> MySong = new List<Song>();
         bool ValidacionNombre = true;
         int contador = 0;
-        private readonly int prueba;
         private readonly bool _isEdit = false;
         private readonly int _posicion;
 
@@ -85,8 +84,8 @@ namespace SoundSharp
                     }
                     
                 }
-                
 
+                
             }
 
         }
@@ -94,7 +93,6 @@ namespace SoundSharp
         private void AddList_Load(object sender, EventArgs e)
         {
 
-            List<Song> musica = new List<Song>();
             GetPlaylist();
             GetSongsRegister();
 
@@ -105,6 +103,7 @@ namespace SoundSharp
             {
                 MySong = PlaylistRegister[_posicion].Songs;
                 AddBtn.Text = "Modificar";
+                contador = MySong.Count();
                 NameBox.Text = PlaylistRegister[_posicion].Name;
                 foreach (var item in MySong)
                 {
@@ -179,22 +178,20 @@ namespace SoundSharp
 
         private void SetSong(string text)
         {
-            var search = from s in SongsRegister
+            /*var search = from s in SongsRegister
                          where s.Name.ToLower().Trim() == text.ToLower().Trim() || (s.Author + " " + s.Name).ToLower().Trim() == text.ToLower().Trim()
-                         select new { s.Id, s.Author, s.Name, s.Route };
+                         select new { s.Id, s.Author, s.Name, s.Route };*/
+
+           Song song = SongsRegister.Find(element => element.Name.ToLower().Trim() == text.ToLower().Trim() || (element.Author + " " + element.Name).ToLower().Trim() == text.ToLower().Trim());
 
             try
             {
-                foreach (var item in search)
-                {
-                    MySong.Add(new Song(item.Id, item.Author, item.Name, item.Route));
-                }
-
+                
+                    MySong.Add(song);
+                
             }
             catch (Exception)
-            {
-                
-                throw;
+            {  
             }
         }
 

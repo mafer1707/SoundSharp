@@ -50,7 +50,6 @@ namespace SoundSharp
 
                 if (position > -1)
                 {
-                    menu.Items.Add("Reproducir").Name = "Borrar" + position;
                     menu.Items.Add("Editar").Name = "Editar" + position;
                     menu.Items.Add("Eliminar").Name = "Eliminar" + position;
                 }
@@ -97,14 +96,7 @@ namespace SoundSharp
         private void munuClick(object sender, ToolStripItemClickedEventArgs e)
         {
             string id = e.ClickedItem.Name.ToString();
-            if (id.Contains("Reproducir"))
-            {
-                id = id.Replace("Reproducir", "");
-
-
-
-            }
-            else if (id.Contains("Editar"))
+            if (id.Contains("Editar"))
             {
                 id = id.Replace("Editar", "");
 
@@ -112,6 +104,7 @@ namespace SoundSharp
                 int PosicionEnLista = GetPlayListByName(nombre);
                 AddList add = new AddList(PosicionEnLista);
                 add.ShowDialog();
+                SearchBox.Text = "";
             }
 
             else if (id.Contains("Eliminar"))
@@ -120,9 +113,10 @@ namespace SoundSharp
                 string name = dgPlaylist.Rows[int.Parse(id)].Cells[0].Value.ToString();
                 int PosicionEnLista = GetPlayListByName(name);
                 MyPlayList.RemoveAt(PosicionEnLista);
-                //SetPlaylist();
-
+                SetPlaylist();
+                SearchBox.Text = "";
             }
+
             dgPlaylist.Rows.Clear();
             GetPlaylist();
             ReloadDg(MyPlayList);
@@ -168,22 +162,11 @@ namespace SoundSharp
         {
             string fileName = FileNames.Playlist;
             string jsonString = File.ReadAllText(fileName);
-
-
-            try 
-            {
-                MyPlayList = JsonConvert.DeserializeObject<List<Playlist>>(jsonString);
                 
-            }
-            catch (Exception) //Capturar json vacio.
-            {
-                //Crear y agregar primera dactura a la lista 
-                
-                jsonString = JsonConvert.SerializeObject(MyPlayList);
-                MyPlayList = JsonConvert.DeserializeObject<List<Playlist>>(jsonString);
-                File.WriteAllText(fileName, jsonString);
-            }
-
+            jsonString = JsonConvert.SerializeObject(MyPlayList);
+            MyPlayList = JsonConvert.DeserializeObject<List<Playlist>>(jsonString);
+            File.WriteAllText(fileName, jsonString);
+           
             jsonString = JsonConvert.SerializeObject(MyPlayList);
             File.WriteAllText(fileName, jsonString);
         }

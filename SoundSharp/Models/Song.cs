@@ -30,15 +30,8 @@ namespace SoundSharp.Models
             _name = name;
             _route = route;
             _aux = new WMPLib.WindowsMediaPlayer();
-            try
-            {
-                _currentSong = _aux.newMedia(_route);
-            }
-            catch (Exception)
-            {
-
-                
-            }
+            _currentSong = _aux.newMedia(_route);
+           
             
         }
         public Song(string author, string name, string route)
