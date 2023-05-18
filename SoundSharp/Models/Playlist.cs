@@ -60,8 +60,15 @@ namespace SoundSharp.Models
 
         public static List<Playlist> GetPlaylists()
         {
-            List<Playlist> Playlists = dbHandler.Get();
-            return Playlists;
+            List<Playlist> playlists = dbHandler.Get();
+            return playlists;
+        }
+
+        public static Playlist GetPlaylistById(int id)
+        {
+            List<Playlist> playlists = GetPlaylists();
+            Playlist playlist = playlists.Find(elm => elm.Id == id);
+            return playlist;
         }
 
         public void EditPlaylist()

@@ -4,88 +4,60 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WMPLib;
+using TagLib;
 
 namespace SoundSharp.Views.AllSongs
 {
     public partial class AllSongsForm : Form
     {
         private WindowsMediaPlayer _player;
-        private List<IWMPMedia> _songs;
+        private List<Song> _songs;
+        private List<IWMPMedia> _songsToPlay;
         private EverySong _allSongs;
         private bool _play;
         private double _position;
         private IWMPMedia _songToEliminate;
         private int _indexOfSongToEliminate;
 
-        public AllSongsForm()
+        /*public AllSongsForm(List<string> paths)
         {
             _player = new WindowsMediaPlayer();
             _songs = new List<IWMPMedia>();
             _play = true;
             _position = 0;
+            foreach (string path in paths)
+            {
+                _songs.Add(_player.newMedia(path));
+            }
             InitializeComponent();
+        }*/
+
+        public AllSongsForm()
+        {
+            _player = new WindowsMediaPlayer();
+            _songs = Song.GetSongs();
+            _songsToPlay = new List<IWMPMedia>();
+            _play = true;
+            _position = 0;
+            //foreach (Song song in _songs)
+            //{
+            //    string routeOfSong = song.Route.Replace("/", "\\");
+            //    IWMPMedia songToAdd = _player.newMedia(routeOfSong);
+            //    _songsToPlay.Add(songToAdd);
+            //}
+            InitializeComponent();
+            renderized();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            InitializeOpenFileDialog();
-        }
-
-        private void InitializeOpenFileDialog()
-        {
-            this.openFileDialogSongs.Filter =
-                "Songs (*.mp3;*.flac;*.wma;*.wav;*.wave;*.m4a)|*.mp3;*.flac;*.wma;*.wav;*.wave;*.m4a|" +
-                "All files (*.*)|*.*";
-            this.openFileDialogSongs.Multiselect = true;
-            this.openFileDialogSongs.Title = "My songs";
-        }
-
-         //Acá ira lo que brian haga
-        private void buttonImport_Click(object sender, EventArgs e)
-        {
-            DialogResult dr = this.openFileDialogSongs.ShowDialog();
-            if (dr == DialogResult.OK)
-            {
-                foreach (String song in openFileDialogSongs.FileNames)
-                {
-                    _songs.Add(_player.newMedia(song));
-                }
-            }
-            renderized();
-            initializePlaylist();
-            _player.controls.stop();
-        }
-
-        private void buttonPausePlay_Click(object sender, EventArgs e)
-        {
-            playablePausable();
-        }
-
-        private void buttonNext_Click(object sender, EventArgs e)
-        {
-            _player.controls.next();
-            if (_play == true)
-            {
-                _position = 0;
-                _player.controls.playItem(_player.currentMedia);
-                _play = !_play;
-            }
-        }
-
-        private void buttonPrevious_Click(object sender, EventArgs e)
-        {
-            _player.controls.previous();
-            if (_play == true)
-            {
-                _position = 0;
-                _player.controls.playItem(_player.currentMedia);
-                _play = !_play;
-            }
+            //InitializeOpenFileDialog();
         }
 
         private void renderized()
@@ -93,13 +65,14 @@ namespace SoundSharp.Views.AllSongs
             dataGridView1.Rows.Clear();
             for (int i = 0; i < _songs.Count; i++)
             {
-                //Agregar Duration a song. 
-                //dataGridView1.Rows.Add("Play/Pause", _songs[i].Name, formattedTime(_songs[i].Duration));
+                dataGridView1.Rows.Add(SoundSharp.Properties.Resources.playDataGrid, _songs[i].Name, formattedTime(_songs[i]));
             }
         }
 
-        private string formattedTime(TimeSpan time)
+        private string formattedTime (Song song)
         {
+            TagLib.File file = TagLib.File.Create(song.Route);
+            TimeSpan time = file.Properties.Duration;
             string minutes = time.Minutes < 10 ? "0" + time.Minutes : time.Minutes.ToString();
             string seconds = time.Seconds < 10 ? "0" + time.Seconds : time.Seconds.ToString();
             string timeFormatted = minutes + ":" + seconds;
@@ -111,7 +84,7 @@ namespace SoundSharp.Views.AllSongs
             if (e.ColumnIndex == dataGridView1.Columns["ColumnPlayPause"].Index
                 && e.RowIndex >= 0)
             {
-                if (!_player.currentMedia.isIdentical[_songs[e.RowIndex]])
+                if (!_player.currentMedia.isIdentical[_songsToPlay[e.RowIndex]])
                 {
                     _player.controls.currentItem = _allSongs.CurrentPlaylist.Item[e.RowIndex];
                     _position = 0;
@@ -123,7 +96,7 @@ namespace SoundSharp.Views.AllSongs
 
         private void initializePlaylist()
         {
-            _allSongs = new EverySong(_songs, "PlaylistOne");
+            _allSongs = new EverySong(_songsToPlay, "PlaylistOne");
             _player.currentPlaylist = _allSongs.CurrentPlaylist;
         }
 
@@ -160,7 +133,7 @@ namespace SoundSharp.Views.AllSongs
                 && e.Button == MouseButtons.Right)
             {
                 contextMenuStripSongs.Show(MousePosition.X, MousePosition.Y);
-                _songToEliminate = _songs[e.RowIndex];
+                _songToEliminate = _songsToPlay[e.RowIndex];
                 _indexOfSongToEliminate = e.RowIndex;
             }
         }
@@ -170,6 +143,11 @@ namespace SoundSharp.Views.AllSongs
             EverySong.removeSong(_allSongs, _songToEliminate);
             _songs.Remove(_songs[_indexOfSongToEliminate]);
             renderized();
+        }
+
+        public IWMPPlaylist getAllSongs()
+        {
+            return _allSongs.CurrentPlaylist;
         }
     }
 }
