@@ -335,7 +335,7 @@ namespace SoundSharp
             AllSongsForm allSongs = new AllSongsForm();
             ActiveButton(sender, SoundSharp.Properties.Resources.lupaNegra);
             OpenChildForm(allSongs);
-            player.currentPlaylist = allSongs.getAllSongs();
+            //player.currentPlaylist = allSongs.getAllSongs();
         }
 
         private void ActiveButton (object senderBtn, Image imagen)

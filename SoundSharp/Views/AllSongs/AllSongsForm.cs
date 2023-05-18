@@ -45,12 +45,12 @@ namespace SoundSharp.Views.AllSongs
             _songsToPlay = new List<IWMPMedia>();
             _play = true;
             _position = 0;
-            foreach (Song song in _songs)
-            {
-                string routeOfSong = song.Route.Replace("/", "\\");
-                IWMPMedia songToAdd = _player.newMedia(routeOfSong);
-                _songsToPlay.Add(songToAdd);
-            }
+            //foreach (Song song in _songs)
+            //{
+            //    string routeOfSong = song.Route.Replace("/", "\\");
+            //    IWMPMedia songToAdd = _player.newMedia(routeOfSong);
+            //    _songsToPlay.Add(songToAdd);
+            //}
             InitializeComponent();
             renderized();
         }
