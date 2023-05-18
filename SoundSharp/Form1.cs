@@ -22,7 +22,7 @@ namespace SoundSharp
         private WMPLib.WindowsMediaPlayer player;
         bool menuExpand = true;
         private Form activeForm = null;
-        
+
         //private Song randomSong = new Song(@"C:\Users\Yasmin\Documents\FERNANDA\Bad Bunny - Efecto (360Â° Visualizer) _ Un Verano Sin Ti(MP3_128K).mp3");
         //private Album[] randomAlbum = { new Album(@"C:\Users\58412\Desktop\SSHRP3\SoundSharp\SoundSharp\Database\Albums\1970 - Ladies Of The Canyon"),
         //    new Album(@"C:\Users\58412\Downloads\Jeff Buckley - Grace (2022) [FLAC 24-192]"),
@@ -32,6 +32,8 @@ namespace SoundSharp
         public MainWindow()
         {
             player = new WMPLib.WindowsMediaPlayer();
+            List<Song> songs = Song.GetSongs();
+            SetSongs(songs, false);
             //player.currentMedia = randomSong.CurrentSong;
             //player.currentPlaylist = randomAlbum[0].CurrentAlbum;
             InitializeComponent();
@@ -44,6 +46,20 @@ namespace SoundSharp
             trackBar1.Value = 30;
             lblVolume.Text = trackBar1.Value.ToString() + "%";
             List<Playlist> playlists = Playlist.GetPlaylists();
+        }
+
+        public void SetSongs(List<Song> songs, bool automatedPlay = true)
+        {
+            bool isShuffleMode = player.settings.getMode("shuffle");
+            player.settings.setMode("shuffle", false);
+            WMPLib.IWMPPlaylist Playlist = player.newPlaylist("MyPlayList", "");
+            foreach (Song song in songs)
+            {
+                Playlist.appendItem(player.newMedia(song.Route));
+            }
+            player.currentPlaylist = Playlist;
+            if (automatedPlay) Play();
+            if (isShuffleMode) player.settings.setMode("shuffle", true);
         }
 
         public void OpenChildForm(Form childForm)
@@ -67,15 +83,13 @@ namespace SoundSharp
 
         private void pbPause_Click(object sender, EventArgs e)
         {
+
             try
             {
                 switch (contPlay)
                 {
                     case 1:
-                        player.controls.currentPosition = position;
-                        player.controls.play();
-                        btnPause.Image = SoundSharp.Properties.Resources.play;
-                        contPlay++;
+                        Play();
                         break;
                     case 2:
                         player.controls.pause();
@@ -90,6 +104,14 @@ namespace SoundSharp
 
             }
             
+        }
+
+        public void Play()
+        {
+            player.controls.currentPosition = position;
+            player.controls.play();
+            btnPause.Image = Properties.Resources.play;
+            contPlay = 2;
         }
         
         private void pbShuffle_Click(object sender, EventArgs e)

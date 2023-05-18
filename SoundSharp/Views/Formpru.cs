@@ -18,7 +18,6 @@ namespace SoundSharp.Views
     {
         Playlist playlist;
         private MainWindow miVentana;
-        private WMPLib.WindowsMediaPlayer player;
 
         public Formpru(int id, MainWindow main)
         {
@@ -31,10 +30,14 @@ namespace SoundSharp.Views
             this.Close();
             miVentana.OpenChildForm(new PlaylistView(miVentana));
         }
-
         private void Formpru_Load(object sender, EventArgs e)
         {
             ReloadDg();
+            lblTitle.Text = playlist.Name;
+        }
+        public void PlaySongs(List<Song> songs) 
+        {
+            miVentana.SetSongs(songs);
         }
         private void dgvPlaylist_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -46,7 +49,6 @@ namespace SoundSharp.Views
             catch (NullReferenceException)
             {
                 i = -1;
-
             }
             if (e.ColumnIndex == dgvPlaylist.Columns["dgvDelete"].Index && i != -1 && e.RowIndex != -1)
             {
@@ -63,7 +65,9 @@ namespace SoundSharp.Views
         }
         private void dgvPlaylist_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            List<Song> playlistSongs = playlist.Songs;
+            List<Song> songs = playlistSongs.Skip(e.RowIndex).Concat(playlistSongs.Take(e.RowIndex)).ToList();
+            PlaySongs(songs); 
         }
         public void ReloadDg()
         {

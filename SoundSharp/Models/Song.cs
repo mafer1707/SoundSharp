@@ -36,7 +36,7 @@ namespace SoundSharp.Models
 
             File.Copy(route, destination);
 
-            Route = destination;
+            Route = Path.GetFullPath(destination);
 
             dbHandler.Add(this);
         }
