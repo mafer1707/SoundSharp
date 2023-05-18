@@ -34,6 +34,12 @@ namespace SoundSharp.Views
         {
             ReloadDg();
             lblTitle.Text = playlist.Name;
+            TimeSpan timeSpan = new TimeSpan();
+            foreach (Song song in playlist.Songs)
+            {
+                timeSpan += song.Duration;
+            }
+            lblTime.Text = formattedTime(timeSpan);
         }
         public void PlaySongs(List<Song> songs) 
         {
@@ -78,12 +84,19 @@ namespace SoundSharp.Views
                 for (int i = 0;i < playlistSongs.Count;i++)
                 {
                     Song item = playlistSongs[i];
-                    dgvPlaylist.Rows.Add(i+1, item.Name, item.Author, " ");
+                    dgvPlaylist.Rows.Add(i+1, item.Name, item.Author, formattedTime(item.Duration));
                 }
             }
             catch (Exception)
             {
             }
+        }
+        private string formattedTime(TimeSpan time)
+        {
+            string minutes = time.Minutes < 10 ? "0" + time.Minutes : time.Minutes.ToString();
+            string seconds = time.Seconds < 10 ? "0" + time.Seconds : time.Seconds.ToString();
+            string timeFormatted = minutes + ":" + seconds;
+            return timeFormatted;
         }
     }
 }
