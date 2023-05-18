@@ -53,15 +53,20 @@ namespace SoundSharp.Views.AllSongs
 
         public void renderized(int index)
         {
-            dataGridView1.Rows.Clear();
-            for (int i = 0; i < _songs.Count; i++)
+            try
             {
-                if (i == index)
+                dataGridView1.Rows.Clear();
+                for (int i = 0; i < _songs.Count; i++)
                 {
-                    continue;
+                    if (i == index)
+                    {
+                        continue;
+                    }
+                    dataGridView1.Rows.Add(SoundSharp.Properties.Resources.pausaDataGrid, _songs[i].Name, formattedTime(_songs[i].Duration));
                 }
-                dataGridView1.Rows.Add(SoundSharp.Properties.Resources.pausaDataGrid, _songs[i].Name, formattedTime(_songs[i].Duration));
             }
+            catch (Exception) { }
+            
         }
 
         public void renderizedPlay(int index)
@@ -72,8 +77,13 @@ namespace SoundSharp.Views.AllSongs
 
         public void renderizedPause(int index)
         {
-            dataGridView1.Rows.Insert(index,
-                SoundSharp.Properties.Resources.playDataGrid, _songs[index].Name, formattedTime(_songs[index].Duration));
+            try
+            {
+                dataGridView1.Rows.Insert(index,
+                    SoundSharp.Properties.Resources.playDataGrid, _songs[index].Name, formattedTime(_songs[index].Duration));
+            }
+            catch (Exception) { }
+           
         }
 
         private string formattedTime(TimeSpan time)
@@ -86,29 +96,34 @@ namespace SoundSharp.Views.AllSongs
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dataGridView1.Columns["ColumnPlayPause"].Index
-                && e.RowIndex >= 0)
+            try
             {
-                if (!_player.currentMedia.isIdentical[_songsToPlay[e.RowIndex]])
+                if (e.ColumnIndex == dataGridView1.Columns["ColumnPlayPause"].Index
+                && e.RowIndex >= 0)
                 {
-                    _player.controls.currentItem = _songsToPlay[e.RowIndex];
-                    _position = 0;
-                    _play = true;
-                }
-                playablePausable();
-                dataGridView1.Rows.RemoveAt(e.RowIndex);
-                renderized(e.RowIndex);
-                if (_play == true)
-                {
-                    renderizedPlay(e.RowIndex);
-                    changePlayPause(false);
-                }
-                else
-                {
-                    renderizedPause(e.RowIndex);
-                    changePlayPause(true);
+                    if (!_player.currentMedia.isIdentical[_songsToPlay[e.RowIndex]])
+                    {
+                        _player.controls.currentItem = _songsToPlay[e.RowIndex];
+                        _position = 0;
+                        _play = true;
+                    }
+                    playablePausable();
+                    dataGridView1.Rows.RemoveAt(e.RowIndex);
+                    renderized(e.RowIndex);
+                    if (_play == true)
+                    {
+                        renderizedPlay(e.RowIndex);
+                        changePlayPause(false);
+                    }
+                    else
+                    {
+                        renderizedPause(e.RowIndex);
+                        changePlayPause(true);
+                    }
                 }
             }
+            catch (Exception) { }
+            
         }
 
         //Esto simula el play, pause y demás botones del principal.
