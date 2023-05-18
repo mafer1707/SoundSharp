@@ -79,17 +79,23 @@ namespace SoundSharp
             }
             else
             {
+                ValidarNombre(NameBox.Text);
                 if (_isEdit == true)
                 {
-                    Playlists[_posicion].Name = NameBox.Text;
-                    Playlists[_posicion].Songs = PlaylistSongs;
-                    EditPlaylistToRegister();
-                    this.Close();
+                    if (ValidacionNombre == true)
+                    {
+                        Playlists[_posicion].Name = NameBox.Text;
+                        Playlists[_posicion].Songs = PlaylistSongs;
+                        EditPlaylistToRegister();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El nombre que ingreso ya esta en uso.");
+                    }
                 }
                 else
                 {
-                    ValidarNombre(NameBox.Text);
-
                     if (ValidacionNombre == true)
                     {
                         new Playlist(NameBox.Text, PlaylistSongs);
@@ -98,8 +104,7 @@ namespace SoundSharp
                     else 
                     {
                         MessageBox.Show("El nombre que ingreso ya esta en uso.");
-                    }
-                    
+                    }  
                 }
 
                 
@@ -189,23 +194,50 @@ namespace SoundSharp
 
         private void ValidarNombre(string text)
         {
-            try
+            if (_isEdit == true)
             {
-                var search = from s in Playlists
-                             where s.Name.ToLower().Trim() == text.ToLower().Trim()
-                             select new { s.Name };
-                if (search.Count() >= 1)
+                try
                 {
-                    ValidacionNombre = false;
-                } else
+                    var search = from s in Playlists
+                                 where (s.Name.ToLower().Trim() == text.ToLower().Trim()) && Playlists[_posicion].Name.ToLower().Trim() != text.ToLower().Trim()
+                                 select new { s.Name };
+
+                    if (search.Count() >= 1)
+                    {
+                        ValidacionNombre = false;
+                    }
+                    else
+                    {
+                        ValidacionNombre = true;
+                    }
+                }
+                catch (Exception)
                 {
-                    ValidacionNombre = true;
+
                 }
             }
-            catch (Exception)
+            else
             {
-             
+                try
+                {
+                    var search = from s in Playlists
+                                 where s.Name.ToLower().Trim() == text.ToLower().Trim()
+                                 select new { s.Name };
+                    if (search.Count() >= 1 || search != null)
+                    {
+                        ValidacionNombre = false;
+                    }
+                    else
+                    {
+                        ValidacionNombre = true;
+                    }
+                }
+                catch (Exception)
+                {
+
+                }
             }
+            
     
         }
 
