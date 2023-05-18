@@ -67,22 +67,30 @@ namespace SoundSharp
 
         private void pbPause_Click(object sender, EventArgs e)
         {
-            switch (contPlay)
+            try
             {
-                case 1:
-                    player.controls.currentPosition = position;
-                    player.controls.play();
-                    btnPause.Image = SoundSharp.Properties.Resources.play;
-                    contPlay++;
-                    break;
-                case 2:
-                    player.controls.pause();
-                    position = player.controls.currentPosition;
-                    btnPause.Image = SoundSharp.Properties.Resources.pausa;
-                    contPlay = 1;
-                    break;
+                switch (contPlay)
+                {
+                    case 1:
+                        player.controls.currentPosition = position;
+                        player.controls.play();
+                        btnPause.Image = SoundSharp.Properties.Resources.play;
+                        contPlay++;
+                        break;
+                    case 2:
+                        player.controls.pause();
+                        position = player.controls.currentPosition;
+                        btnPause.Image = SoundSharp.Properties.Resources.pausa;
+                        contPlay = 1;
+                        break;
+                }
+                lblTiempo.Text = player.controls.currentItem.durationString;
             }
-            lblTiempo.Text = player.controls.currentItem.durationString;
+            catch (Exception)
+            {
+
+            }
+            
         }
         
         private void pbShuffle_Click(object sender, EventArgs e)
@@ -101,7 +109,7 @@ namespace SoundSharp
                     player.settings.setMode("shuffle", false);
                     contShuffle = 1;
                     break;
-            }
+            }             
         }
 
         private void pbLoop_Click(object sender, EventArgs e)
@@ -236,8 +244,7 @@ namespace SoundSharp
             catch (Exception)
             {
 
-            }
-            
+            }         
         }  
 
         private void slider_MouseUp(object sender, MouseEventArgs e)
