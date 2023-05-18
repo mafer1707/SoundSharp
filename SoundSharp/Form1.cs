@@ -7,6 +7,7 @@ using SoundSharp.Models;
 using System.Drawing.Drawing2D;
 using SoundSharp.Views;
 using SoundSharp.Views.AllSongs;
+using WMPLib;
 
 namespace SoundSharp
 {
@@ -20,6 +21,8 @@ namespace SoundSharp
         private Button currentButton;
         private double position = 0;
         private WMPLib.WindowsMediaPlayer player;
+        private List<IWMPMedia> SongsForAllSongs;
+        private AllSongsForm allSongs;
         bool menuExpand = true;
         private Form activeForm = null;
 
@@ -33,6 +36,7 @@ namespace SoundSharp
         {
             player = new WMPLib.WindowsMediaPlayer();
             List<Song> songs = Song.GetSongs();
+            SongsForAllSongs = new List<IWMPMedia>();
             SetSongs(songs, false);
             //player.currentMedia = randomSong.CurrentSong;
             //player.currentPlaylist = randomAlbum[0].CurrentAlbum;
@@ -55,7 +59,9 @@ namespace SoundSharp
             WMPLib.IWMPPlaylist Playlist = player.newPlaylist("MyPlayList", "");
             foreach (Song song in songs)
             {
-                Playlist.appendItem(player.newMedia(song.Route));
+                IWMPMedia songToAdd = player.newMedia(song.Route);
+                Playlist.appendItem(songToAdd);
+                SongsForAllSongs.Add(songToAdd);
             }
             player.currentPlaylist = Playlist;
             if (automatedPlay) Play();
@@ -96,6 +102,7 @@ namespace SoundSharp
                         position = player.controls.currentPosition;
                         btnPause.Image = SoundSharp.Properties.Resources.pausa;
                         contPlay = 1;
+                        renderizedForAllSongs2();
                         break;
                 }
             }
@@ -103,7 +110,7 @@ namespace SoundSharp
             {
 
             }
-            
+
         }
 
         public void Play()
@@ -112,8 +119,9 @@ namespace SoundSharp
             player.controls.play();
             btnPause.Image = Properties.Resources.play;
             contPlay = 2;
+            renderizedForAllSongs();
         }
-        
+
         private void pbShuffle_Click(object sender, EventArgs e)
         {
             switch (contShuffle)
@@ -130,7 +138,7 @@ namespace SoundSharp
                     player.settings.setMode("shuffle", false);
                     contShuffle = 1;
                     break;
-            }             
+            }
         }
 
         private void pbLoop_Click(object sender, EventArgs e)
@@ -164,7 +172,7 @@ namespace SoundSharp
         {
             ActiveButton(sender, SoundSharp.Properties.Resources.playlistNegra);
             OpenChildForm(new PlaylistView(this));
-            
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -211,11 +219,12 @@ namespace SoundSharp
         {
             player.controls.next();
             if (contPlay == 1)
-            { 
+            {
                 position = 0;
                 player.controls.playItem(player.currentMedia);
                 contPlay++;
             }
+            renderizedForAllSongs();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -227,6 +236,7 @@ namespace SoundSharp
                 player.controls.playItem(player.currentMedia);
                 contPlay++;
             }
+            renderizedForAllSongs();
         }
 
         // ---------- Barra de reproducción ---------
@@ -255,7 +265,7 @@ namespace SoundSharp
             int y = (int)(slider.Height * bar_size);
 
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
-            e.Graphics.FillRectangle(Brushes.DimGray, 0, y, slider.Width-4, y / 2);
+            e.Graphics.FillRectangle(Brushes.DimGray, 0, y, slider.Width - 4, y / 2);
             e.Graphics.FillRectangle(Brushes.White, 0, y, x, slider.Height - 2 * y);
 
             using (Pen pen = new Pen(Color.White, 8))
@@ -275,8 +285,8 @@ namespace SoundSharp
             catch (Exception)
             {
 
-            }         
-        }  
+            }
+        }
 
         private void slider_MouseUp(object sender, MouseEventArgs e)
         {
@@ -295,7 +305,7 @@ namespace SoundSharp
             {
 
             }
-            
+
         }
 
         private void timerSlider_Tick(object sender, EventArgs e)
@@ -354,15 +364,15 @@ namespace SoundSharp
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            AllSongsForm allSongs = new AllSongsForm();
+            allSongs = new AllSongsForm(player, SongsForAllSongs);
+            allSongs.setPictureBox(ref btnPause);
             ActiveButton(sender, SoundSharp.Properties.Resources.lupaNegra);
             OpenChildForm(allSongs);
-            //player.currentPlaylist = allSongs.getAllSongs();
         }
 
-        private void ActiveButton (object senderBtn, Image imagen)
+        private void ActiveButton(object senderBtn, Image imagen)
         {
-            if(senderBtn != null)
+            if (senderBtn != null)
             {
                 DisableButton();
                 currentButton = (Button)senderBtn;
@@ -376,7 +386,7 @@ namespace SoundSharp
 
         private void DisableButton()
         {
-            if(currentButton != null)
+            if (currentButton != null)
             {
                 if (currentButton.Text == "Buscar")
                     currentButton.Image = SoundSharp.Properties.Resources.lupa;
@@ -394,5 +404,49 @@ namespace SoundSharp
             if (this.WindowState == FormWindowState.Maximized)
                 slider.Refresh();
         }
+
+        private void renderizedForAllSongs()
+        {
+            if (allSongs != null)
+            {
+                int index = 0;
+                int cont = 0;
+                foreach (IWMPMedia song in SongsForAllSongs)
+                {
+                    if (player.currentMedia.isIdentical[song])
+                    {
+                        index = cont;
+                        break;
+                    }
+                    cont++;
+                }
+
+                allSongs.renderized(index);
+                allSongs.renderizedPause(index);
+            }
+        }
+
+        private void renderizedForAllSongs2()
+        {
+            if (allSongs != null)
+            {
+                int index = 0;
+                int cont = 0;
+                foreach (IWMPMedia song in SongsForAllSongs)
+                {
+                    if (player.currentMedia.isIdentical[song])
+                    {
+                        index = cont;
+                        break;
+                    }
+                    cont++;
+                }
+
+                allSongs.renderized(index);
+                allSongs.renderizedPlay(index);
+            }
+        }
+
+        //public PictureBox BtnPause { get { return btnPause; } set { btnPause = value; } }
     }
 }
