@@ -60,7 +60,7 @@
             this.SearchBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SearchBox.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchBox.ForeColor = System.Drawing.Color.White;
-            this.SearchBox.Location = new System.Drawing.Point(118, 19);
+            this.SearchBox.Location = new System.Drawing.Point(118, 21);
             this.SearchBox.Multiline = true;
             this.SearchBox.Name = "SearchBox";
             this.SearchBox.Size = new System.Drawing.Size(187, 20);
@@ -73,7 +73,7 @@
             this.Searchlbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
             this.Searchlbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold);
             this.Searchlbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Searchlbl.Location = new System.Drawing.Point(39, 16);
+            this.Searchlbl.Location = new System.Drawing.Point(39, 19);
             this.Searchlbl.Name = "Searchlbl";
             this.Searchlbl.Size = new System.Drawing.Size(73, 23);
             this.Searchlbl.TabIndex = 26;

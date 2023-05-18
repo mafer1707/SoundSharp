@@ -31,6 +31,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DgSongs = new System.Windows.Forms.DataGridView();
+            this.Artist = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cancion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeleteCell = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.NameBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,9 +45,6 @@
             this.CancelarBtn = new System.Windows.Forms.Button();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Artist = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cancion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeleteCell = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgSongs)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -90,11 +90,35 @@
             this.DgSongs.Location = new System.Drawing.Point(12, 95);
             this.DgSongs.Name = "DgSongs";
             this.DgSongs.RowHeadersVisible = false;
-            this.DgSongs.RowTemplate.Height = 28;
+            this.DgSongs.RowTemplate.Height = 40;
             this.DgSongs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgSongs.Size = new System.Drawing.Size(553, 335);
             this.DgSongs.TabIndex = 20;
             this.DgSongs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgSongs_CellContentClick);
+            // 
+            // Artist
+            // 
+            this.Artist.HeaderText = "Artista";
+            this.Artist.Name = "Artist";
+            this.Artist.ReadOnly = true;
+            this.Artist.Width = 184;
+            // 
+            // Cancion
+            // 
+            this.Cancion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Cancion.HeaderText = "Canción";
+            this.Cancion.Name = "Cancion";
+            this.Cancion.ReadOnly = true;
+            // 
+            // DeleteCell
+            // 
+            this.DeleteCell.HeaderText = "Eliminar de la Playlist";
+            this.DeleteCell.Image = global::SoundSharp.Properties.Resources.eliminar1;
+            this.DeleteCell.Name = "DeleteCell";
+            this.DeleteCell.ReadOnly = true;
+            this.DeleteCell.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DeleteCell.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.DeleteCell.Width = 184;
             // 
             // panel2
             // 
@@ -230,30 +254,6 @@
             this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewImageColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewImageColumn2.Width = 184;
-            // 
-            // Artist
-            // 
-            this.Artist.HeaderText = "Artista";
-            this.Artist.Name = "Artist";
-            this.Artist.ReadOnly = true;
-            this.Artist.Width = 184;
-            // 
-            // Cancion
-            // 
-            this.Cancion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Cancion.HeaderText = "Canción";
-            this.Cancion.Name = "Cancion";
-            this.Cancion.ReadOnly = true;
-            // 
-            // DeleteCell
-            // 
-            this.DeleteCell.HeaderText = "Eliminar de la Playlist";
-            this.DeleteCell.Image = global::SoundSharp.Properties.Resources.eliminar1;
-            this.DeleteCell.Name = "DeleteCell";
-            this.DeleteCell.ReadOnly = true;
-            this.DeleteCell.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DeleteCell.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.DeleteCell.Width = 184;
             // 
             // AddList
             // 
