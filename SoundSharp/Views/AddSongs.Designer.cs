@@ -51,23 +51,23 @@ namespace SoundSharp.Views
             // 
             this.RouteInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(56)))), ((int)(((byte)(82)))));
             this.RouteInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.RouteInput.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RouteInput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(165)))), ((int)(((byte)(165)))));
+            this.RouteInput.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RouteInput.ForeColor = System.Drawing.Color.White;
             this.RouteInput.Location = new System.Drawing.Point(12, 35);
             this.RouteInput.Name = "RouteInput";
             this.RouteInput.ReadOnly = true;
-            this.RouteInput.Size = new System.Drawing.Size(283, 24);
+            this.RouteInput.Size = new System.Drawing.Size(283, 21);
             this.RouteInput.TabIndex = 9;
             // 
             // NameInput
             // 
             this.NameInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(56)))), ((int)(((byte)(82)))));
             this.NameInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.NameInput.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NameInput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(165)))), ((int)(((byte)(165)))));
+            this.NameInput.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NameInput.ForeColor = System.Drawing.Color.White;
             this.NameInput.Location = new System.Drawing.Point(12, 104);
             this.NameInput.Name = "NameInput";
-            this.NameInput.Size = new System.Drawing.Size(283, 24);
+            this.NameInput.Size = new System.Drawing.Size(283, 21);
             this.NameInput.TabIndex = 0;
             this.NameInput.TextChanged += new System.EventHandler(this.NameInput_TextChanged);
             // 
@@ -75,22 +75,22 @@ namespace SoundSharp.Views
             // 
             this.PlaylistInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(56)))), ((int)(((byte)(82)))));
             this.PlaylistInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PlaylistInput.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlaylistInput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(165)))), ((int)(((byte)(165)))));
+            this.PlaylistInput.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlaylistInput.ForeColor = System.Drawing.Color.White;
             this.PlaylistInput.Location = new System.Drawing.Point(12, 243);
             this.PlaylistInput.Name = "PlaylistInput";
-            this.PlaylistInput.Size = new System.Drawing.Size(283, 24);
+            this.PlaylistInput.Size = new System.Drawing.Size(283, 21);
             this.PlaylistInput.TabIndex = 2;
             // 
             // AlbumInput
             // 
             this.AlbumInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(56)))), ((int)(((byte)(82)))));
             this.AlbumInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.AlbumInput.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AlbumInput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(165)))), ((int)(((byte)(165)))));
+            this.AlbumInput.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AlbumInput.ForeColor = System.Drawing.Color.White;
             this.AlbumInput.Location = new System.Drawing.Point(12, 314);
             this.AlbumInput.Name = "AlbumInput";
-            this.AlbumInput.Size = new System.Drawing.Size(283, 24);
+            this.AlbumInput.Size = new System.Drawing.Size(283, 21);
             this.AlbumInput.TabIndex = 3;
             // 
             // RouteLabel
@@ -204,11 +204,11 @@ namespace SoundSharp.Views
             // 
             this.AuthorInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(56)))), ((int)(((byte)(82)))));
             this.AuthorInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.AuthorInput.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AuthorInput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(165)))), ((int)(((byte)(165)))));
+            this.AuthorInput.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AuthorInput.ForeColor = System.Drawing.Color.White;
             this.AuthorInput.Location = new System.Drawing.Point(12, 174);
             this.AuthorInput.Name = "AuthorInput";
-            this.AuthorInput.Size = new System.Drawing.Size(283, 24);
+            this.AuthorInput.Size = new System.Drawing.Size(283, 21);
             this.AuthorInput.TabIndex = 1;
             this.AuthorInput.TextChanged += new System.EventHandler(this.AuthorInput_TextChanged);
             // 

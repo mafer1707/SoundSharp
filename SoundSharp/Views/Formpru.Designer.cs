@@ -34,13 +34,13 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.dgvPlaylist = new System.Windows.Forms.DataGridView();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dgvID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvArtist = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dgvDelete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnExit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylist)).BeginInit();
             this.SuspendLayout();
@@ -113,18 +113,11 @@
             this.dgvPlaylist.Name = "dgvPlaylist";
             this.dgvPlaylist.ReadOnly = true;
             this.dgvPlaylist.RowHeadersVisible = false;
+            this.dgvPlaylist.RowTemplate.Height = 40;
             this.dgvPlaylist.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPlaylist.Size = new System.Drawing.Size(778, 263);
             this.dgvPlaylist.TabIndex = 6;
             this.dgvPlaylist.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlaylist_CellContentClick);
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.HeaderText = "Eliminar";
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.ReadOnly = true;
-            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn1.Width = 152;
             // 
             // dgvID
             // 
@@ -150,14 +143,6 @@
             this.dgvTime.Name = "dgvTime";
             this.dgvTime.ReadOnly = true;
             // 
-            // dataGridViewImageColumn2
-            // 
-            this.dataGridViewImageColumn2.HeaderText = "Eliminar";
-            this.dataGridViewImageColumn2.Image = global::SoundSharp.Properties.Resources.eliminar1;
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn2.Width = 152;
-            // 
             // dgvDelete
             // 
             this.dgvDelete.HeaderText = "Eliminar";
@@ -165,6 +150,22 @@
             this.dgvDelete.Name = "dgvDelete";
             this.dgvDelete.ReadOnly = true;
             this.dgvDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.HeaderText = "Eliminar";
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.ReadOnly = true;
+            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn1.Width = 152;
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.HeaderText = "Eliminar";
+            this.dataGridViewImageColumn2.Image = global::SoundSharp.Properties.Resources.eliminar1;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn2.Width = 152;
             // 
             // btnExit
             // 

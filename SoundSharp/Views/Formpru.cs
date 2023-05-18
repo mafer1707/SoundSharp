@@ -21,8 +21,16 @@ namespace SoundSharp.Views
         List<Song> SongsRegister = new List<Song>();
         List<Playlist> MyPlayList = new List<Playlist>();
         int contador = 0;
+        private MainWindow miVentana;
 
         private readonly int _posicion;
+        public Formpru(int id,MainWindow main)
+        {
+            InitializeComponent();
+            _posicion = id;
+            miVentana = main;
+        }
+
         public Formpru(int id)
         {
             InitializeComponent();
@@ -35,8 +43,10 @@ namespace SoundSharp.Views
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
-            PlaylistView back = new PlaylistView();
-            back.Show();
+            miVentana.OpenChildForm(new PlaylistView(miVentana));
+
+            //PlaylistView back = new PlaylistView();
+            //back.Show();
             //MainWindow.PanelContenedor.Controls.Add(back);
         }
         private void Formpru_Load(object sender, EventArgs e)

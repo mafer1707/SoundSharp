@@ -15,6 +15,14 @@ namespace SoundSharp
     {
         //private Form activeForm = null;
         List<Playlist> MyPlayList = new List<Playlist>();
+        private MainWindow miVentana;
+
+        public PlaylistView(MainWindow main)
+        {
+            InitializeComponent();
+            miVentana = main;
+        }
+
         public PlaylistView()
         {
             InitializeComponent();
@@ -152,9 +160,10 @@ namespace SoundSharp
         {
             string name = dgPlaylist.Rows[e.RowIndex].Cells[0].Value.ToString();
             int PosicionEnLista = GetPlayListByName(name);
-            var formpru = new Formpru(PosicionEnLista);
-            formpru.Show();
-            this.Hide();
+            var formpru = new Formpru(PosicionEnLista,miVentana);
+            miVentana.OpenChildForm(formpru);
+            //formpru.Show();
+            //this.Hide();
         }
     }
 }

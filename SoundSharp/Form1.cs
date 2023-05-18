@@ -134,7 +134,8 @@ namespace SoundSharp
         private void btnPlaylist_Click(object sender, EventArgs e)
         {
             ActiveButton(sender, SoundSharp.Properties.Resources.playlistNegra);
-            OpenChildForm(new PlaylistView());
+            OpenChildForm(new PlaylistView(this));
+            
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -224,12 +225,19 @@ namespace SoundSharp
                 e.Graphics.FillEllipse(Brushes.White, x + 4, y - 4, slider.Height / 2, slider.Height / 2);
             }
         }
-
         private void slider_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!mouse) return;
-            Thumb(slider_width(e.X));
-            player.controls.currentPosition = player.currentMedia.duration * e.X / slider.Width;
+            try
+            {
+                if (!mouse) return;
+                Thumb(slider_width(e.X));
+                player.controls.currentPosition = player.currentMedia.duration * e.X / slider.Width;
+            }
+            catch (Exception)
+            {
+
+            }
+            
         }  
 
         private void slider_MouseUp(object sender, MouseEventArgs e)
@@ -237,14 +245,20 @@ namespace SoundSharp
             mouse = false;
         }
 
-
         private void slider_MouseDown(object sender, MouseEventArgs e)
         {
-            mouse = true;
-            Thumb(slider_width(e.X));
-            player.controls.currentPosition = player.currentMedia.duration * e.X / slider.Width;
-        }
+            try
+            {
+                mouse = true;
+                Thumb(slider_width(e.X));
+                player.controls.currentPosition = player.currentMedia.duration * e.X / slider.Width;
+            }
+            catch (Exception)
+            {
 
+            }
+            
+        }
 
         private void timerSlider_Tick(object sender, EventArgs e)
         {
@@ -318,11 +332,6 @@ namespace SoundSharp
                 currentButton.ImageAlign = ContentAlignment.MiddleLeft;
                 currentButton.TextAlign = ContentAlignment.MiddleCenter;
             }
-        }
-
-        private void slider_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void DisableButton()

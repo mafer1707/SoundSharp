@@ -235,7 +235,6 @@ namespace SoundSharp
             this.slider.Size = new System.Drawing.Size(467, 23);
             this.slider.TabIndex = 11;
             this.slider.TabStop = false;
-            this.slider.Click += new System.EventHandler(this.slider_Click);
             this.slider.Paint += new System.Windows.Forms.PaintEventHandler(this.slider_Paint);
             this.slider.MouseDown += new System.Windows.Forms.MouseEventHandler(this.slider_MouseDown);
             this.slider.MouseMove += new System.Windows.Forms.MouseEventHandler(this.slider_MouseMove);
