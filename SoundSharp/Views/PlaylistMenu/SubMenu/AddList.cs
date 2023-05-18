@@ -92,6 +92,7 @@ namespace SoundSharp
                     else
                     {
                         MessageBox.Show("El nombre que ingreso ya esta en uso.");
+                        NameBox.Text = Playlists[_posicion].Name;
                     }
                 }
                 else
@@ -104,6 +105,7 @@ namespace SoundSharp
                     else 
                     {
                         MessageBox.Show("El nombre que ingreso ya esta en uso.");
+                        NameBox.Text = "";
                     }  
                 }
 
@@ -223,7 +225,7 @@ namespace SoundSharp
                     var search = from s in Playlists
                                  where s.Name.ToLower().Trim() == text.ToLower().Trim()
                                  select new { s.Name };
-                    if (search.Count() >= 1 || search != null)
+                    if (search.Count() >= 1)
                     {
                         ValidacionNombre = false;
                     }

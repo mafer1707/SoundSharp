@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SoundSharp.Utils;
 using SoundSharp.Consts;
-using System.Text.Json.Serialization;
-using WMPLib;
+using TagLib;
+using System;
 
 namespace SoundSharp.Models
 {
@@ -19,7 +15,7 @@ namespace SoundSharp.Models
         private string _album;
         private string _name;
         private string _route;
-        private string _duration;
+        private TimeSpan _duration;
         private static DbHandler<Song> dbHandler = new DbHandler<Song>(FileNames.Songs, FileNames.SongsId);
 
         public Song(string author, string album, string name, string route)
@@ -34,9 +30,12 @@ namespace SoundSharp.Models
 
             string destination = $"{FileNames.LoadedSongs}/{id}-{name}.mp3";
 
-            File.Copy(route, destination);
+            System.IO.File.Copy(route, destination);
 
-            Route = destination;
+            Route = Path.GetFullPath(destination);
+
+            TagLib.File song = TagLib.File.Create(route);
+            Duration = song.Properties.Duration;
 
             dbHandler.Add(this);
         }
@@ -52,7 +51,7 @@ namespace SoundSharp.Models
         public string Album { get { return _album; } set { _album = value; } }
         public string Name { get { return _name; } set { _name = value; } }
         public string Route { get { return _route; } set { _route = value; } }
-        public string Duration { get { return _duration; } set { _duration = value;  } }
+        public TimeSpan Duration { get { return _duration; } set { _duration = value; } }
         public static List<Song> GetSongs()
         {
             List<Song> songs = dbHandler.Get();
