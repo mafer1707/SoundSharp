@@ -79,6 +79,7 @@ namespace SoundSharp
         private void PlaylistView_Load(object sender, EventArgs e)
         {
             GetPlaylist();
+            MyPlayList = Playlist.GetPlaylists(); 
             ReloadDg(MyPlayList);
         }
         //revisar esto
@@ -162,8 +163,7 @@ namespace SoundSharp
             int PosicionEnLista = GetPlayListByName(name);
             var formpru = new Formpru(PosicionEnLista,miVentana);
             miVentana.OpenChildForm(formpru);
-            //formpru.Show();
-            //this.Hide();
+
         }
     }
 }

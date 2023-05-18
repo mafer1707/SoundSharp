@@ -118,6 +118,7 @@
             this.dgvPlaylist.Size = new System.Drawing.Size(778, 263);
             this.dgvPlaylist.TabIndex = 6;
             this.dgvPlaylist.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlaylist_CellContentClick);
+            this.dgvPlaylist.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlaylist_CellContentDoubleClick);
             // 
             // dgvID
             // 

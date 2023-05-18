@@ -84,7 +84,6 @@ namespace SoundSharp
                         contPlay = 1;
                         break;
                 }
-                lblTiempo.Text = player.controls.currentItem.durationString;
             }
             catch (Exception)
             {

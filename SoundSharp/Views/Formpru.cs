@@ -16,95 +16,25 @@ namespace SoundSharp.Views
 {
     public partial class Formpru : Form
     {
-        List<Song> MySong = new List<Song>();
-        List<Playlist> PlaylistRegister = new List<Playlist>();
-        List<Song> SongsRegister = new List<Song>();
-        List<Playlist> MyPlayList = new List<Playlist>();
-        int contador = 0;
+        Playlist playlist;
         private MainWindow miVentana;
+        private WMPLib.WindowsMediaPlayer player;
 
-        private readonly int _posicion;
-        public Formpru(int id,MainWindow main)
+        public Formpru(int id, MainWindow main)
         {
             InitializeComponent();
-            _posicion = id;
+            playlist = Playlist.GetPlaylistById(id + 1);
             miVentana = main;
-        }
-
-        public Formpru(int id)
-        {
-            InitializeComponent();
-            _posicion = id;
-        }
-        public Formpru()
-        {
-            InitializeComponent();
         }
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
             miVentana.OpenChildForm(new PlaylistView(miVentana));
-
-            //PlaylistView back = new PlaylistView();
-            //back.Show();
-            //MainWindow.PanelContenedor.Controls.Add(back);
         }
+
         private void Formpru_Load(object sender, EventArgs e)
         {
-            GetPlaylist();
-            GetSongsRegister();
-            MySong = PlaylistRegister[_posicion].Songs;
-            foreach (var item in MySong)
-            {
-                dgvPlaylist.Rows.Add(Convert.ToString(item.Id), item.Name, item.Author, " ");
-            }
-        }
-        private void GetPlaylist()
-        {
-            string fileName = FileNames.Playlist;
-            string jsonString = File.ReadAllText(fileName);
-            try
-            {
-                PlaylistRegister = JsonConvert.DeserializeObject<List<Playlist>>(jsonString);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("No hay Playlist guardadas.");
-            }
-        }
-        private void GetSongsRegister()
-        {
-            string fileName = FileNames.Songs;
-            string jsonString = File.ReadAllText(fileName);
-            try
-            {
-                SongsRegister = JsonConvert.DeserializeObject<List<Song>>(jsonString);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        private void cualquiercosa()
-        {
-            string nombre = dgvPlaylist.Rows[_posicion].Cells[0].Value.ToString();
-            int PosicionEnLista = GetPlayListByName(nombre);
-            Formpru add = new Formpru(PosicionEnLista);
-            add.ShowDialog();
-        }
-        private int GetPlayListByName(string nombre)
-        {
-            int id = -1;
-            int i = 0;
-            foreach (var item in MyPlayList)
-            {
-                if (item.Name == nombre)
-                {
-                    id = i;
-                }
-                i++;
-            }
-            return id;
+            ReloadDg();
         }
         private void dgvPlaylist_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -120,29 +50,36 @@ namespace SoundSharp.Views
             }
             if (e.ColumnIndex == dgvPlaylist.Columns["dgvDelete"].Index && i != -1 && e.RowIndex != -1)
             {
+
                 DialogResult confirmar = MessageBox.Show("¿Está seguro que desea Eliminar?", "Eliminar", MessageBoxButtons.OKCancel);
                 if (confirmar == DialogResult.OK)
                 {
-                    string name = dgvPlaylist.Rows[_posicion].Cells[0].Value.ToString();
-                    int PosicionEnLista = GetPlayListByName(name);
-                    MyPlayList.RemoveAt(PosicionEnLista);
-                    SetPlaylist();
+                    int id = Convert.ToInt32(dgvPlaylist.Rows[e.RowIndex].Cells[0].Value) -1;
+                    playlist.RemoveSong(id);
                 }
-                //dgvPlaylist.Rows.Remove(dgvPlaylist.CurrentRow);
-                //MySong.RemoveAt(i);
-                //contador--;
+                dgvPlaylist.Rows.Clear();
+                ReloadDg();
             }
         }
-        private void SetPlaylist()
+        private void dgvPlaylist_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string fileName = FileNames.Playlist;
-            string jsonString = File.ReadAllText(fileName);
-            //Crear y agregar primera dactura a la lista 
-            jsonString = JsonConvert.SerializeObject(MyPlayList);
-            MyPlayList = JsonConvert.DeserializeObject<List<Playlist>>(jsonString);
-            File.WriteAllText(fileName, jsonString);
-            jsonString = JsonConvert.SerializeObject(MyPlayList);
-            File.WriteAllText(fileName, jsonString);
+
+        }
+        public void ReloadDg()
+        {
+            dgvPlaylist.Rows.Clear();
+            try
+            {
+                List<Song> playlistSongs = playlist.Songs;
+                for (int i = 0;i < playlistSongs.Count;i++)
+                {
+                    Song item = playlistSongs[i];
+                    dgvPlaylist.Rows.Add(i+1, item.Name, item.Author, " ");
+                }
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }
