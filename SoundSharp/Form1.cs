@@ -149,7 +149,7 @@ namespace SoundSharp
         {
             OpenFileDialog Explorer = new OpenFileDialog();
             Explorer.Multiselect = true;
-            Explorer.Filter = "MP3 files(*.mp3)|*.mp3";
+            Explorer.Filter = "Songs(*.mp3; *.flac; *.wma; *.wav; *.wave; *.m4a)| *.mp3; *.flac; *.wma; *.wav; *.wave; *.m4a";
             if (Explorer.ShowDialog() == DialogResult.OK)
             {
                 List<string> paths = Explorer.FileNames.ToList();
@@ -188,13 +188,23 @@ namespace SoundSharp
         private void btnNext_Click(object sender, EventArgs e)
         {
             player.controls.next();
-            position = 0;
+            if (contPlay == 1)
+            { 
+                position = 0;
+                player.controls.playItem(player.currentMedia);
+                contPlay++;
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
             player.controls.previous();
-            position = 0;
+            if (contPlay == 1)
+            {
+                position = 0;
+                player.controls.playItem(player.currentMedia);
+                contPlay++;
+            }
         }
 
         // ---------- Barra de reproducción ---------
@@ -322,8 +332,10 @@ namespace SoundSharp
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            AllSongsForm allSongs = new AllSongsForm();
             ActiveButton(sender, SoundSharp.Properties.Resources.lupaNegra);
-            OpenChildForm(new AllSongsForm());
+            OpenChildForm(allSongs);
+            player.currentPlaylist = allSongs.getAllSongs();
         }
 
         private void ActiveButton (object senderBtn, Image imagen)

@@ -223,6 +223,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="TagLibSharp, Version=2.3.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL">
+      <HintPath>..\packages\TagLibSharp.2.3.0\lib\net462\TagLibSharp.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -311,6 +314,9 @@
     <None Include="bin\Debug\SoundSharp.exe.config" />
     <None Include="Database\Program\playlist.json" />
     <None Include="Database\Program\songs.json" />
+    <None Include="FodyWeavers.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="obj\Debug\Costura\038539203A1EAB74E1AFC9097A6F49D74DEAAECD.costura.system.servicemodel.duplex.dll.compressed" />
     <None Include="obj\Debug\Costura\0EA487E0F4A0FA9F7721D25A320E0ED014D86919.costura.system.io.pipes.accesscontrol.dll.compressed" />
     <None Include="obj\Debug\Costura\13C03454586F5ED2AD3340185A5276102967CA1C.costura.system.data.oledb.dll.compressed" />
