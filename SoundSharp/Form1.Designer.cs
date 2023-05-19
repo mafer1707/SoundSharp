@@ -53,7 +53,6 @@ namespace SoundSharp
             this.lblTimerFinal = new System.Windows.Forms.Label();
             this.lblTimerInicial = new System.Windows.Forms.Label();
             this.PanelContenedor = new System.Windows.Forms.Panel();
-            this.lblTiempo = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.timerMenu = new System.Windows.Forms.Timer(this.components);
             this.timerSlider = new System.Windows.Forms.Timer(this.components);
@@ -69,7 +68,6 @@ namespace SoundSharp
             ((System.ComponentModel.ISupportInitialize)(this.btnBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNext)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPause)).BeginInit();
-            this.PanelContenedor.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuVertical
@@ -372,23 +370,11 @@ namespace SoundSharp
             // PanelContenedor
             // 
             this.PanelContenedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.PanelContenedor.Controls.Add(this.lblTiempo);
             this.PanelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelContenedor.Location = new System.Drawing.Point(190, 0);
             this.PanelContenedor.Name = "PanelContenedor";
             this.PanelContenedor.Size = new System.Drawing.Size(802, 356);
             this.PanelContenedor.TabIndex = 3;
-            // 
-            // lblTiempo
-            // 
-            this.lblTiempo.AutoSize = true;
-            this.lblTiempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTiempo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(7)))), ((int)(((byte)(90)))));
-            this.lblTiempo.Location = new System.Drawing.Point(146, 133);
-            this.lblTiempo.Name = "lblTiempo";
-            this.lblTiempo.Size = new System.Drawing.Size(87, 29);
-            this.lblTiempo.TabIndex = 0;
-            this.lblTiempo.Text = "tiempo";
             // 
             // timerMenu
             // 
@@ -427,8 +413,6 @@ namespace SoundSharp
             ((System.ComponentModel.ISupportInitialize)(this.btnBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNext)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPause)).EndInit();
-            this.PanelContenedor.ResumeLayout(false);
-            this.PanelContenedor.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -460,7 +444,6 @@ namespace SoundSharp
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.PictureBox btnVolume;
         private System.Windows.Forms.Label lblVolume;
-        private System.Windows.Forms.Label lblTiempo;
     }
 }
 
