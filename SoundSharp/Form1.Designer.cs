@@ -56,6 +56,8 @@ namespace SoundSharp
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.timerMenu = new System.Windows.Forms.Timer(this.components);
             this.timerSlider = new System.Windows.Forms.Timer(this.components);
+            this.lblCancion = new System.Windows.Forms.Label();
+            this.lblArtista = new System.Windows.Forms.Label();
             this.MenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).BeginInit();
             this.PanelReproduccion.SuspendLayout();
@@ -169,6 +171,8 @@ namespace SoundSharp
             // PanelReproduccion
             // 
             this.PanelReproduccion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            this.PanelReproduccion.Controls.Add(this.lblArtista);
+            this.PanelReproduccion.Controls.Add(this.lblCancion);
             this.PanelReproduccion.Controls.Add(this.lblVolume);
             this.PanelReproduccion.Controls.Add(this.trackBar1);
             this.PanelReproduccion.Controls.Add(this.btnVolume);
@@ -386,6 +390,28 @@ namespace SoundSharp
             this.timerSlider.Enabled = true;
             this.timerSlider.Tick += new System.EventHandler(this.timerSlider_Tick);
             // 
+            // lblCancion
+            // 
+            this.lblCancion.AutoSize = true;
+            this.lblCancion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCancion.ForeColor = System.Drawing.Color.White;
+            this.lblCancion.Location = new System.Drawing.Point(111, 18);
+            this.lblCancion.Name = "lblCancion";
+            this.lblCancion.Size = new System.Drawing.Size(47, 16);
+            this.lblCancion.TabIndex = 16;
+            this.lblCancion.Text = "--------";
+            // 
+            // lblArtista
+            // 
+            this.lblArtista.AutoSize = true;
+            this.lblArtista.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblArtista.ForeColor = System.Drawing.Color.White;
+            this.lblArtista.Location = new System.Drawing.Point(112, 41);
+            this.lblArtista.Name = "lblArtista";
+            this.lblArtista.Size = new System.Drawing.Size(47, 16);
+            this.lblArtista.TabIndex = 17;
+            this.lblArtista.Text = "--------";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -439,11 +465,13 @@ namespace SoundSharp
         private System.Windows.Forms.Label lblMenu;
         private System.Windows.Forms.Label lblArtist;
         private System.Windows.Forms.Label lblSong;
-        private System.Windows.Forms.PictureBox slider;
         private System.Windows.Forms.Timer timerSlider;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.PictureBox btnVolume;
         private System.Windows.Forms.Label lblVolume;
+        public System.Windows.Forms.PictureBox slider;
+        public System.Windows.Forms.Label lblCancion;
+        public System.Windows.Forms.Label lblArtista;
     }
 }
 

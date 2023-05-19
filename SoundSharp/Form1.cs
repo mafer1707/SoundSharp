@@ -20,17 +20,13 @@ namespace SoundSharp
         private int volumenActual;
         private Button currentButton;
         private double position = 0;
-        private WMPLib.WindowsMediaPlayer player;
+        private WindowsMediaPlayer player;
         private List<IWMPMedia> SongsForAllSongs;
         private AllSongsForm allSongs;
         bool menuExpand = true;
         private Form activeForm = null;
 
-        //private Song randomSong = new Song(@"C:\Users\Yasmin\Documents\FERNANDA\Bad Bunny - Efecto (360Â° Visualizer) _ Un Verano Sin Ti(MP3_128K).mp3");
-        //private Album[] randomAlbum = { new Album(@"C:\Users\58412\Desktop\SSHRP3\SoundSharp\SoundSharp\Database\Albums\1970 - Ladies Of The Canyon"),
-        //    new Album(@"C:\Users\58412\Downloads\Jeff Buckley - Grace (2022) [FLAC 24-192]"),
-        //    new Album(@"C:\Users\58412\Downloads\Mistki - Puberty 2 (2016)(FLAC)(CD)"),
-        //    new Album(@"C:\Users\58412\Downloads\IC3PEAK-До_Свидания-WEB-2020")};
+        public WindowsMediaPlayer Player {  get {  return player;} }
 
         public MainWindow()
         {
@@ -38,8 +34,6 @@ namespace SoundSharp
             List<Song> songs = Song.GetSongs();
             SongsForAllSongs = new List<IWMPMedia>();
             SetSongs(songs, false);
-            //player.currentMedia = randomSong.CurrentSong;
-            //player.currentPlaylist = randomAlbum[0].CurrentAlbum;
             InitializeComponent();
             player.controls.stop();
             contPlay = 1;
@@ -47,9 +41,8 @@ namespace SoundSharp
             contLoop = 1;
             contVolume = 1;
             slider.Height = 23;
-            trackBar1.Value = 30;
+            trackBar1.Value = 100;
             lblVolume.Text = trackBar1.Value.ToString() + "%";
-            List<Playlist> playlists = Playlist.GetPlaylists();
         }
 
         public void SetSongs(List<Song> songs, bool automatedPlay = true)
@@ -64,8 +57,17 @@ namespace SoundSharp
                 SongsForAllSongs.Add(songToAdd);
             }
             player.currentPlaylist = Playlist;
+            player.controls.currentPosition = 0;
             if (automatedPlay) Play();
             if (isShuffleMode) player.settings.setMode("shuffle", true);
+        }
+        public void SetSongData()
+        {
+            List<Song> songs = Song.GetSongs();
+            string route = player.currentMedia.sourceURL;
+            Song song = songs.Find(sng => sng.Route == route);
+            lblCancion.Text = song.Name;
+            lblArtista.Text = song.Author;
         }
 
         public void OpenChildForm(Form childForm)
@@ -99,7 +101,6 @@ namespace SoundSharp
                         break;
                     case 2:
                         player.controls.pause();
-                        position = player.controls.currentPosition;
                         btnPause.Image = SoundSharp.Properties.Resources.pausa;
                         contPlay = 1;
                         renderizedForAllSongs2();
@@ -115,10 +116,10 @@ namespace SoundSharp
 
         public void Play()
         {
-            player.controls.currentPosition = position;
             player.controls.play();
             btnPause.Image = Properties.Resources.play;
             contPlay = 2;
+            SetSongData();
             renderizedForAllSongs();
         }
 
@@ -215,13 +216,13 @@ namespace SoundSharp
             }
         }
 
-        private void btnNext_Click(object sender, EventArgs e)
+        public void btnNext_Click(object sender, EventArgs e)
         {
             player.controls.next();
+            SetSongData();
             if (contPlay == 1)
             {
                 position = 0;
-                player.controls.playItem(player.currentMedia);
                 contPlay++;
             }
             renderizedForAllSongs();
@@ -230,10 +231,10 @@ namespace SoundSharp
         private void btnBack_Click(object sender, EventArgs e)
         {
             player.controls.previous();
+            SetSongData();
             if (contPlay == 1)
             {
                 position = 0;
-                player.controls.playItem(player.currentMedia);
                 contPlay++;
             }
             renderizedForAllSongs();
@@ -241,7 +242,7 @@ namespace SoundSharp
 
         // ---------- Barra de reproducción ---------
 
-        float Default_value = 0.1f, Min = 0.0f, Max = 1.0f;
+        float Default_value = 0.0f, Min = 0.0f, Max = 1.0f;
         bool mouse = false;
         private float Bar(float value)
         {
@@ -364,7 +365,7 @@ namespace SoundSharp
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            allSongs = new AllSongsForm(player, SongsForAllSongs);
+            allSongs = new AllSongsForm(player, SongsForAllSongs, this);
             allSongs.setPictureBox(ref btnPause);
             ActiveButton(sender, SoundSharp.Properties.Resources.lupaNegra);
             OpenChildForm(allSongs);
@@ -405,7 +406,7 @@ namespace SoundSharp
                 slider.Refresh();
         }
 
-        private void renderizedForAllSongs()
+        public void renderizedForAllSongs()
         {
             if (allSongs != null)
             {

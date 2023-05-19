@@ -161,7 +161,7 @@ namespace SoundSharp
         {
             string name = dgPlaylist.Rows[e.RowIndex].Cells[0].Value.ToString();
             int PosicionEnLista = GetPlayListByName(name);
-            var formpru = new Formpru(PosicionEnLista,miVentana);
+            var formpru = new PlaylistDetail(PosicionEnLista,miVentana);
             miVentana.OpenChildForm(formpru);
 
         }

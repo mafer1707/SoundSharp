@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WMPLib;
 using TagLib;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace SoundSharp.Views.AllSongs
 {
@@ -22,16 +23,19 @@ namespace SoundSharp.Views.AllSongs
         private bool _play;
         private double _position;
         private PictureBox _pictureBox;
+        private MainWindow mainWindow;
         //Considerar eliminar los atributos de abajo.
         private IWMPMedia _songToEliminate;
         private int _indexOfSongToEliminate;
+        private string Artist;
 
-        public AllSongsForm(WindowsMediaPlayer player, List<IWMPMedia> songs)
+        public AllSongsForm(WindowsMediaPlayer player, List<IWMPMedia> songs, MainWindow main)
         {
             _player = player;
             _songs = Song.GetSongs();
             _songsToPlay = songs;
             _play = true;
+            mainWindow = main;
             _position = 0;
             InitializeComponent();
             renderized();
@@ -101,16 +105,14 @@ namespace SoundSharp.Views.AllSongs
                 if (e.ColumnIndex == dataGridView1.Columns["ColumnPlayPause"].Index
                 && e.RowIndex >= 0)
                 {
-                    if (!_player.currentMedia.isIdentical[_songsToPlay[e.RowIndex]])
-                    {
-                        _player.controls.currentItem = _songsToPlay[e.RowIndex];
-                        _position = 0;
-                        _play = true;
-                    }
-                    playablePausable();
+                    List<Song> songs = Song.GetSongs();
+                    List<Song> filteredSongs = songs.Skip(e.RowIndex).Concat(songs.Take(e.RowIndex)).ToList();
+                    mainWindow.SetSongs(filteredSongs);
+
+                    bool isPlaying = mainWindow.Player.playState == WMPPlayState.wmppsPlaying;
                     dataGridView1.Rows.RemoveAt(e.RowIndex);
                     renderized(e.RowIndex);
-                    if (_play == true)
+                    if (isPlaying)
                     {
                         renderizedPlay(e.RowIndex);
                         changePlayPause(false);
@@ -120,6 +122,7 @@ namespace SoundSharp.Views.AllSongs
                         renderizedPause(e.RowIndex);
                         changePlayPause(true);
                     }
+
                 }
             }
             catch (Exception) { }
@@ -163,14 +166,6 @@ namespace SoundSharp.Views.AllSongs
                 _indexOfSongToEliminate = e.RowIndex;
             }
         }
-
-        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //EverySong.removeSong(_allSongs, _songToEliminate);
-            //_songs.Remove(_songs[_indexOfSongToEliminate]);
-            //renderized();
-        }
-
         public void changePlayPause(bool option)
         {
             if (option)

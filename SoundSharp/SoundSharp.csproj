@@ -263,11 +263,11 @@
     <Compile Include="Views\AllSongs\AllSongsForm.Designer.cs">
       <DependentUpon>AllSongsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Formpru.cs">
+    <Compile Include="Views\PlaylistDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Formpru.Designer.cs">
-      <DependentUpon>Formpru.cs</DependentUpon>
+    <Compile Include="Views\PlaylistDetail.Designer.cs">
+      <DependentUpon>PlaylistDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\PlaylistMenu\PlaylistForm.cs">
       <SubType>Form</SubType>
@@ -304,8 +304,8 @@
     <EmbeddedResource Include="Views\AllSongs\AllSongsForm.resx">
       <DependentUpon>AllSongsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Formpru.resx">
-      <DependentUpon>Formpru.cs</DependentUpon>
+    <EmbeddedResource Include="Views\PlaylistDetail.resx">
+      <DependentUpon>PlaylistDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\PlaylistMenu\PlaylistForm.resx">
       <DependentUpon>PlaylistForm.cs</DependentUpon>
