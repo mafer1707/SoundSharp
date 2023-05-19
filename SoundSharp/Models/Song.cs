@@ -34,7 +34,7 @@ namespace SoundSharp.Models
 
             Route = Path.GetFullPath(destination);
 
-            TagLib.File song = TagLib.File.Create(Route);
+            TagLib.File song = TagLib.File.Create(route);
             Duration = song.Properties.Duration;
 
             dbHandler.Add(this);
@@ -51,7 +51,7 @@ namespace SoundSharp.Models
         public string Album { get { return _album; } set { _album = value; } }
         public string Name { get { return _name; } set { _name = value; } }
         public string Route { get { return _route; } set { _route = value; } }
-        public TimeSpan Duration { get { return _duration; } set { _duration = value;  } }
+        public TimeSpan Duration { get { return _duration; } set { _duration = value; } }
         public static List<Song> GetSongs()
         {
             List<Song> songs = dbHandler.Get();

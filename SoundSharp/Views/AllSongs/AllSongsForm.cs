@@ -19,38 +19,20 @@ namespace SoundSharp.Views.AllSongs
         private WindowsMediaPlayer _player;
         private List<Song> _songs;
         private List<IWMPMedia> _songsToPlay;
-        private EverySong _allSongs;
         private bool _play;
         private double _position;
+        private PictureBox _pictureBox;
+        //Considerar eliminar los atributos de abajo.
         private IWMPMedia _songToEliminate;
         private int _indexOfSongToEliminate;
 
-        /*public AllSongsForm(List<string> paths)
+        public AllSongsForm(WindowsMediaPlayer player, List<IWMPMedia> songs)
         {
-            _player = new WindowsMediaPlayer();
-            _songs = new List<IWMPMedia>();
-            _play = true;
-            _position = 0;
-            foreach (string path in paths)
-            {
-                _songs.Add(_player.newMedia(path));
-            }
-            InitializeComponent();
-        }*/
-
-        public AllSongsForm()
-        {
-            _player = new WindowsMediaPlayer();
+            _player = player;
             _songs = Song.GetSongs();
-            _songsToPlay = new List<IWMPMedia>();
+            _songsToPlay = songs;
             _play = true;
             _position = 0;
-            //foreach (Song song in _songs)
-            //{
-            //    string routeOfSong = song.Route.Replace("/", "\\");
-            //    IWMPMedia songToAdd = _player.newMedia(routeOfSong);
-            //    _songsToPlay.Add(songToAdd);
-            //}
             InitializeComponent();
             renderized();
         }
@@ -65,14 +47,47 @@ namespace SoundSharp.Views.AllSongs
             dataGridView1.Rows.Clear();
             for (int i = 0; i < _songs.Count; i++)
             {
-                dataGridView1.Rows.Add(SoundSharp.Properties.Resources.playDataGrid, _songs[i].Name, formattedTime(_songs[i]));
+                dataGridView1.Rows.Add(SoundSharp.Properties.Resources.pausaDataGrid, _songs[i].Name, formattedTime(_songs[i].Duration));
             }
         }
 
-        private string formattedTime (Song song)
+        public void renderized(int index)
         {
-            TagLib.File file = TagLib.File.Create(song.Route);
-            TimeSpan time = file.Properties.Duration;
+            try
+            {
+                dataGridView1.Rows.Clear();
+                for (int i = 0; i < _songs.Count; i++)
+                {
+                    if (i == index)
+                    {
+                        continue;
+                    }
+                    dataGridView1.Rows.Add(SoundSharp.Properties.Resources.pausaDataGrid, _songs[i].Name, formattedTime(_songs[i].Duration));
+                }
+            }
+            catch (Exception) { }
+            
+        }
+
+        public void renderizedPlay(int index)
+        {
+            dataGridView1.Rows.Insert(index,
+                SoundSharp.Properties.Resources.pausaDataGrid, _songs[index].Name, formattedTime(_songs[index].Duration));
+        }
+
+        public void renderizedPause(int index)
+        {
+            try
+            {
+                dataGridView1.Rows.Insert(index,
+                    SoundSharp.Properties.Resources.playDataGrid, _songs[index].Name, formattedTime(_songs[index].Duration));
+            }
+            catch (Exception) { }
+           
+        }
+
+        private string formattedTime(TimeSpan time)
+        {
             string minutes = time.Minutes < 10 ? "0" + time.Minutes : time.Minutes.ToString();
             string seconds = time.Seconds < 10 ? "0" + time.Seconds : time.Seconds.ToString();
             string timeFormatted = minutes + ":" + seconds;
@@ -81,23 +96,34 @@ namespace SoundSharp.Views.AllSongs
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dataGridView1.Columns["ColumnPlayPause"].Index
-                && e.RowIndex >= 0)
+            try
             {
-                if (!_player.currentMedia.isIdentical[_songsToPlay[e.RowIndex]])
+                if (e.ColumnIndex == dataGridView1.Columns["ColumnPlayPause"].Index
+                && e.RowIndex >= 0)
                 {
-                    _player.controls.currentItem = _allSongs.CurrentPlaylist.Item[e.RowIndex];
-                    _position = 0;
-                    _play = true;
+                    if (!_player.currentMedia.isIdentical[_songsToPlay[e.RowIndex]])
+                    {
+                        _player.controls.currentItem = _songsToPlay[e.RowIndex];
+                        _position = 0;
+                        _play = true;
+                    }
+                    playablePausable();
+                    dataGridView1.Rows.RemoveAt(e.RowIndex);
+                    renderized(e.RowIndex);
+                    if (_play == true)
+                    {
+                        renderizedPlay(e.RowIndex);
+                        changePlayPause(false);
+                    }
+                    else
+                    {
+                        renderizedPause(e.RowIndex);
+                        changePlayPause(true);
+                    }
                 }
-                playablePausable();
             }
-        }
-
-        private void initializePlaylist()
-        {
-            _allSongs = new EverySong(_songsToPlay, "PlaylistOne");
-            _player.currentPlaylist = _allSongs.CurrentPlaylist;
+            catch (Exception) { }
+            
         }
 
         //Esto simula el play, pause y demás botones del principal.
@@ -140,14 +166,26 @@ namespace SoundSharp.Views.AllSongs
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EverySong.removeSong(_allSongs, _songToEliminate);
-            _songs.Remove(_songs[_indexOfSongToEliminate]);
-            renderized();
+            //EverySong.removeSong(_allSongs, _songToEliminate);
+            //_songs.Remove(_songs[_indexOfSongToEliminate]);
+            //renderized();
         }
 
-        public IWMPPlaylist getAllSongs()
+        public void changePlayPause(bool option)
         {
-            return _allSongs.CurrentPlaylist;
+            if (option)
+            {
+                _pictureBox.Image = SoundSharp.Properties.Resources.play;
+            }
+            else
+            {
+                _pictureBox.Image = SoundSharp.Properties.Resources.pausa;
+            }
+        }
+
+        public void setPictureBox(ref PictureBox pictureBox)
+        {
+            _pictureBox = pictureBox;
         }
     }
 }
